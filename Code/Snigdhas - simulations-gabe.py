@@ -127,6 +127,8 @@ E_vox_real = E_vox + np.random.normal(scale=0.02, size=np.shape(E_vox)) # adding
 E_vox_imag = np.random.normal(scale=0.02, size=np.shape(E_vox))
 E_vox = np.sqrt(E_vox_real**2 + E_vox_imag**2) # these are the simulated signals
 
+print("the code ran until the first breakpoint")
+
 '''
 
 ## this section will be useful when you want to compare it to NLLS fitting, i'm commenting it out for now
@@ -246,6 +248,8 @@ class Net(nn.Module): # this is the neural network
         X = xi + xii + xiii
 
         return X, f_ic, f_ees, r, d_ees
+
+print("this is the second breakpoint")
 
 # define network
 nparams = 4
