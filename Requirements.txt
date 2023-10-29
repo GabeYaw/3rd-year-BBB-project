@@ -20,7 +20,7 @@ multiprocess==0.70.15
 networkx==3.2.1
 nibabel==5.1.0
 numba==0.58.1
-numpy==1.26.1
+numpy==1.23.3
 osqp==0.6.3
 packaging==23.2
 pathos==0.3.1
