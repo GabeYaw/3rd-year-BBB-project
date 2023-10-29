@@ -1,0 +1,1901 @@
+  error: subprocess-exited-with-error
+  
+  × pip subprocess to install build dependencies did not run successfully.
+  │ exit code: 1
+  ╰─> [1886 lines of output]
+      Ignoring numpy: markers 'python_version == "3.5" and platform_system != "AIX"' don't match your environment
+      Ignoring numpy: markers 'python_version == "3.6" and platform_system != "AIX"' don't match your environment
+      Ignoring numpy: markers 'python_version == "3.7" and platform_system != "AIX"' don't match your environment
+      Ignoring numpy: markers 'python_version == "3.5" and platform_system == "AIX"' don't match your environment
+      Ignoring numpy: markers 'python_version == "3.6" and platform_system == "AIX"' don't match your environment
+      Ignoring numpy: markers 'python_version == "3.7" and platform_system == "AIX"' don't match your environment
+      Ignoring numpy: markers 'python_version >= "3.8" and platform_system == "AIX"' don't match your environment
+      Collecting wheel
+        Using cached wheel-0.41.2-py3-none-any.whl.metadata (2.2 kB)
+      Collecting setuptools
+        Using cached setuptools-68.2.2-py3-none-any.whl.metadata (6.3 kB)
+      Collecting Cython>=0.29.13
+        Using cached Cython-3.0.4-cp311-cp311-macosx_10_9_x86_64.whl.metadata (3.2 kB)
+      Collecting numpy==1.17.3
+        Using cached numpy-1.17.3.zip (6.4 MB)
+        Installing build dependencies: started
+        Installing build dependencies: finished with status 'done'
+        Getting requirements to build wheel: started
+        Getting requirements to build wheel: finished with status 'done'
+        Preparing metadata (pyproject.toml): started
+        Preparing metadata (pyproject.toml): finished with status 'done'
+      Collecting pybind11>=2.4.0
+        Using cached pybind11-2.11.1-py3-none-any.whl.metadata (9.5 kB)
+      Using cached wheel-0.41.2-py3-none-any.whl (64 kB)
+      Using cached setuptools-68.2.2-py3-none-any.whl (807 kB)
+      Using cached Cython-3.0.4-cp311-cp311-macosx_10_9_x86_64.whl (3.1 MB)
+      Using cached pybind11-2.11.1-py3-none-any.whl (227 kB)
+      Building wheels for collected packages: numpy
+        Building wheel for numpy (pyproject.toml): started
+        Building wheel for numpy (pyproject.toml): still running...
+        Building wheel for numpy (pyproject.toml): still running...
+        Building wheel for numpy (pyproject.toml): still running...
+        Building wheel for numpy (pyproject.toml): finished with status 'error'
+        error: subprocess-exited-with-error
+      
+        × Building wheel for numpy (pyproject.toml) did not run successfully.
+        │ exit code: 1
+        ╰─> [1842 lines of output]
+            Running from numpy source directory.
+            blas_opt_info:
+            blas_mkl_info:
+            customize UnixCCompiler
+              libraries mkl_rt not found in ['/Users/admin/Documents/GitHub/3rd-year-BBB-project/myenv/lib', '/usr/local/lib', '/usr/lib']
+              NOT AVAILABLE
+      
+            blis_info:
+            customize UnixCCompiler
+              libraries blis not found in ['/Users/admin/Documents/GitHub/3rd-year-BBB-project/myenv/lib', '/usr/local/lib', '/usr/lib']
+              NOT AVAILABLE
+      
+            openblas_info:
+            customize UnixCCompiler
+            customize UnixCCompiler
+              libraries openblas not found in ['/Users/admin/Documents/GitHub/3rd-year-BBB-project/myenv/lib', '/usr/local/lib', '/usr/lib']
+              NOT AVAILABLE
+      
+            atlas_3_10_blas_threads_info:
+            Setting PTATLAS=ATLAS
+            customize UnixCCompiler
+              libraries tatlas not found in ['/Users/admin/Documents/GitHub/3rd-year-BBB-project/myenv/lib', '/usr/local/lib', '/usr/lib']
+              NOT AVAILABLE
+      
+            atlas_3_10_blas_info:
+            customize UnixCCompiler
+              libraries satlas not found in ['/Users/admin/Documents/GitHub/3rd-year-BBB-project/myenv/lib', '/usr/local/lib', '/usr/lib']
+              NOT AVAILABLE
+      
+            atlas_blas_threads_info:
+            Setting PTATLAS=ATLAS
+            customize UnixCCompiler
+              libraries ptf77blas,ptcblas,atlas not found in ['/Users/admin/Documents/GitHub/3rd-year-BBB-project/myenv/lib', '/usr/local/lib', '/usr/lib']
+              NOT AVAILABLE
+      
+            atlas_blas_info:
+            customize UnixCCompiler
+              libraries f77blas,cblas,atlas not found in ['/Users/admin/Documents/GitHub/3rd-year-BBB-project/myenv/lib', '/usr/local/lib', '/usr/lib']
+              NOT AVAILABLE
+      
+            accelerate_info:
+            customize UnixCCompiler
+              libraries accelerate not found in ['/Users/admin/Documents/GitHub/3rd-year-BBB-project/myenv/lib', '/usr/local/lib', '/usr/lib']
+            Library accelerate was not found. Ignoring
+            customize UnixCCompiler
+              libraries veclib not found in ['/Users/admin/Documents/GitHub/3rd-year-BBB-project/myenv/lib', '/usr/local/lib', '/usr/lib']
+            Library veclib was not found. Ignoring
+              FOUND:
+                extra_compile_args = ['-msse3', '-I/System/Library/Frameworks/vecLib.framework/Headers']
+                extra_link_args = ['-Wl,-framework', '-Wl,Accelerate']
+                define_macros = [('NO_ATLAS_INFO', 3), ('HAVE_CBLAS', None)]
+      
+              FOUND:
+                extra_compile_args = ['-msse3', '-I/System/Library/Frameworks/vecLib.framework/Headers']
+                extra_link_args = ['-Wl,-framework', '-Wl,Accelerate']
+                define_macros = [('NO_ATLAS_INFO', 3), ('HAVE_CBLAS', None)]
+      
+            /bin/sh: svnversion: command not found
+            non-existing path in 'numpy/distutils': 'site.cfg'
+            lapack_opt_info:
+            lapack_mkl_info:
+            customize UnixCCompiler
+              libraries mkl_rt not found in ['/Users/admin/Documents/GitHub/3rd-year-BBB-project/myenv/lib', '/usr/local/lib', '/usr/lib']
+              NOT AVAILABLE
+      
+            openblas_lapack_info:
+            customize UnixCCompiler
+            customize UnixCCompiler
+              libraries openblas not found in ['/Users/admin/Documents/GitHub/3rd-year-BBB-project/myenv/lib', '/usr/local/lib', '/usr/lib']
+              NOT AVAILABLE
+      
+            openblas_clapack_info:
+            customize UnixCCompiler
+            customize UnixCCompiler
+              libraries openblas,lapack not found in ['/Users/admin/Documents/GitHub/3rd-year-BBB-project/myenv/lib', '/usr/local/lib', '/usr/lib']
+              NOT AVAILABLE
+      
+            flame_info:
+            customize UnixCCompiler
+              libraries flame not found in ['/Users/admin/Documents/GitHub/3rd-year-BBB-project/myenv/lib', '/usr/local/lib', '/usr/lib']
+              NOT AVAILABLE
+      
+            atlas_3_10_threads_info:
+            Setting PTATLAS=ATLAS
+            customize UnixCCompiler
+              libraries lapack_atlas not found in /Users/admin/Documents/GitHub/3rd-year-BBB-project/myenv/lib
+            customize UnixCCompiler
+              libraries tatlas,tatlas not found in /Users/admin/Documents/GitHub/3rd-year-BBB-project/myenv/lib
+            customize UnixCCompiler
+              libraries lapack_atlas not found in /usr/local/lib
+            customize UnixCCompiler
+              libraries tatlas,tatlas not found in /usr/local/lib
+            customize UnixCCompiler
+              libraries lapack_atlas not found in /usr/lib
+            customize UnixCCompiler
+              libraries tatlas,tatlas not found in /usr/lib
+            <class 'numpy.distutils.system_info.atlas_3_10_threads_info'>
+              NOT AVAILABLE
+      
+            atlas_3_10_info:
+            customize UnixCCompiler
+              libraries lapack_atlas not found in /Users/admin/Documents/GitHub/3rd-year-BBB-project/myenv/lib
+            customize UnixCCompiler
+              libraries satlas,satlas not found in /Users/admin/Documents/GitHub/3rd-year-BBB-project/myenv/lib
+            customize UnixCCompiler
+              libraries lapack_atlas not found in /usr/local/lib
+            customize UnixCCompiler
+              libraries satlas,satlas not found in /usr/local/lib
+            customize UnixCCompiler
+              libraries lapack_atlas not found in /usr/lib
+            customize UnixCCompiler
+              libraries satlas,satlas not found in /usr/lib
+            <class 'numpy.distutils.system_info.atlas_3_10_info'>
+              NOT AVAILABLE
+      
+            atlas_threads_info:
+            Setting PTATLAS=ATLAS
+            customize UnixCCompiler
+              libraries lapack_atlas not found in /Users/admin/Documents/GitHub/3rd-year-BBB-project/myenv/lib
+            customize UnixCCompiler
+              libraries ptf77blas,ptcblas,atlas not found in /Users/admin/Documents/GitHub/3rd-year-BBB-project/myenv/lib
+            customize UnixCCompiler
+              libraries lapack_atlas not found in /usr/local/lib
+            customize UnixCCompiler
+              libraries ptf77blas,ptcblas,atlas not found in /usr/local/lib
+            customize UnixCCompiler
+              libraries lapack_atlas not found in /usr/lib
+            customize UnixCCompiler
+              libraries ptf77blas,ptcblas,atlas not found in /usr/lib
+            <class 'numpy.distutils.system_info.atlas_threads_info'>
+              NOT AVAILABLE
+      
+            atlas_info:
+            customize UnixCCompiler
+              libraries lapack_atlas not found in /Users/admin/Documents/GitHub/3rd-year-BBB-project/myenv/lib
+            customize UnixCCompiler
+              libraries f77blas,cblas,atlas not found in /Users/admin/Documents/GitHub/3rd-year-BBB-project/myenv/lib
+            customize UnixCCompiler
+              libraries lapack_atlas not found in /usr/local/lib
+            customize UnixCCompiler
+              libraries f77blas,cblas,atlas not found in /usr/local/lib
+            customize UnixCCompiler
+              libraries lapack_atlas not found in /usr/lib
+            customize UnixCCompiler
+              libraries f77blas,cblas,atlas not found in /usr/lib
+            <class 'numpy.distutils.system_info.atlas_info'>
+              NOT AVAILABLE
+      
+              FOUND:
+                extra_compile_args = ['-msse3', '-I/System/Library/Frameworks/vecLib.framework/Headers']
+                extra_link_args = ['-Wl,-framework', '-Wl,Accelerate']
+                define_macros = [('NO_ATLAS_INFO', 3), ('HAVE_CBLAS', None)]
+      
+            /private/var/folders/z8/jwxsd17n57lblqk5c_v8fttc0000gn/T/pip-build-env-l0bm_xsq/overlay/lib/python3.11/site-packages/setuptools/_distutils/dist.py:265: UserWarning: Unknown distribution option: 'define_macros'
+              warnings.warn(msg)
+            running bdist_wheel
+            running build
+            running config_cc
+            unifing config_cc, config, build_clib, build_ext, build commands --compiler options
+            running config_fc
+            unifing config_fc, config, build_clib, build_ext, build commands --fcompiler options
+            running build_src
+            build_src
+            building py_modules sources
+            building library "npymath" sources
+            get_default_fcompiler: matching types: '['gnu95', 'nag', 'absoft', 'ibm', 'intel', 'gnu', 'g95', 'pg']'
+            customize Gnu95FCompiler
+            Could not locate executable gfortran
+            Could not locate executable f95
+            customize NAGFCompiler
+            customize AbsoftFCompiler
+            Could not locate executable f90
+            Could not locate executable f77
+            customize IBMFCompiler
+            Could not locate executable xlf90
+            Could not locate executable xlf
+            customize IntelFCompiler
+            Could not locate executable ifort
+            Could not locate executable ifc
+            customize GnuFCompiler
+            Could not locate executable g77
+            customize G95FCompiler
+            Could not locate executable g95
+            customize PGroupFCompiler
+            Could not locate executable pgfortran
+            don't know how to compile Fortran code on platform 'posix'
+            C compiler: clang -Wsign-compare -Wunreachable-code -fno-common -dynamic -DNDEBUG -g -fwrapv -O3 -Wall -arch arm64 -arch x86_64 -g
+      
+            compile options: '-Inumpy/core/src/common -Inumpy/core/src -Inumpy/core -Inumpy/core/src/npymath -Inumpy/core/src/multiarray -Inumpy/core/src/umath -Inumpy/core/src/npysort -I/Users/admin/Documents/GitHub/3rd-year-BBB-project/myenv/include -I/Library/Frameworks/Python.framework/Versions/3.11/include/python3.11 -c'
+            clang: _configtest.c
+            clang _configtest.o -o _configtest
+            success!
+            removing: _configtest.c _configtest.o _configtest.o.d _configtest
+            C compiler: clang -Wsign-compare -Wunreachable-code -fno-common -dynamic -DNDEBUG -g -fwrapv -O3 -Wall -arch arm64 -arch x86_64 -g
+      
+            compile options: '-Inumpy/core/src/common -Inumpy/core/src -Inumpy/core -Inumpy/core/src/npymath -Inumpy/core/src/multiarray -Inumpy/core/src/umath -Inumpy/core/src/npysort -I/Users/admin/Documents/GitHub/3rd-year-BBB-project/myenv/include -I/Library/Frameworks/Python.framework/Versions/3.11/include/python3.11 -c'
+            clang: _configtest.c
+            _configtest.c:1:5: warning: incompatible redeclaration of library function 'exp' [-Wincompatible-library-redeclaration]
+            int exp (void);
+                ^
+            _configtest.c:1:5: note: 'exp' is a builtin with type 'double (double)'
+            1 warning generated.
+            _configtest.c:1:5: warning: incompatible redeclaration of library function 'exp' [-Wincompatible-library-redeclaration]
+            int exp (void);
+                ^
+            _configtest.c:1:5: note: 'exp' is a builtin with type 'double (double)'
+            1 warning generated.
+            clang _configtest.o -o _configtest
+            success!
+            removing: _configtest.c _configtest.o _configtest.o.d _configtest
+              adding 'build/src.macosx-10.9-universal2-3.1/numpy/core/src/npymath' to include_dirs.
+            None - nothing done with h_files = ['build/src.macosx-10.9-universal2-3.1/numpy/core/src/npymath/npy_math_internal.h']
+            building library "npysort" sources
+              adding 'build/src.macosx-10.9-universal2-3.1/numpy/core/src/common' to include_dirs.
+            None - nothing done with h_files = ['build/src.macosx-10.9-universal2-3.1/numpy/core/src/common/npy_sort.h', 'build/src.macosx-10.9-universal2-3.1/numpy/core/src/common/npy_partition.h', 'build/src.macosx-10.9-universal2-3.1/numpy/core/src/common/npy_binsearch.h']
+            building extension "numpy.core._dummy" sources
+              adding 'build/src.macosx-10.9-universal2-3.1/numpy/core/include/numpy/config.h' to sources.
+              adding 'build/src.macosx-10.9-universal2-3.1/numpy/core/include/numpy/_numpyconfig.h' to sources.
+            executing numpy/core/code_generators/generate_numpy_api.py
+              adding 'build/src.macosx-10.9-universal2-3.1/numpy/core/include/numpy/__multiarray_api.h' to sources.
+            numpy.core - nothing done with h_files = ['build/src.macosx-10.9-universal2-3.1/numpy/core/include/numpy/config.h', 'build/src.macosx-10.9-universal2-3.1/numpy/core/include/numpy/_numpyconfig.h', 'build/src.macosx-10.9-universal2-3.1/numpy/core/include/numpy/__multiarray_api.h']
+            building extension "numpy.core._multiarray_tests" sources
+            building extension "numpy.core._multiarray_umath" sources
+              adding 'build/src.macosx-10.9-universal2-3.1/numpy/core/include/numpy/config.h' to sources.
+              adding 'build/src.macosx-10.9-universal2-3.1/numpy/core/include/numpy/_numpyconfig.h' to sources.
+            executing numpy/core/code_generators/generate_numpy_api.py
+              adding 'build/src.macosx-10.9-universal2-3.1/numpy/core/include/numpy/__multiarray_api.h' to sources.
+            executing numpy/core/code_generators/generate_ufunc_api.py
+              adding 'build/src.macosx-10.9-universal2-3.1/numpy/core/include/numpy/__ufunc_api.h' to sources.
+              adding 'build/src.macosx-10.9-universal2-3.1/numpy/core/src/umath' to include_dirs.
+              adding 'build/src.macosx-10.9-universal2-3.1/numpy/core/src/npymath' to include_dirs.
+              adding 'build/src.macosx-10.9-universal2-3.1/numpy/core/src/common' to include_dirs.
+            numpy.core - nothing done with h_files = ['build/src.macosx-10.9-universal2-3.1/numpy/core/src/umath/funcs.inc', 'build/src.macosx-10.9-universal2-3.1/numpy/core/src/umath/simd.inc', 'build/src.macosx-10.9-universal2-3.1/numpy/core/src/umath/loops.h', 'build/src.macosx-10.9-universal2-3.1/numpy/core/src/umath/matmul.h', 'build/src.macosx-10.9-universal2-3.1/numpy/core/src/umath/clip.h', 'build/src.macosx-10.9-universal2-3.1/numpy/core/src/npymath/npy_math_internal.h', 'build/src.macosx-10.9-universal2-3.1/numpy/core/src/common/templ_common.h', 'build/src.macosx-10.9-universal2-3.1/numpy/core/include/numpy/config.h', 'build/src.macosx-10.9-universal2-3.1/numpy/core/include/numpy/_numpyconfig.h', 'build/src.macosx-10.9-universal2-3.1/numpy/core/include/numpy/__multiarray_api.h', 'build/src.macosx-10.9-universal2-3.1/numpy/core/include/numpy/__ufunc_api.h']
+            building extension "numpy.core._umath_tests" sources
+            building extension "numpy.core._rational_tests" sources
+            building extension "numpy.core._struct_ufunc_tests" sources
+            building extension "numpy.core._operand_flag_tests" sources
+            building extension "numpy.fft._pocketfft_internal" sources
+            building extension "numpy.linalg.lapack_lite" sources
+              adding 'numpy/linalg/lapack_lite/python_xerbla.c' to sources.
+            building extension "numpy.linalg._umath_linalg" sources
+              adding 'numpy/linalg/lapack_lite/python_xerbla.c' to sources.
+            building extension "numpy.random.mt19937" sources
+            building extension "numpy.random.philox" sources
+            building extension "numpy.random.pcg64" sources
+            building extension "numpy.random.sfc64" sources
+            building extension "numpy.random.common" sources
+            building extension "numpy.random.bit_generator" sources
+            building extension "numpy.random.generator" sources
+            building extension "numpy.random.bounded_integers" sources
+            building extension "numpy.random.mtrand" sources
+            building data_files sources
+            build_src: building npy-pkg config files
+            running build_py
+            creating build/lib.macosx-10.9-universal2-cpython-311
+            creating build/lib.macosx-10.9-universal2-cpython-311/numpy
+            copying numpy/conftest.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy
+            copying numpy/version.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy
+            copying numpy/_globals.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy
+            copying numpy/__init__.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy
+            copying numpy/dual.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy
+            copying numpy/_distributor_init.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy
+            copying numpy/setup.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy
+            copying numpy/ctypeslib.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy
+            copying numpy/matlib.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy
+            copying numpy/_pytesttester.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy
+            copying build/src.macosx-10.9-universal2-3.1/numpy/__config__.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy
+            creating build/lib.macosx-10.9-universal2-cpython-311/numpy/compat
+            copying numpy/compat/py3k.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/compat
+            copying numpy/compat/__init__.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/compat
+            copying numpy/compat/setup.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/compat
+            copying numpy/compat/_inspect.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/compat
+            creating build/lib.macosx-10.9-universal2-cpython-311/numpy/core
+            copying numpy/core/umath.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/core
+            copying numpy/core/fromnumeric.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/core
+            copying numpy/core/_dtype.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/core
+            copying numpy/core/_add_newdocs.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/core
+            copying numpy/core/_methods.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/core
+            copying numpy/core/_internal.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/core
+            copying numpy/core/_string_helpers.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/core
+            copying numpy/core/multiarray.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/core
+            copying numpy/core/_asarray.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/core
+            copying numpy/core/records.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/core
+            copying numpy/core/__init__.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/core
+            copying numpy/core/setup_common.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/core
+            copying numpy/core/_aliased_types.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/core
+            copying numpy/core/memmap.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/core
+            copying numpy/core/overrides.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/core
+            copying numpy/core/getlimits.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/core
+            copying numpy/core/_dtype_ctypes.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/core
+            copying numpy/core/defchararray.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/core
+            copying numpy/core/shape_base.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/core
+            copying numpy/core/machar.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/core
+            copying numpy/core/setup.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/core
+            copying numpy/core/numeric.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/core
+            copying numpy/core/function_base.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/core
+            copying numpy/core/einsumfunc.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/core
+            copying numpy/core/umath_tests.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/core
+            copying numpy/core/_ufunc_config.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/core
+            copying numpy/core/info.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/core
+            copying numpy/core/_exceptions.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/core
+            copying numpy/core/numerictypes.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/core
+            copying numpy/core/_type_aliases.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/core
+            copying numpy/core/cversions.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/core
+            copying numpy/core/arrayprint.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/core
+            copying numpy/core/code_generators/generate_numpy_api.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/core
+            creating build/lib.macosx-10.9-universal2-cpython-311/numpy/distutils
+            copying numpy/distutils/unixccompiler.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/distutils
+            copying numpy/distutils/numpy_distribution.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/distutils
+            copying numpy/distutils/conv_template.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/distutils
+            copying numpy/distutils/cpuinfo.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/distutils
+            copying numpy/distutils/ccompiler.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/distutils
+            copying numpy/distutils/msvc9compiler.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/distutils
+            copying numpy/distutils/npy_pkg_config.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/distutils
+            copying numpy/distutils/compat.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/distutils
+            copying numpy/distutils/misc_util.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/distutils
+            copying numpy/distutils/log.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/distutils
+            copying numpy/distutils/line_endings.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/distutils
+            copying numpy/distutils/lib2def.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/distutils
+            copying numpy/distutils/pathccompiler.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/distutils
+            copying numpy/distutils/system_info.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/distutils
+            copying numpy/distutils/__init__.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/distutils
+            copying numpy/distutils/core.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/distutils
+            copying numpy/distutils/__version__.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/distutils
+            copying numpy/distutils/exec_command.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/distutils
+            copying numpy/distutils/from_template.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/distutils
+            copying numpy/distutils/mingw32ccompiler.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/distutils
+            copying numpy/distutils/setup.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/distutils
+            copying numpy/distutils/extension.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/distutils
+            copying numpy/distutils/msvccompiler.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/distutils
+            copying numpy/distutils/intelccompiler.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/distutils
+            copying numpy/distutils/_shell_utils.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/distutils
+            copying numpy/distutils/info.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/distutils
+            copying build/src.macosx-10.9-universal2-3.1/numpy/distutils/__config__.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/distutils
+            creating build/lib.macosx-10.9-universal2-cpython-311/numpy/distutils/command
+            copying numpy/distutils/command/build.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/distutils/command
+            copying numpy/distutils/command/config_compiler.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/distutils/command
+            copying numpy/distutils/command/build_ext.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/distutils/command
+            copying numpy/distutils/command/config.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/distutils/command
+            copying numpy/distutils/command/install_headers.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/distutils/command
+            copying numpy/distutils/command/build_py.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/distutils/command
+            copying numpy/distutils/command/build_src.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/distutils/command
+            copying numpy/distutils/command/__init__.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/distutils/command
+            copying numpy/distutils/command/sdist.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/distutils/command
+            copying numpy/distutils/command/build_scripts.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/distutils/command
+            copying numpy/distutils/command/bdist_rpm.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/distutils/command
+            copying numpy/distutils/command/install_clib.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/distutils/command
+            copying numpy/distutils/command/build_clib.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/distutils/command
+            copying numpy/distutils/command/autodist.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/distutils/command
+            copying numpy/distutils/command/egg_info.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/distutils/command
+            copying numpy/distutils/command/install.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/distutils/command
+            copying numpy/distutils/command/develop.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/distutils/command
+            copying numpy/distutils/command/install_data.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/distutils/command
+            creating build/lib.macosx-10.9-universal2-cpython-311/numpy/distutils/fcompiler
+            copying numpy/distutils/fcompiler/gnu.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/distutils/fcompiler
+            copying numpy/distutils/fcompiler/compaq.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/distutils/fcompiler
+            copying numpy/distutils/fcompiler/intel.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/distutils/fcompiler
+            copying numpy/distutils/fcompiler/none.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/distutils/fcompiler
+            copying numpy/distutils/fcompiler/nag.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/distutils/fcompiler
+            copying numpy/distutils/fcompiler/pg.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/distutils/fcompiler
+            copying numpy/distutils/fcompiler/ibm.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/distutils/fcompiler
+            copying numpy/distutils/fcompiler/sun.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/distutils/fcompiler
+            copying numpy/distutils/fcompiler/lahey.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/distutils/fcompiler
+            copying numpy/distutils/fcompiler/__init__.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/distutils/fcompiler
+            copying numpy/distutils/fcompiler/g95.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/distutils/fcompiler
+            copying numpy/distutils/fcompiler/mips.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/distutils/fcompiler
+            copying numpy/distutils/fcompiler/hpux.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/distutils/fcompiler
+            copying numpy/distutils/fcompiler/environment.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/distutils/fcompiler
+            copying numpy/distutils/fcompiler/pathf95.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/distutils/fcompiler
+            copying numpy/distutils/fcompiler/absoft.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/distutils/fcompiler
+            copying numpy/distutils/fcompiler/vast.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/distutils/fcompiler
+            creating build/lib.macosx-10.9-universal2-cpython-311/numpy/doc
+            copying numpy/doc/misc.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/doc
+            copying numpy/doc/internals.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/doc
+            copying numpy/doc/creation.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/doc
+            copying numpy/doc/dispatch.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/doc
+            copying numpy/doc/constants.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/doc
+            copying numpy/doc/ufuncs.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/doc
+            copying numpy/doc/__init__.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/doc
+            copying numpy/doc/broadcasting.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/doc
+            copying numpy/doc/basics.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/doc
+            copying numpy/doc/subclassing.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/doc
+            copying numpy/doc/indexing.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/doc
+            copying numpy/doc/byteswapping.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/doc
+            copying numpy/doc/structured_arrays.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/doc
+            copying numpy/doc/glossary.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/doc
+            creating build/lib.macosx-10.9-universal2-cpython-311/numpy/f2py
+            copying numpy/f2py/cfuncs.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/f2py
+            copying numpy/f2py/common_rules.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/f2py
+            copying numpy/f2py/crackfortran.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/f2py
+            copying numpy/f2py/cb_rules.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/f2py
+            copying numpy/f2py/__init__.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/f2py
+            copying numpy/f2py/rules.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/f2py
+            copying numpy/f2py/f2py2e.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/f2py
+            copying numpy/f2py/func2subr.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/f2py
+            copying numpy/f2py/__version__.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/f2py
+            copying numpy/f2py/diagnose.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/f2py
+            copying numpy/f2py/setup.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/f2py
+            copying numpy/f2py/capi_maps.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/f2py
+            copying numpy/f2py/f90mod_rules.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/f2py
+            copying numpy/f2py/f2py_testing.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/f2py
+            copying numpy/f2py/use_rules.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/f2py
+            copying numpy/f2py/info.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/f2py
+            copying numpy/f2py/auxfuncs.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/f2py
+            copying numpy/f2py/__main__.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/f2py
+            creating build/lib.macosx-10.9-universal2-cpython-311/numpy/fft
+            copying numpy/fft/__init__.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/fft
+            copying numpy/fft/setup.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/fft
+            copying numpy/fft/helper.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/fft
+            copying numpy/fft/_pocketfft.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/fft
+            creating build/lib.macosx-10.9-universal2-cpython-311/numpy/lib
+            copying numpy/lib/_iotools.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/lib
+            copying numpy/lib/mixins.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/lib
+            copying numpy/lib/nanfunctions.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/lib
+            copying numpy/lib/recfunctions.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/lib
+            copying numpy/lib/histograms.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/lib
+            copying numpy/lib/scimath.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/lib
+            copying numpy/lib/_version.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/lib
+            copying numpy/lib/user_array.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/lib
+            copying numpy/lib/__init__.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/lib
+            copying numpy/lib/format.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/lib
+            copying numpy/lib/twodim_base.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/lib
+            copying numpy/lib/financial.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/lib
+            copying numpy/lib/index_tricks.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/lib
+            copying numpy/lib/npyio.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/lib
+            copying numpy/lib/shape_base.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/lib
+            copying numpy/lib/setup.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/lib
+            copying numpy/lib/stride_tricks.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/lib
+            copying numpy/lib/utils.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/lib
+            copying numpy/lib/arrayterator.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/lib
+            copying numpy/lib/function_base.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/lib
+            copying numpy/lib/arraysetops.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/lib
+            copying numpy/lib/arraypad.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/lib
+            copying numpy/lib/type_check.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/lib
+            copying numpy/lib/info.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/lib
+            copying numpy/lib/polynomial.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/lib
+            copying numpy/lib/_datasource.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/lib
+            copying numpy/lib/ufunclike.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/lib
+            creating build/lib.macosx-10.9-universal2-cpython-311/numpy/linalg
+            copying numpy/linalg/__init__.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/linalg
+            copying numpy/linalg/setup.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/linalg
+            copying numpy/linalg/linalg.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/linalg
+            copying numpy/linalg/info.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/linalg
+            creating build/lib.macosx-10.9-universal2-cpython-311/numpy/ma
+            copying numpy/ma/extras.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/ma
+            copying numpy/ma/version.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/ma
+            copying numpy/ma/testutils.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/ma
+            copying numpy/ma/__init__.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/ma
+            copying numpy/ma/core.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/ma
+            copying numpy/ma/bench.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/ma
+            copying numpy/ma/setup.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/ma
+            copying numpy/ma/timer_comparison.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/ma
+            copying numpy/ma/mrecords.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/ma
+            creating build/lib.macosx-10.9-universal2-cpython-311/numpy/matrixlib
+            copying numpy/matrixlib/__init__.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/matrixlib
+            copying numpy/matrixlib/setup.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/matrixlib
+            copying numpy/matrixlib/defmatrix.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/matrixlib
+            creating build/lib.macosx-10.9-universal2-cpython-311/numpy/polynomial
+            copying numpy/polynomial/laguerre.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/polynomial
+            copying numpy/polynomial/_polybase.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/polynomial
+            copying numpy/polynomial/polyutils.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/polynomial
+            copying numpy/polynomial/__init__.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/polynomial
+            copying numpy/polynomial/setup.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/polynomial
+            copying numpy/polynomial/hermite_e.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/polynomial
+            copying numpy/polynomial/chebyshev.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/polynomial
+            copying numpy/polynomial/polynomial.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/polynomial
+            copying numpy/polynomial/legendre.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/polynomial
+            copying numpy/polynomial/hermite.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/polynomial
+            creating build/lib.macosx-10.9-universal2-cpython-311/numpy/random
+            copying numpy/random/_pickle.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/random
+            copying numpy/random/__init__.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/random
+            copying numpy/random/setup.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/random
+            copying numpy/random/info.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/random
+            creating build/lib.macosx-10.9-universal2-cpython-311/numpy/testing
+            copying numpy/testing/nosetester.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/testing
+            copying numpy/testing/__init__.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/testing
+            copying numpy/testing/noseclasses.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/testing
+            copying numpy/testing/setup.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/testing
+            copying numpy/testing/utils.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/testing
+            copying numpy/testing/print_coercion_tables.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/testing
+            copying numpy/testing/decorators.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/testing
+            creating build/lib.macosx-10.9-universal2-cpython-311/numpy/testing/_private
+            copying numpy/testing/_private/nosetester.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/testing/_private
+            copying numpy/testing/_private/__init__.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/testing/_private
+            copying numpy/testing/_private/noseclasses.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/testing/_private
+            copying numpy/testing/_private/utils.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/testing/_private
+            copying numpy/testing/_private/parameterized.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/testing/_private
+            copying numpy/testing/_private/decorators.py -> build/lib.macosx-10.9-universal2-cpython-311/numpy/testing/_private
+            running build_clib
+            customize UnixCCompiler
+            customize UnixCCompiler using build_clib
+            building 'npymath' library
+            compiling C sources
+            C compiler: clang -Wsign-compare -Wunreachable-code -fno-common -dynamic -DNDEBUG -g -fwrapv -O3 -Wall -arch arm64 -arch x86_64 -g
+      
+            creating build/temp.macosx-10.9-universal2-cpython-311
+            creating build/temp.macosx-10.9-universal2-cpython-311/numpy
+            creating build/temp.macosx-10.9-universal2-cpython-311/numpy/core
+            creating build/temp.macosx-10.9-universal2-cpython-311/numpy/core/src
+            creating build/temp.macosx-10.9-universal2-cpython-311/numpy/core/src/npymath
+            creating build/temp.macosx-10.9-universal2-cpython-311/build
+            creating build/temp.macosx-10.9-universal2-cpython-311/build/src.macosx-10.9-universal2-3.1
+            creating build/temp.macosx-10.9-universal2-cpython-311/build/src.macosx-10.9-universal2-3.1/numpy
+            creating build/temp.macosx-10.9-universal2-cpython-311/build/src.macosx-10.9-universal2-3.1/numpy/core
+            creating build/temp.macosx-10.9-universal2-cpython-311/build/src.macosx-10.9-universal2-3.1/numpy/core/src
+            creating build/temp.macosx-10.9-universal2-cpython-311/build/src.macosx-10.9-universal2-3.1/numpy/core/src/npymath
+            compile options: '-Ibuild/src.macosx-10.9-universal2-3.1/numpy/core/src/npymath -Inumpy/core/include -Ibuild/src.macosx-10.9-universal2-3.1/numpy/core/include/numpy -Inumpy/core/src/common -Inumpy/core/src -Inumpy/core -Inumpy/core/src/npymath -Inumpy/core/src/multiarray -Inumpy/core/src/umath -Inumpy/core/src/npysort -I/Users/admin/Documents/GitHub/3rd-year-BBB-project/myenv/include -I/Library/Frameworks/Python.framework/Versions/3.11/include/python3.11 -Ibuild/src.macosx-10.9-universal2-3.1/numpy/core/src/common -Ibuild/src.macosx-10.9-universal2-3.1/numpy/core/src/npymath -Ibuild/src.macosx-10.9-universal2-3.1/numpy/core/src/common -Ibuild/src.macosx-10.9-universal2-3.1/numpy/core/src/npymath -c'
+            clang: numpy/core/src/npymath/npy_math.c
+            clang: build/src.macosx-10.9-universal2-3.1/numpy/core/src/npymath/ieee754.c
+            clang: build/src.macosx-10.9-universal2-3.1/numpy/core/src/npymath/npy_math_complex.c
+            clang: numpy/core/src/npymath/halffloat.c
+            numpy/core/src/npymath/npy_math_complex.c.src:48:33: warning: unused variable 'tiny' [-Wunused-const-variable]
+            static const volatile npy_float tiny = 3.9443045e-31f;
+                                            ^
+            numpy/core/src/npymath/npy_math_complex.c.src:67:25: warning: unused variable 'c_halff' [-Wunused-const-variable]
+            static const npy_cfloat c_halff = {0.5F, 0.0};
+                                    ^
+            numpy/core/src/npymath/npy_math_complex.c.src:68:25: warning: unused variable 'c_if' [-Wunused-const-variable]
+            static const npy_cfloat c_if = {0.0, 1.0F};
+                                    ^
+            numpy/core/src/npymath/npy_math_complex.c.src:69:25: warning: unused variable 'c_ihalff' [-Wunused-const-variable]
+            static const npy_cfloat c_ihalff = {0.0, 0.5F};
+                                    ^
+            numpy/core/src/npymath/npy_math_complex.c.src:79:1: warning: unused function 'caddf' [-Wunused-function]
+            caddf(npy_cfloat a, npy_cfloat b)
+            ^
+            numpy/core/src/npymath/npy_math_complex.c.src:87:1: warning: unused function 'csubf' [-Wunused-function]
+            csubf(npy_cfloat a, npy_cfloat b)
+            ^
+            numpy/core/src/npymath/npy_math_complex.c.src:137:1: warning: unused function 'cnegf' [-Wunused-function]
+            cnegf(npy_cfloat a)
+            ^
+            numpy/core/src/npymath/npy_math_complex.c.src:144:1: warning: unused function 'cmulif' [-Wunused-function]
+            cmulif(npy_cfloat a)
+            ^
+            numpy/core/src/npymath/npy_math_complex.c.src:67:26: warning: unused variable 'c_half' [-Wunused-const-variable]
+            static const npy_cdouble c_half = {0.5, 0.0};
+                                     ^
+            numpy/core/src/npymath/npy_math_complex.c.src:68:26: warning: unused variable 'c_i' [-Wunused-const-variable]
+            static const npy_cdouble c_i = {0.0, 1.0};
+                                     ^
+            numpy/core/src/npymath/npy_math_complex.c.src:69:26: warning: unused variable 'c_ihalf' [-Wunused-const-variable]
+            static const npy_cdouble c_ihalf = {0.0, 0.5};
+                                     ^
+            numpy/core/src/npymath/npy_math_complex.c.src:79:1: warning: unused function 'cadd' [-Wunused-function]
+            cadd(npy_cdouble a, npy_cdouble b)
+            ^
+            numpy/core/src/npymath/npy_math_complex.c.src:87:1: warning: unused function 'csub' [-Wunused-function]
+            csub(npy_cdouble a, npy_cdouble b)
+            ^
+            numpy/core/src/npymath/npy_math_complex.c.src:137:1: warning: unused function 'cneg' [-Wunused-function]
+            cneg(npy_cdouble a)
+            ^
+            numpy/core/src/npymath/npy_math_complex.c.src:144:1: warning: unused function 'cmuli' [-Wunused-function]
+            cmuli(npy_cdouble a)
+            ^
+            numpy/core/src/npymath/npy_math_complex.c.src:67:30: warning: unused variable 'c_halfl' [-Wunused-const-variable]
+            static const npy_clongdouble c_halfl = {0.5L, 0.0};
+                                         ^
+            numpy/core/src/npymath/npy_math_complex.c.src:68:30: warning: unused variable 'c_il' [-Wunused-const-variable]
+            static const npy_clongdouble c_il = {0.0, 1.0L};
+                                         ^
+            numpy/core/src/npymath/npy_math_complex.c.src:69:30: warning: unused variable 'c_ihalfl' [-Wunused-const-variable]
+            static const npy_clongdouble c_ihalfl = {0.0, 0.5L};
+                                         ^
+            numpy/core/src/npymath/npy_math_complex.c.src:79:1: warning: unused function 'caddl' [-Wunused-function]
+            caddl(npy_clongdouble a, npy_clongdouble b)
+            ^
+            numpy/core/src/npymath/npy_math_complex.c.src:87:1: warning: unused function 'csubl' [-Wunused-function]
+            csubl(npy_clongdouble a, npy_clongdouble b)
+            ^
+            numpy/core/src/npymath/npy_math_complex.c.src:137:1: warning: unused function 'cnegl' [-Wunused-function]
+            cnegl(npy_clongdouble a)
+            ^
+            numpy/core/src/npymath/npy_math_complex.c.src:144:1: warning: unused function 'cmulil' [-Wunused-function]
+            cmulil(npy_clongdouble a)
+            ^
+            22 warnings generated.
+            numpy/core/src/npymath/npy_math_complex.c.src:48:33: warning: unused variable 'tiny' [-Wunused-const-variable]
+            static const volatile npy_float tiny = 3.9443045e-31f;
+                                            ^
+            numpy/core/src/npymath/npy_math_complex.c.src:67:25: warning: unused variable 'c_halff' [-Wunused-const-variable]
+            static const npy_cfloat c_halff = {0.5F, 0.0};
+                                    ^
+            numpy/core/src/npymath/npy_math_complex.c.src:68:25: warning: unused variable 'c_if' [-Wunused-const-variable]
+            static const npy_cfloat c_if = {0.0, 1.0F};
+                                    ^
+            numpy/core/src/npymath/npy_math_complex.c.src:69:25: warning: unused variable 'c_ihalff' [-Wunused-const-variable]
+            static const npy_cfloat c_ihalff = {0.0, 0.5F};
+                                    ^
+            numpy/core/src/npymath/npy_math_complex.c.src:79:1: warning: unused function 'caddf' [-Wunused-function]
+            caddf(npy_cfloat a, npy_cfloat b)
+            ^
+            numpy/core/src/npymath/npy_math_complex.c.src:87:1: warning: unused function 'csubf' [-Wunused-function]
+            csubf(npy_cfloat a, npy_cfloat b)
+            ^
+            numpy/core/src/npymath/npy_math_complex.c.src:137:1: warning: unused function 'cnegf' [-Wunused-function]
+            cnegf(npy_cfloat a)
+            ^
+            numpy/core/src/npymath/npy_math_complex.c.src:144:1: warning: unused function 'cmulif' [-Wunused-function]
+            cmulif(npy_cfloat a)
+            ^
+            numpy/core/src/npymath/npy_math_complex.c.src:67:26: warning: unused variable 'c_half' [-Wunused-const-variable]
+            static const npy_cdouble c_half = {0.5, 0.0};
+                                     ^
+            numpy/core/src/npymath/npy_math_complex.c.src:68:26: warning: unused variable 'c_i' [-Wunused-const-variable]
+            static const npy_cdouble c_i = {0.0, 1.0};
+                                     ^
+            numpy/core/src/npymath/npy_math_complex.c.src:69:26: warning: unused variable 'c_ihalf' [-Wunused-const-variable]
+            static const npy_cdouble c_ihalf = {0.0, 0.5};
+                                     ^
+            numpy/core/src/npymath/npy_math_complex.c.src:79:1: warning: unused function 'cadd' [-Wunused-function]
+            cadd(npy_cdouble a, npy_cdouble b)
+            ^
+            numpy/core/src/npymath/npy_math_complex.c.src:87:1: warning: unused function 'csub' [-Wunused-function]
+            csub(npy_cdouble a, npy_cdouble b)
+            ^
+            numpy/core/src/npymath/npy_math_complex.c.src:137:1: warning: unused function 'cneg' [-Wunused-function]
+            cneg(npy_cdouble a)
+            ^
+            numpy/core/src/npymath/npy_math_complex.c.src:144:1: warning: unused function 'cmuli' [-Wunused-function]
+            cmuli(npy_cdouble a)
+            ^
+            numpy/core/src/npymath/npy_math_complex.c.src:67:30: warning: unused variable 'c_halfl' [-Wunused-const-variable]
+            static const npy_clongdouble c_halfl = {0.5L, 0.0};
+                                         ^
+            numpy/core/src/npymath/npy_math_complex.c.src:68:30: warning: unused variable 'c_il' [-Wunused-const-variable]
+            static const npy_clongdouble c_il = {0.0, 1.0L};
+                                         ^
+            numpy/core/src/npymath/npy_math_complex.c.src:69:30: warning: unused variable 'c_ihalfl' [-Wunused-const-variable]
+            static const npy_clongdouble c_ihalfl = {0.0, 0.5L};
+                                         ^
+            numpy/core/src/npymath/npy_math_complex.c.src:79:1: warning: unused function 'caddl' [-Wunused-function]
+            caddl(npy_clongdouble a, npy_clongdouble b)
+            ^
+            numpy/core/src/npymath/npy_math_complex.c.src:87:1: warning: unused function 'csubl' [-Wunused-function]
+            csubl(npy_clongdouble a, npy_clongdouble b)
+            ^
+            numpy/core/src/npymath/npy_math_complex.c.src:137:1: warning: unused function 'cnegl' [-Wunused-function]
+            cnegl(npy_clongdouble a)
+            ^
+            numpy/core/src/npymath/npy_math_complex.c.src:144:1: warning: unused function 'cmulil' [-Wunused-function]
+            cmulil(npy_clongdouble a)
+            ^
+            22 warnings generated.
+            xcrun: adding 4 object files to build/temp.macosx-10.9-universal2-cpython-311/libnpymath.a
+            warning: /Library/Developer/CommandLineTools/usr/bin/ranlib: archive library: build/temp.macosx-10.9-universal2-cpython-311/libnpymath.a will be fat and ar(1) will not be able to operate on it
+            ranlib:@ build/temp.macosx-10.9-universal2-cpython-311/libnpymath.a
+            building 'npysort' library
+            compiling C sources
+            C compiler: clang -Wsign-compare -Wunreachable-code -fno-common -dynamic -DNDEBUG -g -fwrapv -O3 -Wall -arch arm64 -arch x86_64 -g
+      
+            creating build/temp.macosx-10.9-universal2-cpython-311/build/src.macosx-10.9-universal2-3.1/numpy/core/src/npysort
+            compile options: '-Ibuild/src.macosx-10.9-universal2-3.1/numpy/core/src/common -Inumpy/core/include -Ibuild/src.macosx-10.9-universal2-3.1/numpy/core/include/numpy -Inumpy/core/src/common -Inumpy/core/src -Inumpy/core -Inumpy/core/src/npymath -Inumpy/core/src/multiarray -Inumpy/core/src/umath -Inumpy/core/src/npysort -I/Users/admin/Documents/GitHub/3rd-year-BBB-project/myenv/include -I/Library/Frameworks/Python.framework/Versions/3.11/include/python3.11 -Ibuild/src.macosx-10.9-universal2-3.1/numpy/core/src/common -Ibuild/src.macosx-10.9-universal2-3.1/numpy/core/src/npymath -Ibuild/src.macosx-10.9-universal2-3.1/numpy/core/src/common -Ibuild/src.macosx-10.9-universal2-3.1/numpy/core/src/npymath -c'
+            clang: build/src.macosx-10.9-universal2-3.1/numpy/core/src/npysort/mergesort.c
+            clang: build/src.macosx-10.9-universal2-3.1/numpy/core/src/npysort/quicksort.c
+            clang: build/src.macosx-10.9-universal2-3.1/numpy/core/src/npysort/timsort.c
+            clang: build/src.macosx-10.9-universal2-3.1/numpy/core/src/npysort/heapsort.c
+            clang: build/src.macosx-10.9-universal2-3.1/numpy/core/src/npysort/radixsort.c
+            clang: build/src.macosx-10.9-universal2-3.1/numpy/core/src/npysort/selection.c
+            numpy/core/src/npysort/selection.c.src:328:9: warning: code will never be executed [-Wunreachable-code]
+                    npy_intp k;
+                    ^~~~~~~~~~~
+            numpy/core/src/npysort/selection.c.src:326:14: note: silence by adding parentheses to mark code as explicitly dead
+                else if (0 && kth == num - 1) {
+                         ^
+                         /* DISABLES CODE */ ( )
+            numpy/core/src/npysort/selection.c.src:328:9: warning: code will never be executed [-Wunreachable-code]
+                    npy_intp k;
+                    ^~~~~~~~~~~
+            numpy/core/src/npysort/selection.c.src:326:14: note: silence by adding parentheses to mark code as explicitly dead
+                else if (0 && kth == num - 1) {
+                         ^
+                         /* DISABLES CODE */ ( )
+            numpy/core/src/npysort/selection.c.src:328:9: warning: code will never be executed [-Wunreachable-code]
+                    npy_intp k;
+                    ^~~~~~~~~~~
+            numpy/core/src/npysort/selection.c.src:326:14: note: silence by adding parentheses to mark code as explicitly dead
+                else if (0 && kth == num - 1) {
+                         ^
+                         /* DISABLES CODE */ ( )
+            numpy/core/src/npysort/selection.c.src:328:9: warning: code will never be executed [-Wunreachable-code]
+                    npy_intp k;
+                    ^~~~~~~~~~~
+            numpy/core/src/npysort/selection.c.src:326:14: note: silence by adding parentheses to mark code as explicitly dead
+                else if (0 && kth == num - 1) {
+                         ^
+                         /* DISABLES CODE */ ( )
+            numpy/core/src/npysort/selection.c.src:328:9: warning: code will never be executed [-Wunreachable-code]
+                    npy_intp k;
+                    ^~~~~~~~~~~
+            numpy/core/src/npysort/selection.c.src:326:14: note: silence by adding parentheses to mark code as explicitly dead
+                else if (0 && kth == num - 1) {
+                         ^
+                         /* DISABLES CODE */ ( )
+            numpy/core/src/npysort/selection.c.src:328:9: warning: code will never be executed [-Wunreachable-code]
+                    npy_intp k;
+                    ^~~~~~~~~~~
+            numpy/core/src/npysort/selection.c.src:326:14: note: silence by adding parentheses to mark code as explicitly dead
+                else if (0 && kth == num - 1) {
+                         ^
+                         /* DISABLES CODE */ ( )
+            numpy/core/src/npysort/selection.c.src:328:9: warning: code will never be executed [-Wunreachable-code]
+                    npy_intp k;
+                    ^~~~~~~~~~~
+            numpy/core/src/npysort/selection.c.src:326:14: note: silence by adding parentheses to mark code as explicitly dead
+                else if (0 && kth == num - 1) {
+                         ^
+                         /* DISABLES CODE */ ( )
+            numpy/core/src/npysort/selection.c.src:328:9: warning: code will never be executed [-Wunreachable-code]
+                    npy_intp k;
+                    ^~~~~~~~~~~
+            numpy/core/src/npysort/selection.c.src:326:14: note: silence by adding parentheses to mark code as explicitly dead
+                else if (0 && kth == num - 1) {
+                         ^
+                         /* DISABLES CODE */ ( )
+            numpy/core/src/npysort/selection.c.src:328:9: warning: code will never be executed [-Wunreachable-code]
+                    npy_intp k;
+                    ^~~~~~~~~~~
+            numpy/core/src/npysort/selection.c.src:326:14: note: silence by adding parentheses to mark code as explicitly dead
+                else if (0 && kth == num - 1) {
+                         ^
+                         /* DISABLES CODE */ ( )
+            numpy/core/src/npysort/selection.c.src:328:9: warning: code will never be executed [-Wunreachable-code]
+                    npy_intp k;
+                    ^~~~~~~~~~~
+            numpy/core/src/npysort/selection.c.src:326:14: note: silence by adding parentheses to mark code as explicitly dead
+                else if (0 && kth == num - 1) {
+                         ^
+                         /* DISABLES CODE */ ( )
+            numpy/core/src/npysort/selection.c.src:328:9: warning: code will never be executed [-Wunreachable-code]
+                    npy_intp k;
+                    ^~~~~~~~~~~
+            numpy/core/src/npysort/selection.c.src:326:14: note: silence by adding parentheses to mark code as explicitly dead
+                else if (0 && kth == num - 1) {
+                         ^
+                         /* DISABLES CODE */ ( )
+            numpy/core/src/npysort/selection.c.src:328:9: warning: code will never be executed [-Wunreachable-code]
+                    npy_intp k;
+                    ^~~~~~~~~~~
+            numpy/core/src/npysort/selection.c.src:326:14: note: silence by adding parentheses to mark code as explicitly dead
+                else if (0 && kth == num - 1) {
+                         ^
+                         /* DISABLES CODE */ ( )
+            numpy/core/src/npysort/selection.c.src:328:9: warning: code will never be executed [-Wunreachable-code]
+                    npy_intp k;
+                    ^~~~~~~~~~~
+            numpy/core/src/npysort/selection.c.src:326:14: note: silence by adding parentheses to mark code as explicitly dead
+                else if (0 && kth == num - 1) {
+                         ^
+                         /* DISABLES CODE */ ( )
+            numpy/core/src/npysort/selection.c.src:328:9: warning: code will never be executed [-Wunreachable-code]
+                    npy_intp k;
+                    ^~~~~~~~~~~
+            numpy/core/src/npysort/selection.c.src:326:14: note: silence by adding parentheses to mark code as explicitly dead
+                else if (0 && kth == num - 1) {
+                         ^
+                         /* DISABLES CODE */ ( )
+            numpy/core/src/npysort/selection.c.src:328:9: warning: code will never be executed [-Wunreachable-code]
+                    npy_intp k;
+                    ^~~~~~~~~~~
+            numpy/core/src/npysort/selection.c.src:326:14: note: silence by adding parentheses to mark code as explicitly dead
+                else if (0 && kth == num - 1) {
+                         ^
+                         /* DISABLES CODE */ ( )
+            numpy/core/src/npysort/selection.c.src:328:9: warning: code will never be executed [-Wunreachable-code]
+                    npy_intp k;
+                    ^~~~~~~~~~~
+            numpy/core/src/npysort/selection.c.src:326:14: note: silence by adding parentheses to mark code as explicitly dead
+                else if (0 && kth == num - 1) {
+                         ^
+                         /* DISABLES CODE */ ( )
+            numpy/core/src/npysort/selection.c.src:328:9: warning: code will never be executed [-Wunreachable-code]
+                    npy_intp k;
+                    ^~~~~~~~~~~
+            numpy/core/src/npysort/selection.c.src:326:14: note: silence by adding parentheses to mark code as explicitly dead
+                else if (0 && kth == num - 1) {
+                         ^
+                         /* DISABLES CODE */ ( )
+            numpy/core/src/npysort/selection.c.src:328:9: warning: code will never be executed [-Wunreachable-code]
+                    npy_intp k;
+                    ^~~~~~~~~~~
+            numpy/core/src/npysort/selection.c.src:326:14: note: silence by adding parentheses to mark code as explicitly dead
+                else if (0 && kth == num - 1) {
+                         ^
+                         /* DISABLES CODE */ ( )
+            numpy/core/src/npysort/selection.c.src:328:9: warning: code will never be executed [-Wunreachable-code]
+                    npy_intp k;
+                    ^~~~~~~~~~~
+            numpy/core/src/npysort/selection.c.src:326:14: note: silence by adding parentheses to mark code as explicitly dead
+                else if (0 && kth == num - 1) {
+                         ^
+                         /* DISABLES CODE */ ( )
+            numpy/core/src/npysort/selection.c.src:328:9: warning: code will never be executed [-Wunreachable-code]
+                    npy_intp k;
+                    ^~~~~~~~~~~
+            numpy/core/src/npysort/selection.c.src:326:14: note: silence by adding parentheses to mark code as explicitly dead
+                else if (0 && kth == num - 1) {
+                         ^
+                         /* DISABLES CODE */ ( )
+            numpy/core/src/npysort/selection.c.src:328:9: warning: code will never be executed [-Wunreachable-code]
+                    npy_intp k;
+                    ^~~~~~~~~~~
+            numpy/core/src/npysort/selection.c.src:326:14: note: silence by adding parentheses to mark code as explicitly dead
+                else if (0 && kth == num - 1) {
+                         ^
+                         /* DISABLES CODE */ ( )
+            numpy/core/src/npysort/selection.c.src:328:9: warning: code will never be executed [-Wunreachable-code]
+                    npy_intp k;
+                    ^~~~~~~~~~~
+            numpy/core/src/npysort/selection.c.src:326:14: note: silence by adding parentheses to mark code as explicitly dead
+                else if (0 && kth == num - 1) {
+                         ^
+                         /* DISABLES CODE */ ( )
+            clang: build/src.macosx-10.9-universal2-3.1/numpy/core/src/npysort/binsearch.c
+            22 warnings generated.
+            numpy/core/src/npysort/selection.c.src:328:9: warning: code will never be executed [-Wunreachable-code]
+                    npy_intp k;
+                    ^~~~~~~~~~~
+            numpy/core/src/npysort/selection.c.src:326:14: note: silence by adding parentheses to mark code as explicitly dead
+                else if (0 && kth == num - 1) {
+                         ^
+                         /* DISABLES CODE */ ( )
+            numpy/core/src/npysort/selection.c.src:328:9: warning: code will never be executed [-Wunreachable-code]
+                    npy_intp k;
+                    ^~~~~~~~~~~
+            numpy/core/src/npysort/selection.c.src:326:14: note: silence by adding parentheses to mark code as explicitly dead
+                else if (0 && kth == num - 1) {
+                         ^
+                         /* DISABLES CODE */ ( )
+            numpy/core/src/npysort/selection.c.src:328:9: warning: code will never be executed [-Wunreachable-code]
+                    npy_intp k;
+                    ^~~~~~~~~~~
+            numpy/core/src/npysort/selection.c.src:326:14: note: silence by adding parentheses to mark code as explicitly dead
+                else if (0 && kth == num - 1) {
+                         ^
+                         /* DISABLES CODE */ ( )
+            numpy/core/src/npysort/selection.c.src:328:9: warning: code will never be executed [-Wunreachable-code]
+                    npy_intp k;
+                    ^~~~~~~~~~~
+            numpy/core/src/npysort/selection.c.src:326:14: note: silence by adding parentheses to mark code as explicitly dead
+                else if (0 && kth == num - 1) {
+                         ^
+                         /* DISABLES CODE */ ( )
+            numpy/core/src/npysort/selection.c.src:328:9: warning: code will never be executed [-Wunreachable-code]
+                    npy_intp k;
+                    ^~~~~~~~~~~
+            numpy/core/src/npysort/selection.c.src:326:14: note: silence by adding parentheses to mark code as explicitly dead
+                else if (0 && kth == num - 1) {
+                         ^
+                         /* DISABLES CODE */ ( )
+            numpy/core/src/npysort/selection.c.src:328:9: warning: code will never be executed [-Wunreachable-code]
+                    npy_intp k;
+                    ^~~~~~~~~~~
+            numpy/core/src/npysort/selection.c.src:326:14: note: silence by adding parentheses to mark code as explicitly dead
+                else if (0 && kth == num - 1) {
+                         ^
+                         /* DISABLES CODE */ ( )
+            numpy/core/src/npysort/selection.c.src:328:9: warning: code will never be executed [-Wunreachable-code]
+                    npy_intp k;
+                    ^~~~~~~~~~~
+            numpy/core/src/npysort/selection.c.src:326:14: note: silence by adding parentheses to mark code as explicitly dead
+                else if (0 && kth == num - 1) {
+                         ^
+                         /* DISABLES CODE */ ( )
+            numpy/core/src/npysort/selection.c.src:328:9: warning: code will never be executed [-Wunreachable-code]
+                    npy_intp k;
+                    ^~~~~~~~~~~
+            numpy/core/src/npysort/selection.c.src:326:14: note: silence by adding parentheses to mark code as explicitly dead
+                else if (0 && kth == num - 1) {
+                         ^
+                         /* DISABLES CODE */ ( )
+            numpy/core/src/npysort/selection.c.src:328:9: warning: code will never be executed [-Wunreachable-code]
+                    npy_intp k;
+                    ^~~~~~~~~~~
+            numpy/core/src/npysort/selection.c.src:326:14: note: silence by adding parentheses to mark code as explicitly dead
+                else if (0 && kth == num - 1) {
+                         ^
+                         /* DISABLES CODE */ ( )
+            numpy/core/src/npysort/selection.c.src:328:9: warning: code will never be executed [-Wunreachable-code]
+                    npy_intp k;
+                    ^~~~~~~~~~~
+            numpy/core/src/npysort/selection.c.src:326:14: note: silence by adding parentheses to mark code as explicitly dead
+                else if (0 && kth == num - 1) {
+                         ^
+                         /* DISABLES CODE */ ( )
+            numpy/core/src/npysort/selection.c.src:328:9: warning: code will never be executed [-Wunreachable-code]
+                    npy_intp k;
+                    ^~~~~~~~~~~
+            numpy/core/src/npysort/selection.c.src:326:14: note: silence by adding parentheses to mark code as explicitly dead
+                else if (0 && kth == num - 1) {
+                         ^
+                         /* DISABLES CODE */ ( )
+            numpy/core/src/npysort/selection.c.src:328:9: warning: code will never be executed [-Wunreachable-code]
+                    npy_intp k;
+                    ^~~~~~~~~~~
+            numpy/core/src/npysort/selection.c.src:326:14: note: silence by adding parentheses to mark code as explicitly dead
+                else if (0 && kth == num - 1) {
+                         ^
+                         /* DISABLES CODE */ ( )
+            numpy/core/src/npysort/selection.c.src:328:9: warning: code will never be executed [-Wunreachable-code]
+                    npy_intp k;
+                    ^~~~~~~~~~~
+            numpy/core/src/npysort/selection.c.src:326:14: note: silence by adding parentheses to mark code as explicitly dead
+                else if (0 && kth == num - 1) {
+                         ^
+                         /* DISABLES CODE */ ( )
+            numpy/core/src/npysort/selection.c.src:328:9: warning: code will never be executed [-Wunreachable-code]
+                    npy_intp k;
+                    ^~~~~~~~~~~
+            numpy/core/src/npysort/selection.c.src:326:14: note: silence by adding parentheses to mark code as explicitly dead
+                else if (0 && kth == num - 1) {
+                         ^
+                         /* DISABLES CODE */ ( )
+            numpy/core/src/npysort/selection.c.src:328:9: warning: code will never be executed [-Wunreachable-code]
+                    npy_intp k;
+                    ^~~~~~~~~~~
+            numpy/core/src/npysort/selection.c.src:326:14: note: silence by adding parentheses to mark code as explicitly dead
+                else if (0 && kth == num - 1) {
+                         ^
+                         /* DISABLES CODE */ ( )
+            numpy/core/src/npysort/selection.c.src:328:9: warning: code will never be executed [-Wunreachable-code]
+                    npy_intp k;
+                    ^~~~~~~~~~~
+            numpy/core/src/npysort/selection.c.src:326:14: note: silence by adding parentheses to mark code as explicitly dead
+                else if (0 && kth == num - 1) {
+                         ^
+                         /* DISABLES CODE */ ( )
+            numpy/core/src/npysort/selection.c.src:328:9: warning: code will never be executed [-Wunreachable-code]
+                    npy_intp k;
+                    ^~~~~~~~~~~
+            numpy/core/src/npysort/selection.c.src:326:14: note: silence by adding parentheses to mark code as explicitly dead
+                else if (0 && kth == num - 1) {
+                         ^
+                         /* DISABLES CODE */ ( )
+            numpy/core/src/npysort/selection.c.src:328:9: warning: code will never be executed [-Wunreachable-code]
+                    npy_intp k;
+                    ^~~~~~~~~~~
+            numpy/core/src/npysort/selection.c.src:326:14: note: silence by adding parentheses to mark code as explicitly dead
+                else if (0 && kth == num - 1) {
+                         ^
+                         /* DISABLES CODE */ ( )
+            numpy/core/src/npysort/selection.c.src:328:9: warning: code will never be executed [-Wunreachable-code]
+                    npy_intp k;
+                    ^~~~~~~~~~~
+            numpy/core/src/npysort/selection.c.src:326:14: note: silence by adding parentheses to mark code as explicitly dead
+                else if (0 && kth == num - 1) {
+                         ^
+                         /* DISABLES CODE */ ( )
+            numpy/core/src/npysort/selection.c.src:328:9: warning: code will never be executed [-Wunreachable-code]
+                    npy_intp k;
+                    ^~~~~~~~~~~
+            numpy/core/src/npysort/selection.c.src:326:14: note: silence by adding parentheses to mark code as explicitly dead
+                else if (0 && kth == num - 1) {
+                         ^
+                         /* DISABLES CODE */ ( )
+            numpy/core/src/npysort/selection.c.src:328:9: warning: code will never be executed [-Wunreachable-code]
+                    npy_intp k;
+                    ^~~~~~~~~~~
+            numpy/core/src/npysort/selection.c.src:326:14: note: silence by adding parentheses to mark code as explicitly dead
+                else if (0 && kth == num - 1) {
+                         ^
+                         /* DISABLES CODE */ ( )
+            numpy/core/src/npysort/selection.c.src:328:9: warning: code will never be executed [-Wunreachable-code]
+                    npy_intp k;
+                    ^~~~~~~~~~~
+            numpy/core/src/npysort/selection.c.src:326:14: note: silence by adding parentheses to mark code as explicitly dead
+                else if (0 && kth == num - 1) {
+                         ^
+                         /* DISABLES CODE */ ( )
+            22 warnings generated.
+            xcrun: adding 7 object files to build/temp.macosx-10.9-universal2-cpython-311/libnpysort.a
+            warning: /Library/Developer/CommandLineTools/usr/bin/ranlib: archive library: build/temp.macosx-10.9-universal2-cpython-311/libnpysort.a will be fat and ar(1) will not be able to operate on it
+            ranlib:@ build/temp.macosx-10.9-universal2-cpython-311/libnpysort.a
+            running build_ext
+            customize UnixCCompiler
+            customize UnixCCompiler using build_ext
+            building 'numpy.core._dummy' extension
+            compiling C sources
+            C compiler: clang -Wsign-compare -Wunreachable-code -fno-common -dynamic -DNDEBUG -g -fwrapv -O3 -Wall -arch arm64 -arch x86_64 -g
+      
+            compile options: '-DNPY_INTERNAL_BUILD=1 -DHAVE_NPY_CONFIG_H=1 -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE=1 -D_LARGEFILE64_SOURCE=1 -Inumpy/core/include -Ibuild/src.macosx-10.9-universal2-3.1/numpy/core/include/numpy -Inumpy/core/src/common -Inumpy/core/src -Inumpy/core -Inumpy/core/src/npymath -Inumpy/core/src/multiarray -Inumpy/core/src/umath -Inumpy/core/src/npysort -I/Users/admin/Documents/GitHub/3rd-year-BBB-project/myenv/include -I/Library/Frameworks/Python.framework/Versions/3.11/include/python3.11 -Ibuild/src.macosx-10.9-universal2-3.1/numpy/core/src/common -Ibuild/src.macosx-10.9-universal2-3.1/numpy/core/src/npymath -Ibuild/src.macosx-10.9-universal2-3.1/numpy/core/src/common -Ibuild/src.macosx-10.9-universal2-3.1/numpy/core/src/npymath -c'
+            clang: numpy/core/src/dummymodule.c
+            clang -bundle -undefined dynamic_lookup -arch arm64 -arch x86_64 -g build/temp.macosx-10.9-universal2-cpython-311/numpy/core/src/dummymodule.o -Lbuild/temp.macosx-10.9-universal2-cpython-311 -o build/lib.macosx-10.9-universal2-cpython-311/numpy/core/_dummy.cpython-311-darwin.so
+            ld: warning: -undefined dynamic_lookup may not work with chained fixups
+            ld: warning: -undefined dynamic_lookup may not work with chained fixups
+            building 'numpy.core._multiarray_tests' extension
+            compiling C sources
+            C compiler: clang -Wsign-compare -Wunreachable-code -fno-common -dynamic -DNDEBUG -g -fwrapv -O3 -Wall -arch arm64 -arch x86_64 -g
+      
+            creating build/temp.macosx-10.9-universal2-cpython-311/build/src.macosx-10.9-universal2-3.1/numpy/core/src/multiarray
+            creating build/temp.macosx-10.9-universal2-cpython-311/numpy/core/src/common
+            compile options: '-DNPY_INTERNAL_BUILD=1 -DHAVE_NPY_CONFIG_H=1 -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE=1 -D_LARGEFILE64_SOURCE=1 -Inumpy/core/include -Ibuild/src.macosx-10.9-universal2-3.1/numpy/core/include/numpy -Inumpy/core/src/common -Inumpy/core/src -Inumpy/core -Inumpy/core/src/npymath -Inumpy/core/src/multiarray -Inumpy/core/src/umath -Inumpy/core/src/npysort -I/Users/admin/Documents/GitHub/3rd-year-BBB-project/myenv/include -I/Library/Frameworks/Python.framework/Versions/3.11/include/python3.11 -Ibuild/src.macosx-10.9-universal2-3.1/numpy/core/src/common -Ibuild/src.macosx-10.9-universal2-3.1/numpy/core/src/npymath -Ibuild/src.macosx-10.9-universal2-3.1/numpy/core/src/common -Ibuild/src.macosx-10.9-universal2-3.1/numpy/core/src/npymath -c'
+            clang: build/src.macosx-10.9-universal2-3.1/numpy/core/src/multiarray/_multiarray_tests.c
+            clang: numpy/core/src/common/mem_overlap.c
+            clang -bundle -undefined dynamic_lookup -arch arm64 -arch x86_64 -g build/temp.macosx-10.9-universal2-cpython-311/build/src.macosx-10.9-universal2-3.1/numpy/core/src/multiarray/_multiarray_tests.o build/temp.macosx-10.9-universal2-cpython-311/numpy/core/src/common/mem_overlap.o -Lbuild/temp.macosx-10.9-universal2-cpython-311 -lnpymath -o build/lib.macosx-10.9-universal2-cpython-311/numpy/core/_multiarray_tests.cpython-311-darwin.so
+            ld: warning: -undefined dynamic_lookup may not work with chained fixups
+            ld: warning: -undefined dynamic_lookup may not work with chained fixups
+            building 'numpy.core._multiarray_umath' extension
+            compiling C sources
+            C compiler: clang -Wsign-compare -Wunreachable-code -fno-common -dynamic -DNDEBUG -g -fwrapv -O3 -Wall -arch arm64 -arch x86_64 -g
+      
+            creating build/temp.macosx-10.9-universal2-cpython-311/numpy/core/src/multiarray
+            creating build/temp.macosx-10.9-universal2-cpython-311/numpy/core/src/umath
+            creating build/temp.macosx-10.9-universal2-cpython-311/build/src.macosx-10.9-universal2-3.1/numpy/core/src/umath
+            creating build/temp.macosx-10.9-universal2-cpython-311/private
+            creating build/temp.macosx-10.9-universal2-cpython-311/private/var
+            creating build/temp.macosx-10.9-universal2-cpython-311/private/var/folders
+            creating build/temp.macosx-10.9-universal2-cpython-311/private/var/folders/z8
+            creating build/temp.macosx-10.9-universal2-cpython-311/private/var/folders/z8/jwxsd17n57lblqk5c_v8fttc0000gn
+            creating build/temp.macosx-10.9-universal2-cpython-311/private/var/folders/z8/jwxsd17n57lblqk5c_v8fttc0000gn/T
+            creating build/temp.macosx-10.9-universal2-cpython-311/private/var/folders/z8/jwxsd17n57lblqk5c_v8fttc0000gn/T/pip-install-kz75udje
+            creating build/temp.macosx-10.9-universal2-cpython-311/private/var/folders/z8/jwxsd17n57lblqk5c_v8fttc0000gn/T/pip-install-kz75udje/numpy_3187f4d8f96048a2b716ecee9287a94e
+            creating build/temp.macosx-10.9-universal2-cpython-311/private/var/folders/z8/jwxsd17n57lblqk5c_v8fttc0000gn/T/pip-install-kz75udje/numpy_3187f4d8f96048a2b716ecee9287a94e/numpy
+            creating build/temp.macosx-10.9-universal2-cpython-311/private/var/folders/z8/jwxsd17n57lblqk5c_v8fttc0000gn/T/pip-install-kz75udje/numpy_3187f4d8f96048a2b716ecee9287a94e/numpy/_build_utils
+            creating build/temp.macosx-10.9-universal2-cpython-311/private/var/folders/z8/jwxsd17n57lblqk5c_v8fttc0000gn/T/pip-install-kz75udje/numpy_3187f4d8f96048a2b716ecee9287a94e/numpy/_build_utils/src
+            compile options: '-DNPY_INTERNAL_BUILD=1 -DHAVE_NPY_CONFIG_H=1 -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE=1 -D_LARGEFILE64_SOURCE=1 -DNO_ATLAS_INFO=3 -DHAVE_CBLAS -Ibuild/src.macosx-10.9-universal2-3.1/numpy/core/src/umath -Ibuild/src.macosx-10.9-universal2-3.1/numpy/core/src/npymath -Ibuild/src.macosx-10.9-universal2-3.1/numpy/core/src/common -Inumpy/core/include -Ibuild/src.macosx-10.9-universal2-3.1/numpy/core/include/numpy -Inumpy/core/src/common -Inumpy/core/src -Inumpy/core -Inumpy/core/src/npymath -Inumpy/core/src/multiarray -Inumpy/core/src/umath -Inumpy/core/src/npysort -I/Users/admin/Documents/GitHub/3rd-year-BBB-project/myenv/include -I/Library/Frameworks/Python.framework/Versions/3.11/include/python3.11 -Ibuild/src.macosx-10.9-universal2-3.1/numpy/core/src/common -Ibuild/src.macosx-10.9-universal2-3.1/numpy/core/src/npymath -Ibuild/src.macosx-10.9-universal2-3.1/numpy/core/src/common -Ibuild/src.macosx-10.9-universal2-3.1/numpy/core/src/npymath -c'
+            extra options: '-msse3 -I/System/Library/Frameworks/vecLib.framework/Headers'
+            clang: numpy/core/src/multiarray/alloc.c
+            clang: numpy/core/src/multiarray/arrayfunction_override.c
+            clang: numpy/core/src/multiarray/datetime_strings.c
+            clang: numpy/core/src/multiarray/convert.c
+            clang: numpy/core/src/multiarray/arrayobject.c
+            clang: numpy/core/src/multiarray/buffer.c
+            clang: numpy/core/src/multiarray/convert_datatype.c
+            clang: numpy/core/src/multiarray/datetime_busday.c
+            clang: numpy/core/src/multiarray/calculation.c
+            clang: numpy/core/src/multiarray/datetime_busdaycal.c
+            clang: numpy/core/src/multiarray/conversion_utils.c
+            clang: build/src.macosx-10.9-universal2-3.1/numpy/core/src/multiarray/arraytypes.c
+            numpy/core/src/multiarray/arraytypes.c.src:489:11: warning: 'PyUnicode_AS_UNICODE' is deprecated [-Wdeprecated-declarations]
+                ptr = PyUnicode_AS_UNICODE(temp);
+                      ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/cpython/unicodeobject.h:698:36: note: expanded from macro 'PyUnicode_AS_UNICODE'
+            #  define PyUnicode_AS_UNICODE(op) PyUnicode_AS_UNICODE(_PyObject_CAST(op))
+                                               ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/cpython/unicodeobject.h:684:1: note: 'PyUnicode_AS_UNICODE' has been explicitly marked deprecated here
+            Py_DEPRECATED(3.3)
+            ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/pyport.h:336:54: note: expanded from macro 'Py_DEPRECATED'
+            #define Py_DEPRECATED(VERSION_UNUSED) __attribute__((__deprecated__))
+                                                                 ^
+            numpy/core/src/multiarray/arraytypes.c.src:494:15: warning: 'PyUnicode_GET_DATA_SIZE' is deprecated [-Wdeprecated-declarations]
+                datalen = PyUnicode_GET_DATA_SIZE(temp);
+                          ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/cpython/unicodeobject.h:676:39: note: expanded from macro 'PyUnicode_GET_DATA_SIZE'
+            #  define PyUnicode_GET_DATA_SIZE(op) PyUnicode_GET_DATA_SIZE(_PyObject_CAST(op))
+                                                  ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/cpython/unicodeobject.h:667:1: note: 'PyUnicode_GET_DATA_SIZE' has been explicitly marked deprecated here
+            Py_DEPRECATED(3.3)
+            ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/pyport.h:336:54: note: expanded from macro 'Py_DEPRECATED'
+            #define Py_DEPRECATED(VERSION_UNUSED) __attribute__((__deprecated__))
+                                                                 ^
+            clang: numpy/core/src/multiarray/descriptor.c
+            numpy/core/src/multiarray/descriptor.c:467:13: warning: 'PyUnicode_GET_SIZE' is deprecated [-Wdeprecated-declarations]
+                    if (PyUString_GET_SIZE(name) == 0) {
+                        ^
+            numpy/core/include/numpy/npy_3kcompat.h:110:28: note: expanded from macro 'PyUString_GET_SIZE'
+            #define PyUString_GET_SIZE PyUnicode_GET_SIZE
+                                       ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/cpython/unicodeobject.h:664:34: note: expanded from macro 'PyUnicode_GET_SIZE'
+            #  define PyUnicode_GET_SIZE(op) PyUnicode_GET_SIZE(_PyObject_CAST(op))
+                                             ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/cpython/unicodeobject.h:651:1: note: 'PyUnicode_GET_SIZE' has been explicitly marked deprecated here
+            Py_DEPRECATED(3.3)
+            ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/pyport.h:336:54: note: expanded from macro 'Py_DEPRECATED'
+            #define Py_DEPRECATED(VERSION_UNUSED) __attribute__((__deprecated__))
+                                                                 ^
+            numpy/core/src/multiarray/descriptor.c:474:48: warning: 'PyUnicode_GET_SIZE' is deprecated [-Wdeprecated-declarations]
+                        else if (PyUString_Check(title) && PyUString_GET_SIZE(title) > 0) {
+                                                           ^
+            numpy/core/include/numpy/npy_3kcompat.h:110:28: note: expanded from macro 'PyUString_GET_SIZE'
+            #define PyUString_GET_SIZE PyUnicode_GET_SIZE
+                                       ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/cpython/unicodeobject.h:664:34: note: expanded from macro 'PyUnicode_GET_SIZE'
+            #  define PyUnicode_GET_SIZE(op) PyUnicode_GET_SIZE(_PyObject_CAST(op))
+                                             ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/cpython/unicodeobject.h:651:1: note: 'PyUnicode_GET_SIZE' has been explicitly marked deprecated here
+            Py_DEPRECATED(3.3)
+            ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/pyport.h:336:54: note: expanded from macro 'Py_DEPRECATED'
+            #define Py_DEPRECATED(VERSION_UNUSED) __attribute__((__deprecated__))
+                                                                 ^
+            clang: numpy/core/src/multiarray/ctors.c
+            clang: numpy/core/src/multiarray/compiled_base.c
+            numpy/core/src/multiarray/ctors.c:2315:36: warning: 'PyUnicode_GET_SIZE' is deprecated [-Wdeprecated-declarations]
+                if (!(PyUString_Check(name) && PyUString_GET_SIZE(name) == 0)) {
+                                               ^
+            numpy/core/include/numpy/npy_3kcompat.h:110:28: note: expanded from macro 'PyUString_GET_SIZE'
+            #define PyUString_GET_SIZE PyUnicode_GET_SIZE
+                                       ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/cpython/unicodeobject.h:664:34: note: expanded from macro 'PyUnicode_GET_SIZE'
+            #  define PyUnicode_GET_SIZE(op) PyUnicode_GET_SIZE(_PyObject_CAST(op))
+                                             ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/cpython/unicodeobject.h:651:1: note: 'PyUnicode_GET_SIZE' has been explicitly marked deprecated here
+            Py_DEPRECATED(3.3)
+            ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/pyport.h:336:54: note: expanded from macro 'Py_DEPRECATED'
+            #define Py_DEPRECATED(VERSION_UNUSED) __attribute__((__deprecated__))
+                                                                 ^
+            2 warnings generated.
+            numpy/core/src/multiarray/descriptor.c:467:13: warning: 'PyUnicode_GET_SIZE' is deprecated [-Wdeprecated-declarations]
+                    if (PyUString_GET_SIZE(name) == 0) {
+                        ^
+            numpy/core/include/numpy/npy_3kcompat.h:110:28: note: expanded from macro 'PyUString_GET_SIZE'
+            #define PyUString_GET_SIZE PyUnicode_GET_SIZE
+                                       ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/cpython/unicodeobject.h:664:34: note: expanded from macro 'PyUnicode_GET_SIZE'
+            #  define PyUnicode_GET_SIZE(op) PyUnicode_GET_SIZE(_PyObject_CAST(op))
+                                             ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/cpython/unicodeobject.h:651:1: note: 'PyUnicode_GET_SIZE' has been explicitly marked deprecated here
+            Py_DEPRECATED(3.3)
+            ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/pyport.h:336:54: note: expanded from macro 'Py_DEPRECATED'
+            #define Py_DEPRECATED(VERSION_UNUSED) __attribute__((__deprecated__))
+                                                                 ^
+            numpy/core/src/multiarray/descriptor.c:474:48: warning: 'PyUnicode_GET_SIZE' is deprecated [-Wdeprecated-declarations]
+                        else if (PyUString_Check(title) && PyUString_GET_SIZE(title) > 0) {
+                                                           ^
+            numpy/core/include/numpy/npy_3kcompat.h:110:28: note: expanded from macro 'PyUString_GET_SIZE'
+            #define PyUString_GET_SIZE PyUnicode_GET_SIZE
+                                       ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/cpython/unicodeobject.h:664:34: note: expanded from macro 'PyUnicode_GET_SIZE'
+            #  define PyUnicode_GET_SIZE(op) PyUnicode_GET_SIZE(_PyObject_CAST(op))
+                                             ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/cpython/unicodeobject.h:651:1: note: 'PyUnicode_GET_SIZE' has been explicitly marked deprecated here
+            Py_DEPRECATED(3.3)
+            ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/pyport.h:336:54: note: expanded from macro 'Py_DEPRECATED'
+            #define Py_DEPRECATED(VERSION_UNUSED) __attribute__((__deprecated__))
+                                                                 ^
+            1 warning generated.
+            numpy/core/src/multiarray/ctors.c:2315:36: warning: 'PyUnicode_GET_SIZE' is deprecated [-Wdeprecated-declarations]
+                if (!(PyUString_Check(name) && PyUString_GET_SIZE(name) == 0)) {
+                                               ^
+            numpy/core/include/numpy/npy_3kcompat.h:110:28: note: expanded from macro 'PyUString_GET_SIZE'
+            #define PyUString_GET_SIZE PyUnicode_GET_SIZE
+                                       ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/cpython/unicodeobject.h:664:34: note: expanded from macro 'PyUnicode_GET_SIZE'
+            #  define PyUnicode_GET_SIZE(op) PyUnicode_GET_SIZE(_PyObject_CAST(op))
+                                             ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/cpython/unicodeobject.h:651:1: note: 'PyUnicode_GET_SIZE' has been explicitly marked deprecated here
+            Py_DEPRECATED(3.3)
+            ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/pyport.h:336:54: note: expanded from macro 'Py_DEPRECATED'
+            #define Py_DEPRECATED(VERSION_UNUSED) __attribute__((__deprecated__))
+                                                                 ^
+            2 warnings generated.
+            clang: numpy/core/src/multiarray/dragon4.c
+            clang: numpy/core/src/multiarray/common.c
+            numpy/core/src/multiarray/common.c:187:28: warning: 'PyUnicode_GET_DATA_SIZE' is deprecated [-Wdeprecated-declarations]
+                            itemsize = PyUnicode_GET_DATA_SIZE(temp);
+                                       ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/cpython/unicodeobject.h:676:39: note: expanded from macro 'PyUnicode_GET_DATA_SIZE'
+            #  define PyUnicode_GET_DATA_SIZE(op) PyUnicode_GET_DATA_SIZE(_PyObject_CAST(op))
+                                                  ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/cpython/unicodeobject.h:667:1: note: 'PyUnicode_GET_DATA_SIZE' has been explicitly marked deprecated here
+            Py_DEPRECATED(3.3)
+            ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/pyport.h:336:54: note: expanded from macro 'Py_DEPRECATED'
+            #define Py_DEPRECATED(VERSION_UNUSED) __attribute__((__deprecated__))
+                                                                 ^
+            numpy/core/src/multiarray/common.c:239:28: warning: 'PyUnicode_GET_DATA_SIZE' is deprecated [-Wdeprecated-declarations]
+                            itemsize = PyUnicode_GET_DATA_SIZE(temp);
+                                       ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/cpython/unicodeobject.h:676:39: note: expanded from macro 'PyUnicode_GET_DATA_SIZE'
+            #  define PyUnicode_GET_DATA_SIZE(op) PyUnicode_GET_DATA_SIZE(_PyObject_CAST(op))
+                                                  ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/cpython/unicodeobject.h:667:1: note: 'PyUnicode_GET_DATA_SIZE' has been explicitly marked deprecated here
+            Py_DEPRECATED(3.3)
+            ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/pyport.h:336:54: note: expanded from macro 'Py_DEPRECATED'
+            #define Py_DEPRECATED(VERSION_UNUSED) __attribute__((__deprecated__))
+                                                                 ^
+            numpy/core/src/multiarray/common.c:282:24: warning: 'PyUnicode_GET_DATA_SIZE' is deprecated [-Wdeprecated-declarations]
+                    int itemsize = PyUnicode_GET_DATA_SIZE(obj);
+                                   ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/cpython/unicodeobject.h:676:39: note: expanded from macro 'PyUnicode_GET_DATA_SIZE'
+            #  define PyUnicode_GET_DATA_SIZE(op) PyUnicode_GET_DATA_SIZE(_PyObject_CAST(op))
+                                                  ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/cpython/unicodeobject.h:667:1: note: 'PyUnicode_GET_DATA_SIZE' has been explicitly marked deprecated here
+            Py_DEPRECATED(3.3)
+            ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/pyport.h:336:54: note: expanded from macro 'Py_DEPRECATED'
+            #define Py_DEPRECATED(VERSION_UNUSED) __attribute__((__deprecated__))
+                                                                 ^
+            3 warnings generated.
+            numpy/core/src/multiarray/common.c:187:28: warning: 'PyUnicode_GET_DATA_SIZE' is deprecated [-Wdeprecated-declarations]
+                            itemsize = PyUnicode_GET_DATA_SIZE(temp);
+                                       ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/cpython/unicodeobject.h:676:39: note: expanded from macro 'PyUnicode_GET_DATA_SIZE'
+            #  define PyUnicode_GET_DATA_SIZE(op) PyUnicode_GET_DATA_SIZE(_PyObject_CAST(op))
+                                                  ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/cpython/unicodeobject.h:667:1: note: 'PyUnicode_GET_DATA_SIZE' has been explicitly marked deprecated here
+            Py_DEPRECATED(3.3)
+            ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/pyport.h:336:54: note: expanded from macro 'Py_DEPRECATED'
+            #define Py_DEPRECATED(VERSION_UNUSED) __attribute__((__deprecated__))
+                                                                 ^
+            numpy/core/src/multiarray/common.c:239:28: warning: 'PyUnicode_GET_DATA_SIZE' is deprecated [-Wdeprecated-declarations]
+                            itemsize = PyUnicode_GET_DATA_SIZE(temp);
+                                       ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/cpython/unicodeobject.h:676:39: note: expanded from macro 'PyUnicode_GET_DATA_SIZE'
+            #  define PyUnicode_GET_DATA_SIZE(op) PyUnicode_GET_DATA_SIZE(_PyObject_CAST(op))
+                                                  ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/cpython/unicodeobject.h:667:1: note: 'PyUnicode_GET_DATA_SIZE' has been explicitly marked deprecated here
+            Py_DEPRECATED(3.3)
+            ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/pyport.h:336:54: note: expanded from macro 'Py_DEPRECATED'
+            #define Py_DEPRECATED(VERSION_UNUSED) __attribute__((__deprecated__))
+                                                                 ^
+            numpy/core/src/multiarray/common.c:282:24: warning: 'PyUnicode_GET_DATA_SIZE' is deprecated [-Wdeprecated-declarations]
+                    int itemsize = PyUnicode_GET_DATA_SIZE(obj);
+                                   ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/cpython/unicodeobject.h:676:39: note: expanded from macro 'PyUnicode_GET_DATA_SIZE'
+            #  define PyUnicode_GET_DATA_SIZE(op) PyUnicode_GET_DATA_SIZE(_PyObject_CAST(op))
+                                                  ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/cpython/unicodeobject.h:667:1: note: 'PyUnicode_GET_DATA_SIZE' has been explicitly marked deprecated here
+            Py_DEPRECATED(3.3)
+            ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/pyport.h:336:54: note: expanded from macro 'Py_DEPRECATED'
+            #define Py_DEPRECATED(VERSION_UNUSED) __attribute__((__deprecated__))
+                                                                 ^
+            3 warnings generated.
+            clang: numpy/core/src/multiarray/dtype_transfer.c
+            1 warning generated.
+            clang: numpy/core/src/multiarray/datetime.c
+            clang: numpy/core/src/multiarray/item_selection.c
+            clang: numpy/core/src/multiarray/multiarraymodule.c
+            clang: build/src.macosx-10.9-universal2-3.1/numpy/core/src/multiarray/einsum.c
+            clang: numpy/core/src/multiarray/iterators.c
+            clang: build/src.macosx-10.9-universal2-3.1/numpy/core/src/multiarray/lowlevel_strided_loops.c
+            clang: build/src.macosx-10.9-universal2-3.1/numpy/core/src/multiarray/nditer_templ.c
+            2 warnings generated.
+            numpy/core/src/multiarray/arraytypes.c.src:489:11: warning: 'PyUnicode_AS_UNICODE' is deprecated [-Wdeprecated-declarations]
+                ptr = PyUnicode_AS_UNICODE(temp);
+                      ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/cpython/unicodeobject.h:698:36: note: expanded from macro 'PyUnicode_AS_UNICODE'
+            #  define PyUnicode_AS_UNICODE(op) PyUnicode_AS_UNICODE(_PyObject_CAST(op))
+                                               ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/cpython/unicodeobject.h:684:1: note: 'PyUnicode_AS_UNICODE' has been explicitly marked deprecated here
+            Py_DEPRECATED(3.3)
+            ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/pyport.h:336:54: note: expanded from macro 'Py_DEPRECATED'
+            #define Py_DEPRECATED(VERSION_UNUSED) __attribute__((__deprecated__))
+                                                                 ^
+            numpy/core/src/multiarray/arraytypes.c.src:494:15: warning: 'PyUnicode_GET_DATA_SIZE' is deprecated [-Wdeprecated-declarations]
+                datalen = PyUnicode_GET_DATA_SIZE(temp);
+                          ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/cpython/unicodeobject.h:676:39: note: expanded from macro 'PyUnicode_GET_DATA_SIZE'
+            #  define PyUnicode_GET_DATA_SIZE(op) PyUnicode_GET_DATA_SIZE(_PyObject_CAST(op))
+                                                  ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/cpython/unicodeobject.h:667:1: note: 'PyUnicode_GET_DATA_SIZE' has been explicitly marked deprecated here
+            Py_DEPRECATED(3.3)
+            ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/pyport.h:336:54: note: expanded from macro 'Py_DEPRECATED'
+            #define Py_DEPRECATED(VERSION_UNUSED) __attribute__((__deprecated__))
+                                                                 ^
+            clang: numpy/core/src/multiarray/nditer_api.c
+            clang: numpy/core/src/multiarray/nditer_constr.c
+            clang: numpy/core/src/multiarray/flagsobject.c
+            clang: numpy/core/src/multiarray/getset.c
+            clang: numpy/core/src/multiarray/hashdescr.c
+            clang: numpy/core/src/multiarray/number.c
+            clang: numpy/core/src/multiarray/nditer_pywrap.c
+            clang: numpy/core/src/multiarray/refcount.c
+            clang: numpy/core/src/multiarray/sequence.c
+            clang: numpy/core/src/multiarray/shape.c
+            clang: build/src.macosx-10.9-universal2-3.1/numpy/core/src/multiarray/scalartypes.c
+            numpy/core/src/multiarray/scalartypes.c.src:475:17: warning: 'PyUnicode_AS_UNICODE' is deprecated [-Wdeprecated-declarations]
+                ip = dptr = PyUnicode_AS_UNICODE(self);
+                            ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/cpython/unicodeobject.h:698:36: note: expanded from macro 'PyUnicode_AS_UNICODE'
+            #  define PyUnicode_AS_UNICODE(op) PyUnicode_AS_UNICODE(_PyObject_CAST(op))
+                                               ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/cpython/unicodeobject.h:684:1: note: 'PyUnicode_AS_UNICODE' has been explicitly marked deprecated here
+            Py_DEPRECATED(3.3)
+            ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/pyport.h:336:54: note: expanded from macro 'Py_DEPRECATED'
+            #define Py_DEPRECATED(VERSION_UNUSED) __attribute__((__deprecated__))
+                                                                 ^
+            numpy/core/src/multiarray/scalartypes.c.src:476:11: warning: 'PyUnicode_GET_SIZE' is deprecated [-Wdeprecated-declarations]
+                len = PyUnicode_GET_SIZE(self);
+                      ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/cpython/unicodeobject.h:664:34: note: expanded from macro 'PyUnicode_GET_SIZE'
+            #  define PyUnicode_GET_SIZE(op) PyUnicode_GET_SIZE(_PyObject_CAST(op))
+                                             ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/cpython/unicodeobject.h:651:1: note: 'PyUnicode_GET_SIZE' has been explicitly marked deprecated here
+            Py_DEPRECATED(3.3)
+            ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/pyport.h:336:54: note: expanded from macro 'Py_DEPRECATED'
+            #define Py_DEPRECATED(VERSION_UNUSED) __attribute__((__deprecated__))
+                                                                 ^
+            numpy/core/src/multiarray/scalartypes.c.src:481:11: warning: 'PyUnicode_FromUnicode' is deprecated [-Wdeprecated-declarations]
+                new = PyUnicode_FromUnicode(ip, len);
+                      ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/cpython/unicodeobject.h:600:1: note: 'PyUnicode_FromUnicode' has been explicitly marked deprecated here
+            Py_DEPRECATED(3.3) PyAPI_FUNC(PyObject*) PyUnicode_FromUnicode(
+            ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/pyport.h:336:54: note: expanded from macro 'Py_DEPRECATED'
+            #define Py_DEPRECATED(VERSION_UNUSED) __attribute__((__deprecated__))
+                                                                 ^
+            numpy/core/src/multiarray/scalartypes.c.src:475:17: warning: 'PyUnicode_AS_UNICODE' is deprecated [-Wdeprecated-declarations]
+                ip = dptr = PyUnicode_AS_UNICODE(self);
+                            ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/cpython/unicodeobject.h:698:36: note: expanded from macro 'PyUnicode_AS_UNICODE'
+            #  define PyUnicode_AS_UNICODE(op) PyUnicode_AS_UNICODE(_PyObject_CAST(op))
+                                               ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/cpython/unicodeobject.h:684:1: note: 'PyUnicode_AS_UNICODE' has been explicitly marked deprecated here
+            Py_DEPRECATED(3.3)
+            ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/pyport.h:336:54: note: expanded from macro 'Py_DEPRECATED'
+            #define Py_DEPRECATED(VERSION_UNUSED) __attribute__((__deprecated__))
+                                                                 ^
+            numpy/core/src/multiarray/scalartypes.c.src:476:11: warning: 'PyUnicode_GET_SIZE' is deprecated [-Wdeprecated-declarations]
+                len = PyUnicode_GET_SIZE(self);
+                      ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/cpython/unicodeobject.h:664:34: note: expanded from macro 'PyUnicode_GET_SIZE'
+            #  define PyUnicode_GET_SIZE(op) PyUnicode_GET_SIZE(_PyObject_CAST(op))
+                                             ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/cpython/unicodeobject.h:651:1: note: 'PyUnicode_GET_SIZE' has been explicitly marked deprecated here
+            Py_DEPRECATED(3.3)
+            ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/pyport.h:336:54: note: expanded from macro 'Py_DEPRECATED'
+            #define Py_DEPRECATED(VERSION_UNUSED) __attribute__((__deprecated__))
+                                                                 ^
+            numpy/core/src/multiarray/scalartypes.c.src:481:11: warning: 'PyUnicode_FromUnicode' is deprecated [-Wdeprecated-declarations]
+                new = PyUnicode_FromUnicode(ip, len);
+                      ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/cpython/unicodeobject.h:600:1: note: 'PyUnicode_FromUnicode' has been explicitly marked deprecated here
+            Py_DEPRECATED(3.3) PyAPI_FUNC(PyObject*) PyUnicode_FromUnicode(
+            ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/pyport.h:336:54: note: expanded from macro 'Py_DEPRECATED'
+            #define Py_DEPRECATED(VERSION_UNUSED) __attribute__((__deprecated__))
+                                                                 ^
+            numpy/core/src/multiarray/scalartypes.c.src:1849:18: warning: 'PyUnicode_AS_DATA' is deprecated [-Wdeprecated-declarations]
+                    buffer = PyUnicode_AS_DATA(self);
+                             ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/cpython/unicodeobject.h:712:33: note: expanded from macro 'PyUnicode_AS_DATA'
+            #  define PyUnicode_AS_DATA(op) PyUnicode_AS_DATA(_PyObject_CAST(op))
+                                            ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/cpython/unicodeobject.h:701:1: note: 'PyUnicode_AS_DATA' has been explicitly marked deprecated here
+            Py_DEPRECATED(3.3)
+            ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/pyport.h:336:54: note: expanded from macro 'Py_DEPRECATED'
+            #define Py_DEPRECATED(VERSION_UNUSED) __attribute__((__deprecated__))
+                                                                 ^
+            numpy/core/src/multiarray/scalartypes.c.src:1850:18: warning: 'PyUnicode_GET_DATA_SIZE' is deprecated [-Wdeprecated-declarations]
+                    buflen = PyUnicode_GET_DATA_SIZE(self);
+                             ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/cpython/unicodeobject.h:676:39: note: expanded from macro 'PyUnicode_GET_DATA_SIZE'
+            #  define PyUnicode_GET_DATA_SIZE(op) PyUnicode_GET_DATA_SIZE(_PyObject_CAST(op))
+                                                  ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/cpython/unicodeobject.h:667:1: note: 'PyUnicode_GET_DATA_SIZE' has been explicitly marked deprecated here
+            Py_DEPRECATED(3.3)
+            ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/pyport.h:336:54: note: expanded from macro 'Py_DEPRECATED'
+            #define Py_DEPRECATED(VERSION_UNUSED) __attribute__((__deprecated__))
+                                                                 ^
+            numpy/core/src/multiarray/scalartypes.c.src:3167:44: error: expression is not assignable
+                    Py_SIZE((PyVoidScalarObject *)ret) = (int) memu;
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ^
+            numpy/core/src/multiarray/scalartypes.c.src:3311:71: error: too few arguments to function call, expected 2, have 1
+                return _Py_HashDouble((double) ((PyFloatScalarObject *)obj)->obval);
+                       ~~~~~~~~~~~~~~                                             ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/pyhash.h:10:23: note: '_Py_HashDouble' declared here
+            PyAPI_FUNC(Py_hash_t) _Py_HashDouble(PyObject *, double);
+                                  ^
+            numpy/core/src/multiarray/scalartypes.c.src:3320:56: error: too few arguments to function call, expected 2, have 1
+                        (((PyCFloatScalarObject *)obj)->obval).real);
+                                                                   ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/pyhash.h:10:23: note: '_Py_HashDouble' declared here
+            PyAPI_FUNC(Py_hash_t) _Py_HashDouble(PyObject *, double);
+                                  ^
+            numpy/core/src/multiarray/scalartypes.c.src:3326:56: error: too few arguments to function call, expected 2, have 1
+                        (((PyCFloatScalarObject *)obj)->obval).imag);
+                                                                   ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/pyhash.h:10:23: note: '_Py_HashDouble' declared here
+            PyAPI_FUNC(Py_hash_t) _Py_HashDouble(PyObject *, double);
+                                  ^
+            numpy/core/src/multiarray/scalartypes.c.src:3311:76: error: too few arguments to function call, expected 2, have 1
+                return _Py_HashDouble((double) ((PyLongDoubleScalarObject *)obj)->obval);
+                       ~~~~~~~~~~~~~~                                                  ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/pyhash.h:10:23: note: '_Py_HashDouble' declared here
+            PyAPI_FUNC(Py_hash_t) _Py_HashDouble(PyObject *, double);
+                                  ^
+            numpy/core/src/multiarray/scalartypes.c.src:3320:61: error: too few arguments to function call, expected 2, have 1
+                        (((PyCLongDoubleScalarObject *)obj)->obval).real);
+                                                                        ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/pyhash.h:10:23: note: '_Py_HashDouble' declared here
+            PyAPI_FUNC(Py_hash_t) _Py_HashDouble(PyObject *, double);
+                                  ^
+            numpy/core/src/multiarray/scalartypes.c.src:3326:61: error: too few arguments to function call, expected 2, have 1
+                        (((PyCLongDoubleScalarObject *)obj)->obval).imag);
+                                                                        ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/pyhash.h:10:23: note: '_Py_HashDouble' declared here
+            PyAPI_FUNC(Py_hash_t) _Py_HashDouble(PyObject *, double);
+                                  ^
+            numpy/core/src/multiarray/scalartypes.c.src:3341:81: error: too few arguments to function call, expected 2, have 1
+                return _Py_HashDouble(npy_half_to_double(((PyHalfScalarObject *)obj)->obval));
+                       ~~~~~~~~~~~~~~                                                       ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/pyhash.h:10:23: note: '_Py_HashDouble' declared here
+            PyAPI_FUNC(Py_hash_t) _Py_HashDouble(PyObject *, double);
+                                  ^
+            8 warnings and 8 errors generated.
+            clang: numpy/core/src/multiarray/vdot.c
+            clang: numpy/core/src/umath/umathmodule.c
+            clang: numpy/core/src/multiarray/scalarapi.c
+            numpy/core/src/multiarray/scalarapi.c:74:28: warning: 'PyUnicode_AS_DATA' is deprecated [-Wdeprecated-declarations]
+                        return (void *)PyUnicode_AS_DATA(scalar);
+                                       ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/cpython/unicodeobject.h:712:33: note: expanded from macro 'PyUnicode_AS_DATA'
+            #  define PyUnicode_AS_DATA(op) PyUnicode_AS_DATA(_PyObject_CAST(op))
+                                            ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/cpython/unicodeobject.h:701:1: note: 'PyUnicode_AS_DATA' has been explicitly marked deprecated here
+            Py_DEPRECATED(3.3)
+            ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/pyport.h:336:54: note: expanded from macro 'Py_DEPRECATED'
+            #define Py_DEPRECATED(VERSION_UNUSED) __attribute__((__deprecated__))
+                                                                 ^
+            numpy/core/src/multiarray/scalarapi.c:135:28: warning: 'PyUnicode_AS_DATA' is deprecated [-Wdeprecated-declarations]
+                        return (void *)PyUnicode_AS_DATA(scalar);
+                                       ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/cpython/unicodeobject.h:712:33: note: expanded from macro 'PyUnicode_AS_DATA'
+            #  define PyUnicode_AS_DATA(op) PyUnicode_AS_DATA(_PyObject_CAST(op))
+                                            ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/cpython/unicodeobject.h:701:1: note: 'PyUnicode_AS_DATA' has been explicitly marked deprecated here
+            Py_DEPRECATED(3.3)
+            ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/pyport.h:336:54: note: expanded from macro 'Py_DEPRECATED'
+            #define Py_DEPRECATED(VERSION_UNUSED) __attribute__((__deprecated__))
+                                                                 ^
+            clang: numpy/core/src/umath/reduction.c
+            numpy/core/src/multiarray/scalarapi.c:574:29: warning: 'PyUnicode_GET_DATA_SIZE' is deprecated [-Wdeprecated-declarations]
+                        descr->elsize = PyUnicode_GET_DATA_SIZE(sc);
+                                        ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/cpython/unicodeobject.h:676:39: note: expanded from macro 'PyUnicode_GET_DATA_SIZE'
+            #  define PyUnicode_GET_DATA_SIZE(op) PyUnicode_GET_DATA_SIZE(_PyObject_CAST(op))
+                                                  ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/cpython/unicodeobject.h:667:1: note: 'PyUnicode_GET_DATA_SIZE' has been explicitly marked deprecated here
+            Py_DEPRECATED(3.3)
+            ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/pyport.h:336:54: note: expanded from macro 'Py_DEPRECATED'
+            #define Py_DEPRECATED(VERSION_UNUSED) __attribute__((__deprecated__))
+                                                                 ^
+            numpy/core/src/multiarray/scalarapi.c:712:38: warning: 'ob_shash' is deprecated [-Wdeprecated-declarations]
+                        ((PyStringObject *)obj)->ob_shash = -1;
+                                                 ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/cpython/bytesobject.h:7:5: note: 'ob_shash' has been explicitly marked deprecated here
+                Py_DEPRECATED(3.11) Py_hash_t ob_shash;
+                ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/pyport.h:336:54: note: expanded from macro 'Py_DEPRECATED'
+            #define Py_DEPRECATED(VERSION_UNUSED) __attribute__((__deprecated__))
+                                                                 ^
+            numpy/core/src/multiarray/scalarapi.c:798:27: error: expression is not assignable
+                        Py_SIZE(vobj) = itemsize;
+                        ~~~~~~~~~~~~~ ^
+            4 warnings and 1 error generated.
+            clang: build/src.macosx-10.9-universal2-3.1/numpy/core/src/umath/clip.c
+            clang: build/src.macosx-10.9-universal2-3.1/numpy/core/src/umath/loops.c
+            numpy/core/src/umath/loops.c.src:506:18: warning: 'PyEval_CallObjectWithKeywords' is deprecated [-Wdeprecated-declarations]
+                    result = PyEval_CallObject(tocall, arglist);
+                             ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/ceval.h:34:5: note: expanded from macro 'PyEval_CallObject'
+                PyEval_CallObjectWithKeywords(callable, arg, (PyObject *)NULL)
+                ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/ceval.h:27:1: note: 'PyEval_CallObjectWithKeywords' has been explicitly marked deprecated here
+            Py_DEPRECATED(3.9) PyAPI_FUNC(PyObject *) PyEval_CallObjectWithKeywords(
+            ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/pyport.h:336:54: note: expanded from macro 'Py_DEPRECATED'
+            #define Py_DEPRECATED(VERSION_UNUSED) __attribute__((__deprecated__))
+                                                                 ^
+            clang: numpy/core/src/umath/ufunc_object.c
+            numpy/core/src/umath/loops.c.src:2520:22: warning: code will never be executed [-Wunreachable-code]
+                    npy_intp n = dimensions[0];
+                                 ^~~~~~~~~~
+            numpy/core/src/umath/loops.c.src:2519:29: note: silence by adding parentheses to mark code as explicitly dead
+                if (IS_BINARY_REDUCE && 0) {
+                                        ^
+                                        /* DISABLES CODE */ ( )
+            numpy/core/src/umath/loops.c.src:2520:22: warning: code will never be executed [-Wunreachable-code]
+                    npy_intp n = dimensions[0];
+                                 ^~~~~~~~~~
+            numpy/core/src/umath/loops.c.src:2519:29: note: silence by adding parentheses to mark code as explicitly dead
+                if (IS_BINARY_REDUCE && 0) {
+                                        ^
+                                        /* DISABLES CODE */ ( )
+            numpy/core/src/umath/loops.c.src:2520:22: warning: code will never be executed [-Wunreachable-code]
+                    npy_intp n = dimensions[0];
+                                 ^~~~~~~~~~
+            numpy/core/src/umath/loops.c.src:2519:29: note: silence by adding parentheses to mark code as explicitly dead
+                if (IS_BINARY_REDUCE && 0) {
+                                        ^
+                                        /* DISABLES CODE */ ( )
+            2 warnings generated.
+            clang: numpy/core/src/multiarray/array_assign_scalar.c
+            clang: numpy/core/src/multiarray/array_assign_array.c
+            clang: numpy/core/src/umath/ufunc_type_resolution.c
+            clang: numpy/core/src/umath/extobj.c
+            clang: numpy/core/src/umath/cpuid.c
+            numpy/core/src/umath/cpuid.c:21:5: warning: unused function 'os_avx_support' [-Wunused-function]
+            int os_avx_support(void)
+                ^
+            numpy/core/src/umath/cpuid.c:38:5: warning: unused function 'os_avx512_support' [-Wunused-function]
+            int os_avx512_support(void)
+                ^
+            2 warnings generated.
+            numpy/core/src/umath/cpuid.c:21:5: warning: unused function 'os_avx_support' [-Wunused-function]
+            int os_avx_support(void)
+                ^
+            numpy/core/src/umath/cpuid.c:38:5: warning: unused function 'os_avx512_support' [-Wunused-function]
+            int os_avx512_support(void)
+                ^
+            2 warnings generated.
+            clang: build/src.macosx-10.9-universal2-3.1/numpy/core/src/umath/scalarmath.c
+            numpy/core/src/umath/scalarmath.c.src:1449:1: warning: unused function 'byte_long' [-Wunused-function]
+            byte_long(PyObject *obj)
+            ^
+            numpy/core/src/umath/scalarmath.c.src:1449:1: warning: unused function 'ubyte_long' [-Wunused-function]
+            ubyte_long(PyObject *obj)
+            ^
+            numpy/core/src/umath/scalarmath.c.src:1449:1: warning: unused function 'short_long' [-Wunused-function]
+            short_long(PyObject *obj)
+            ^
+            numpy/core/src/umath/scalarmath.c.src:1449:1: warning: unused function 'ushort_long' [-Wunused-function]
+            ushort_long(PyObject *obj)
+            ^
+            numpy/core/src/umath/scalarmath.c.src:1449:1: warning: unused function 'int_long' [-Wunused-function]
+            int_long(PyObject *obj)
+            ^
+            numpy/core/src/umath/scalarmath.c.src:1449:1: warning: unused function 'uint_long' [-Wunused-function]
+            uint_long(PyObject *obj)
+            ^
+            numpy/core/src/umath/scalarmath.c.src:1449:1: warning: unused function 'long_long' [-Wunused-function]
+            long_long(PyObject *obj)
+            ^
+            numpy/core/src/umath/scalarmath.c.src:1449:1: warning: unused function 'ulong_long' [-Wunused-function]
+            ulong_long(PyObject *obj)
+            ^
+            numpy/core/src/umath/scalarmath.c.src:1449:1: warning: unused function 'longlong_long' [-Wunused-function]
+            longlong_long(PyObject *obj)
+            ^
+            numpy/core/src/umath/scalarmath.c.src:1449:1: warning: unused function 'ulonglong_long' [-Wunused-function]
+            ulonglong_long(PyObject *obj)
+            ^
+            numpy/core/src/umath/scalarmath.c.src:1449:1: warning: unused function 'half_long' [-Wunused-function]
+            half_long(PyObject *obj)
+            ^
+            numpy/core/src/umath/scalarmath.c.src:1449:1: warning: unused function 'float_long' [-Wunused-function]
+            float_long(PyObject *obj)
+            ^
+            numpy/core/src/umath/scalarmath.c.src:1449:1: warning: unused function 'double_long' [-Wunused-function]
+            double_long(PyObject *obj)
+            ^
+            numpy/core/src/umath/scalarmath.c.src:1449:1: warning: unused function 'longdouble_long' [-Wunused-function]
+            longdouble_long(PyObject *obj)
+            ^
+            numpy/core/src/umath/scalarmath.c.src:1449:1: warning: unused function 'cfloat_long' [-Wunused-function]
+            cfloat_long(PyObject *obj)
+            ^
+            numpy/core/src/umath/scalarmath.c.src:1449:1: warning: unused function 'cdouble_long' [-Wunused-function]
+            cdouble_long(PyObject *obj)
+            ^
+            numpy/core/src/umath/scalarmath.c.src:1449:1: warning: unused function 'clongdouble_long' [-Wunused-function]
+            clongdouble_long(PyObject *obj)
+            ^
+            clang: numpy/core/src/umath/override.c
+            clang: numpy/core/src/npymath/npy_math.c
+            clang: build/src.macosx-10.9-universal2-3.1/numpy/core/src/npymath/ieee754.c
+            clang: build/src.macosx-10.9-universal2-3.1/numpy/core/src/npymath/npy_math_complex.c
+            numpy/core/src/npymath/npy_math_complex.c.src:48:33: warning: unused variable 'tiny' [-Wunused-const-variable]
+            static const volatile npy_float tiny = 3.9443045e-31f;
+                                            ^
+            numpy/core/src/npymath/npy_math_complex.c.src:67:25: warning: unused variable 'c_halff' [-Wunused-const-variable]
+            static const npy_cfloat c_halff = {0.5F, 0.0};
+                                    ^
+            numpy/core/src/npymath/npy_math_complex.c.src:68:25: warning: unused variable 'c_if' [-Wunused-const-variable]
+            static const npy_cfloat c_if = {0.0, 1.0F};
+                                    ^
+            numpy/core/src/npymath/npy_math_complex.c.src:69:25: warning: unused variable 'c_ihalff' [-Wunused-const-variable]
+            static const npy_cfloat c_ihalff = {0.0, 0.5F};
+                                    ^
+            numpy/core/src/npymath/npy_math_complex.c.src:79:1: warning: unused function 'caddf' [-Wunused-function]
+            caddf(npy_cfloat a, npy_cfloat b)
+            ^
+            numpy/core/src/npymath/npy_math_complex.c.src:87:1: warning: unused function 'csubf' [-Wunused-function]
+            csubf(npy_cfloat a, npy_cfloat b)
+            ^
+            numpy/core/src/npymath/npy_math_complex.c.src:137:1: warning: unused function 'cnegf' [-Wunused-function]
+            cnegf(npy_cfloat a)
+            ^
+            numpy/core/src/npymath/npy_math_complex.c.src:144:1: warning: unused function 'cmulif' [-Wunused-function]
+            cmulif(npy_cfloat a)
+            ^
+            numpy/core/src/npymath/npy_math_complex.c.src:67:26: warning: unused variable 'c_half' [-Wunused-const-variable]
+            static const npy_cdouble c_half = {0.5, 0.0};
+                                     ^
+            numpy/core/src/npymath/npy_math_complex.c.src:68:26: warning: unused variable 'c_i' [-Wunused-const-variable]
+            static const npy_cdouble c_i = {0.0, 1.0};
+                                     ^
+            numpy/core/src/npymath/npy_math_complex.c.src:69:26: warning: unused variable 'c_ihalf' [-Wunused-const-variable]
+            static const npy_cdouble c_ihalf = {0.0, 0.5};
+                                     ^
+            numpy/core/src/npymath/npy_math_complex.c.src:79:1: warning: unused function 'cadd' [-Wunused-function]
+            cadd(npy_cdouble a, npy_cdouble b)
+            ^
+            numpy/core/src/npymath/npy_math_complex.c.src:87:1: warning: unused function 'csub' [-Wunused-function]
+            csub(npy_cdouble a, npy_cdouble b)
+            ^
+            numpy/core/src/npymath/npy_math_complex.c.src:137:1: warning: unused function 'cneg' [-Wunused-function]
+            cneg(npy_cdouble a)
+            ^
+            numpy/core/src/npymath/npy_math_complex.c.src:144:1: warning: unused function 'cmuli' [-Wunused-function]
+            cmuli(npy_cdouble a)
+            ^
+            numpy/core/src/npymath/npy_math_complex.c.src:67:30: warning: unused variable 'c_halfl' [-Wunused-const-variable]
+            static const npy_clongdouble c_halfl = {0.5L, 0.0};
+                                         ^
+            numpy/core/src/npymath/npy_math_complex.c.src:68:30: warning: unused variable 'c_il' [-Wunused-const-variable]
+            static const npy_clongdouble c_il = {0.0, 1.0L};
+                                         ^
+            numpy/core/src/npymath/npy_math_complex.c.src:69:30: warning: unused variable 'c_ihalfl' [-Wunused-const-variable]
+            static const npy_clongdouble c_ihalfl = {0.0, 0.5L};
+                                         ^
+            numpy/core/src/npymath/npy_math_complex.c.src:79:1: warning: unused function 'caddl' [-Wunused-function]
+            caddl(npy_clongdouble a, npy_clongdouble b)
+            ^
+            numpy/core/src/npymath/npy_math_complex.c.src:87:1: warning: unused function 'csubl' [-Wunused-function]
+            csubl(npy_clongdouble a, npy_clongdouble b)
+            ^
+            numpy/core/src/npymath/npy_math_complex.c.src:137:1: warning: unused function 'cnegl' [-Wunused-function]
+            cnegl(npy_clongdouble a)
+            ^
+            numpy/core/src/npymath/npy_math_complex.c.src:144:1: warning: unused function 'cmulil' [-Wunused-function]
+            cmulil(npy_clongdouble a)
+            ^
+            22 warnings generated.
+            numpy/core/src/npymath/npy_math_complex.c.src:48:33: warning: unused variable 'tiny' [-Wunused-const-variable]
+            static const volatile npy_float tiny = 3.9443045e-31f;
+                                            ^
+            numpy/core/src/npymath/npy_math_complex.c.src:67:25: warning: unused variable 'c_halff' [-Wunused-const-variable]
+            static const npy_cfloat c_halff = {0.5F, 0.0};
+                                    ^
+            numpy/core/src/npymath/npy_math_complex.c.src:68:25: warning: unused variable 'c_if' [-Wunused-const-variable]
+            static const npy_cfloat c_if = {0.0, 1.0F};
+                                    ^
+            numpy/core/src/npymath/npy_math_complex.c.src:69:25: warning: unused variable 'c_ihalff' [-Wunused-const-variable]
+            static const npy_cfloat c_ihalff = {0.0, 0.5F};
+                                    ^
+            numpy/core/src/npymath/npy_math_complex.c.src:79:1: warning: unused function 'caddf' [-Wunused-function]
+            caddf(npy_cfloat a, npy_cfloat b)
+            ^
+            numpy/core/src/npymath/npy_math_complex.c.src:87:1: warning: unused function 'csubf' [-Wunused-function]
+            csubf(npy_cfloat a, npy_cfloat b)
+            ^
+            numpy/core/src/npymath/npy_math_complex.c.src:137:1: warning: unused function 'cnegf' [-Wunused-function]
+            cnegf(npy_cfloat a)
+            ^
+            numpy/core/src/npymath/npy_math_complex.c.src:144:1: warning: unused function 'cmulif' [-Wunused-function]
+            cmulif(npy_cfloat a)
+            ^
+            numpy/core/src/npymath/npy_math_complex.c.src:67:26: warning: unused variable 'c_half' [-Wunused-const-variable]
+            static const npy_cdouble c_half = {0.5, 0.0};
+                                     ^
+            numpy/core/src/npymath/npy_math_complex.c.src:68:26: warning: unused variable 'c_i' [-Wunused-const-variable]
+            static const npy_cdouble c_i = {0.0, 1.0};
+                                     ^
+            numpy/core/src/npymath/npy_math_complex.c.src:69:26: warning: unused variable 'c_ihalf' [-Wunused-const-variable]
+            static const npy_cdouble c_ihalf = {0.0, 0.5};
+                                     ^
+            numpy/core/src/npymath/npy_math_complex.c.src:79:1: warning: unused function 'cadd' [-Wunused-function]
+            cadd(npy_cdouble a, npy_cdouble b)
+            ^
+            numpy/core/src/npymath/npy_math_complex.c.src:87:1: warning: unused function 'csub' [-Wunused-function]
+            csub(npy_cdouble a, npy_cdouble b)
+            ^
+            numpy/core/src/npymath/npy_math_complex.c.src:137:1: warning: unused function 'cneg' [-Wunused-function]
+            cneg(npy_cdouble a)
+            ^
+            numpy/core/src/npymath/npy_math_complex.c.src:144:1: warning: unused function 'cmuli' [-Wunused-function]
+            cmuli(npy_cdouble a)
+            ^
+            numpy/core/src/npymath/npy_math_complex.c.src:67:30: warning: unused variable 'c_halfl' [-Wunused-const-variable]
+            static const npy_clongdouble c_halfl = {0.5L, 0.0};
+                                         ^
+            numpy/core/src/npymath/npy_math_complex.c.src:68:30: warning: unused variable 'c_il' [-Wunused-const-variable]
+            static const npy_clongdouble c_il = {0.0, 1.0L};
+                                         ^
+            numpy/core/src/npymath/npy_math_complex.c.src:69:30: warning: unused variable 'c_ihalfl' [-Wunused-const-variable]
+            static const npy_clongdouble c_ihalfl = {0.0, 0.5L};
+                                         ^
+            numpy/core/src/npymath/npy_math_complex.c.src:79:1: warning: unused function 'caddl' [-Wunused-function]
+            caddl(npy_clongdouble a, npy_clongdouble b)
+            ^
+            numpy/core/src/npymath/npy_math_complex.c.src:87:1: warning: unused function 'csubl' [-Wunused-function]
+            csubl(npy_clongdouble a, npy_clongdouble b)
+            ^
+            numpy/core/src/npymath/npy_math_complex.c.src:137:1: warning: unused function 'cnegl' [-Wunused-function]
+            cnegl(npy_clongdouble a)
+            ^
+            numpy/core/src/npymath/npy_math_complex.c.src:144:1: warning: unused function 'cmulil' [-Wunused-function]
+            cmulil(npy_clongdouble a)
+            ^
+            22 warnings generated.
+            clang: numpy/core/src/npymath/halffloat.c
+            clang: numpy/core/src/common/array_assign.c
+            clang: numpy/core/src/common/mem_overlap.c
+            17 warnings generated.
+            numpy/core/src/umath/scalarmath.c.src:1449:1: warning: unused function 'byte_long' [-Wunused-function]
+            byte_long(PyObject *obj)
+            ^
+            numpy/core/src/umath/scalarmath.c.src:1449:1: warning: unused function 'ubyte_long' [-Wunused-function]
+            ubyte_long(PyObject *obj)
+            ^
+            numpy/core/src/umath/scalarmath.c.src:1449:1: warning: unused function 'short_long' [-Wunused-function]
+            short_long(PyObject *obj)
+            ^
+            numpy/core/src/umath/scalarmath.c.src:1449:1: warning: unused function 'ushort_long' [-Wunused-function]
+            ushort_long(PyObject *obj)
+            ^
+            numpy/core/src/umath/scalarmath.c.src:1449:1: warning: unused function 'int_long' [-Wunused-function]
+            int_long(PyObject *obj)
+            ^
+            numpy/core/src/umath/scalarmath.c.src:1449:1: warning: unused function 'uint_long' [-Wunused-function]
+            uint_long(PyObject *obj)
+            ^
+            numpy/core/src/umath/scalarmath.c.src:1449:1: warning: unused function 'long_long' [-Wunused-function]
+            long_long(PyObject *obj)
+            ^
+            numpy/core/src/umath/scalarmath.c.src:1449:1: warning: unused function 'ulong_long' [-Wunused-function]
+            ulong_long(PyObject *obj)
+            ^
+            numpy/core/src/umath/scalarmath.c.src:1449:1: warning: unused function 'longlong_long' [-Wunused-function]
+            longlong_long(PyObject *obj)
+            ^
+            numpy/core/src/umath/scalarmath.c.src:1449:1: warning: unused function 'ulonglong_long' [-Wunused-function]
+            ulonglong_long(PyObject *obj)
+            ^
+            numpy/core/src/umath/scalarmath.c.src:1449:1: warning: unused function 'half_long' [-Wunused-function]
+            half_long(PyObject *obj)
+            ^
+            numpy/core/src/umath/scalarmath.c.src:1449:1: warning: unused function 'float_long' [-Wunused-function]
+            float_long(PyObject *obj)
+            ^
+            numpy/core/src/umath/scalarmath.c.src:1449:1: warning: unused function 'double_long' [-Wunused-function]
+            double_long(PyObject *obj)
+            ^
+            numpy/core/src/umath/scalarmath.c.src:1449:1: warning: unused function 'longdouble_long' [-Wunused-function]
+            longdouble_long(PyObject *obj)
+            ^
+            numpy/core/src/umath/scalarmath.c.src:1449:1: warning: unused function 'cfloat_long' [-Wunused-function]
+            cfloat_long(PyObject *obj)
+            ^
+            numpy/core/src/umath/scalarmath.c.src:1449:1: warning: unused function 'cdouble_long' [-Wunused-function]
+            cdouble_long(PyObject *obj)
+            ^
+            numpy/core/src/umath/scalarmath.c.src:1449:1: warning: unused function 'clongdouble_long' [-Wunused-function]
+            clongdouble_long(PyObject *obj)
+            ^
+            clang: numpy/core/src/common/npy_longdouble.c
+            clang: numpy/core/src/common/ucsnarrow.c
+            numpy/core/src/common/ucsnarrow.c:139:34: warning: 'PyUnicode_FromUnicode' is deprecated [-Wdeprecated-declarations]
+                    ret = (PyUnicodeObject *)PyUnicode_FromUnicode((Py_UNICODE*)buf,
+                                             ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/cpython/unicodeobject.h:600:1: note: 'PyUnicode_FromUnicode' has been explicitly marked deprecated here
+            Py_DEPRECATED(3.3) PyAPI_FUNC(PyObject*) PyUnicode_FromUnicode(
+            ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/pyport.h:336:54: note: expanded from macro 'Py_DEPRECATED'
+            #define Py_DEPRECATED(VERSION_UNUSED) __attribute__((__deprecated__))
+                                                                 ^
+            1 warning generated.
+            numpy/core/src/common/ucsnarrow.c:139:34: warning: 'PyUnicode_FromUnicode' is deprecated [-Wdeprecated-declarations]
+                    ret = (PyUnicodeObject *)PyUnicode_FromUnicode((Py_UNICODE*)buf,
+                                             ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/cpython/unicodeobject.h:600:1: note: 'PyUnicode_FromUnicode' has been explicitly marked deprecated here
+            Py_DEPRECATED(3.3) PyAPI_FUNC(PyObject*) PyUnicode_FromUnicode(
+            ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/pyport.h:336:54: note: expanded from macro 'Py_DEPRECATED'
+            #define Py_DEPRECATED(VERSION_UNUSED) __attribute__((__deprecated__))
+                                                                 ^
+            1 warning generated.
+            clang: numpy/core/src/common/ufunc_override.c
+            clang: numpy/core/src/common/numpyos.c
+            clang: numpy/core/src/multiarray/mapping.c
+            clang: numpy/core/src/common/cblasfuncs.c
+            clang: numpy/core/src/common/python_xerbla.c
+            clang: /private/var/folders/z8/jwxsd17n57lblqk5c_v8fttc0000gn/T/pip-install-kz75udje/numpy_3187f4d8f96048a2b716ecee9287a94e/numpy/_build_utils/src/apple_sgemv_fix.c
+            In file included from /private/var/folders/z8/jwxsd17n57lblqk5c_v8fttc0000gn/T/pip-install-kz75udje/numpy_3187f4d8f96048a2b716ecee9287a94e/numpy/_build_utils/src/apple_sgemv_fix.c:26:
+            In file included from numpy/core/include/numpy/arrayobject.h:4:
+            In file included from numpy/core/include/numpy/ndarrayobject.h:21:
+            build/src.macosx-10.9-universal2-3.1/numpy/core/include/numpy/__multiarray_api.h:1463:1: warning: unused function '_import_array' [-Wunused-function]
+            _import_array(void)
+            ^
+            1 warning generated.
+            In file included from /private/var/folders/z8/jwxsd17n57lblqk5c_v8fttc0000gn/T/pip-install-kz75udje/numpy_3187f4d8f96048a2b716ecee9287a94e/numpy/_build_utils/src/apple_sgemv_fix.c:26:
+            In file included from numpy/core/include/numpy/arrayobject.h:4:
+            In file included from numpy/core/include/numpy/ndarrayobject.h:21:
+            build/src.macosx-10.9-universal2-3.1/numpy/core/include/numpy/__multiarray_api.h:1463:1: warning: unused function '_import_array' [-Wunused-function]
+            _import_array(void)
+            ^
+            1 warning generated.
+            clang: numpy/core/src/multiarray/methods.c
+            17 warnings generated.
+            4 warnings generated.
+            numpy/core/src/umath/loops.c.src:506:18: warning: 'PyEval_CallObjectWithKeywords' is deprecated [-Wdeprecated-declarations]
+                    result = PyEval_CallObject(tocall, arglist);
+                             ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/ceval.h:34:5: note: expanded from macro 'PyEval_CallObject'
+                PyEval_CallObjectWithKeywords(callable, arg, (PyObject *)NULL)
+                ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/ceval.h:27:1: note: 'PyEval_CallObjectWithKeywords' has been explicitly marked deprecated here
+            Py_DEPRECATED(3.9) PyAPI_FUNC(PyObject *) PyEval_CallObjectWithKeywords(
+            ^
+            /Library/Frameworks/Python.framework/Versions/3.11/include/python3.11/pyport.h:336:54: note: expanded from macro 'Py_DEPRECATED'
+            #define Py_DEPRECATED(VERSION_UNUSED) __attribute__((__deprecated__))
+                                                                 ^
+            numpy/core/src/umath/loops.c.src:2520:22: warning: code will never be executed [-Wunreachable-code]
+                    npy_intp n = dimensions[0];
+                                 ^~~~~~~~~~
+            numpy/core/src/umath/loops.c.src:2519:29: note: silence by adding parentheses to mark code as explicitly dead
+                if (IS_BINARY_REDUCE && 0) {
+                                        ^
+                                        /* DISABLES CODE */ ( )
+            numpy/core/src/umath/loops.c.src:2520:22: warning: code will never be executed [-Wunreachable-code]
+                    npy_intp n = dimensions[0];
+                                 ^~~~~~~~~~
+            numpy/core/src/umath/loops.c.src:2519:29: note: silence by adding parentheses to mark code as explicitly dead
+                if (IS_BINARY_REDUCE && 0) {
+                                        ^
+                                        /* DISABLES CODE */ ( )
+            numpy/core/src/umath/loops.c.src:2520:22: warning: code will never be executed [-Wunreachable-code]
+                    npy_intp n = dimensions[0];
+                                 ^~~~~~~~~~
+            numpy/core/src/umath/loops.c.src:2519:29: note: silence by adding parentheses to mark code as explicitly dead
+                if (IS_BINARY_REDUCE && 0) {
+                                        ^
+                                        /* DISABLES CODE */ ( )
+            4 warnings generated.
+            clang: build/src.macosx-10.9-universal2-3.1/numpy/core/src/umath/matmul.c
+            error: Command "clang -Wsign-compare -Wunreachable-code -fno-common -dynamic -DNDEBUG -g -fwrapv -O3 -Wall -arch arm64 -arch x86_64 -g -DNPY_INTERNAL_BUILD=1 -DHAVE_NPY_CONFIG_H=1 -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE=1 -D_LARGEFILE64_SOURCE=1 -DNO_ATLAS_INFO=3 -DHAVE_CBLAS -Ibuild/src.macosx-10.9-universal2-3.1/numpy/core/src/umath -Ibuild/src.macosx-10.9-universal2-3.1/numpy/core/src/npymath -Ibuild/src.macosx-10.9-universal2-3.1/numpy/core/src/common -Inumpy/core/include -Ibuild/src.macosx-10.9-universal2-3.1/numpy/core/include/numpy -Inumpy/core/src/common -Inumpy/core/src -Inumpy/core -Inumpy/core/src/npymath -Inumpy/core/src/multiarray -Inumpy/core/src/umath -Inumpy/core/src/npysort -I/Users/admin/Documents/GitHub/3rd-year-BBB-project/myenv/include -I/Library/Frameworks/Python.framework/Versions/3.11/include/python3.11 -Ibuild/src.macosx-10.9-universal2-3.1/numpy/core/src/common -Ibuild/src.macosx-10.9-universal2-3.1/numpy/core/src/npymath -Ibuild/src.macosx-10.9-universal2-3.1/numpy/core/src/common -Ibuild/src.macosx-10.9-universal2-3.1/numpy/core/src/npymath -c build/src.macosx-10.9-universal2-3.1/numpy/core/src/multiarray/scalartypes.c -o build/temp.macosx-10.9-universal2-cpython-311/build/src.macosx-10.9-universal2-3.1/numpy/core/src/multiarray/scalartypes.o -MMD -MF build/temp.macosx-10.9-universal2-cpython-311/build/src.macosx-10.9-universal2-3.1/numpy/core/src/multiarray/scalartypes.o.d -msse3 -I/System/Library/Frameworks/vecLib.framework/Headers" failed with exit status 1
+            [end of output]
+      
+        note: This error originates from a subprocess, and is likely not a problem with pip.
+        ERROR: Failed building wheel for numpy
+      Failed to build numpy
+      ERROR: Could not build wheels for numpy, which is required to install pyproject.toml-based projects
+      [end of output]
+  
+  note: This error originates from a subprocess, and is likely not a problem with pip.
+error: subprocess-exited-with-error
+
+× pip subprocess to install build dependencies did not run successfully.
+│ exit code: 1
+╰─> See above for output.
+
+note: This error originates from a subprocess, and is likely not a problem with pip.
