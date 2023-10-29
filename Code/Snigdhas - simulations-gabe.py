@@ -278,6 +278,8 @@ best = 1e16
 num_bad_epochs = 0
 patience = 10
 
+print("third breakpoint")
+
 # train
 for epoch in range(10000): 
     print("-----------------------------------------------------------------")
@@ -325,6 +327,8 @@ f_vasc = 0.2 * (normA/max(normA))
 f_ic = f_ic/(f_ic + f_ees + f_vasc)
 f_ees = f_ees/(f_ic + f_ees + f_vasc)
 
+print("fourth breakpoint")
+
 # check predicted signal against simulated signal
 
 plt.scatter(b_values, E_vox[0,:], label='simulated')
@@ -348,6 +352,9 @@ for i,_ in enumerate(param):
     plt.show()
 
 print(rvals)
+
+
+print("fifth breakpoint")
 
 ## bias-variance calculations
 
