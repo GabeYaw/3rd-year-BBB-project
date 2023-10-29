@@ -8,11 +8,11 @@ import torch.utils.data as utils
 from tqdm import tqdm
 from scipy.special import erf
 import scipy.stats
-"""
+
 from dmipy.core.acquisition_scheme import acquisition_scheme_from_bvalues
 from dmipy.core.modeling_framework import MultiCompartmentSphericalMeanModel
 from dmipy.signal_models import sphere_models, cylinder_models, gaussian_models
-"""
+
 from scipy.io import savemat
 
 # simulate data according to verdict model - there is a function for each of the three compartments
