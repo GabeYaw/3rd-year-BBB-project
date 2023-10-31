@@ -1,3 +1,4 @@
+import time
 import numpy as np
 import matplotlib.pyplot as plt
 import nibabel as nib
@@ -14,7 +15,7 @@ from dmipy.core.modeling_framework import MultiCompartmentSphericalMeanModel
 from dmipy.signal_models import sphere_models, cylinder_models, gaussian_models
 
 from scipy.io import savemat
-
+start_time = time.time()
 # simulate data according to verdict model - there is a function for each of the three compartments
 # when you do it for bbb-fexi, this will change
 
@@ -106,7 +107,7 @@ def astrosticks(l):
     return E_mean
 
 
-nvox = 1000 # number of voxels to simulate Try with 1000
+nvox = 10000 # number of voxels to simulate Try with 1000
 radii = np.random.uniform(0.001,15,nvox) # free parameter - cell radius
 dees = np.random.uniform(0.5,3,nvox) # free parameter - EES diffusivity
 lambdapar = np.repeat(2,nvox) # fixed parameter
@@ -330,18 +331,18 @@ f_ees = f_ees/(f_ic + f_ees + f_vasc)
 print("fourth breakpoint")
 
 # check predicted signal against simulated signal
-
+"""
 plt.scatter(b_values, E_vox[0,:], label='simulated')
 plt.scatter(b_values, X_real_pred[0,:], label='predicted')
 plt.legend()
 
 # plot scatter plots to analyse correlation of predicted free params against ground truth
-
+"""
 param = [fic, fees, fvasc, radii, dees]
 param_f = [f_ic, f_ees, f_vasc, r, d_ees]
 param_name = ['fIC', 'fEES', 'fVASC', 'R', 'dEES']
 rvals = []
-
+"""
 for i,_ in enumerate(param):
     plt.rcParams['font.size'] = '16'
     plt.scatter(param[i], param_f[i], s=2, c='navy')
@@ -350,7 +351,7 @@ for i,_ in enumerate(param):
     rvals.append(scipy.stats.pearsonr(np.squeeze(param[i]), np.squeeze(param_f[i])))
     plt.tight_layout
     plt.show()
-
+"""
 print(rvals)
 
 
@@ -380,7 +381,7 @@ print(mse_fic, mse_fees, mse_r, mse_dees)
 
 r = r*1e6
 d_ees = d_ees*1e9
-
+'''
 bias_fic = np.mean(f_ic - fic)
 bias_fees = np.mean(f_ees - fees)
 bias_r = np.mean(r - radii)
@@ -398,5 +399,8 @@ mse_dees = np.mean((d_ees - dees)**2)
 
 print(bias_fic, bias_fees, bias_r, bias_dees)
 print(var_fic, var_fees, var_r, var_dees)
-print(mse_fic, mse_fees, mse_r, mse_dees)
+print(mse_fic, mse_fees, mse_r, mse_dees)'''
 print("sixth breakpoint")
+end_time = time.time()
+elapsed_time = end_time - start_time
+print(f"Elapsed time: {elapsed_time} seconds")
