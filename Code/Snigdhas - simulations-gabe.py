@@ -266,7 +266,7 @@ num_batches = len(E_vox) // batch_size
 trainloader = utils.DataLoader(torch.from_numpy(E_vox.astype(np.float32)),
                                 batch_size = batch_size, 
                                 shuffle = True,
-                                num_workers = 2,
+                                num_workers = 0, #was 2 previously
                                 drop_last = True)
 
 # loss function and optimizer
