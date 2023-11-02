@@ -331,18 +331,18 @@ f_ees = f_ees/(f_ic + f_ees + f_vasc)
 print("fourth breakpoint")
 
 # check predicted signal against simulated signal
-"""
+
 plt.scatter(b_values, E_vox[0,:], label='simulated')
 plt.scatter(b_values, X_real_pred[0,:], label='predicted')
 plt.legend()
 
 # plot scatter plots to analyse correlation of predicted free params against ground truth
-"""
+
 param = [fic, fees, fvasc, radii, dees]
 param_f = [f_ic, f_ees, f_vasc, r, d_ees]
 param_name = ['fIC', 'fEES', 'fVASC', 'R', 'dEES']
 rvals = []
-"""
+
 for i,_ in enumerate(param):
     plt.rcParams['font.size'] = '16'
     plt.scatter(param[i], param_f[i], s=2, c='navy')
@@ -351,7 +351,7 @@ for i,_ in enumerate(param):
     rvals.append(scipy.stats.pearsonr(np.squeeze(param[i]), np.squeeze(param_f[i])))
     plt.tight_layout
     plt.show()
-"""
+
 print(rvals)
 
 
