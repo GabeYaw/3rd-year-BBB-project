@@ -7,3 +7,5 @@ With plots and means commented out:
   warnings.warn('resource_tracker: There appear to be %d '"
 
 switched to num_workers = 0 
+***
+## Testing changing number of voxels
