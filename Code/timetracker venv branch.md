@@ -9,9 +9,9 @@
 
 50,000 voxels attempt 2: 36 epochs
 
-lr = 0.0001 
+### lr = 0.0001 
 
-### 50,000 voxels 101 epochs, only got up to fourth breakpoint
+ 50,000 voxels 101 epochs, only got up to fourth breakpoint
 
 
 In general the last section of the code after breakpoint 5 seems to use up a lot of memory, in the tens of Gb
