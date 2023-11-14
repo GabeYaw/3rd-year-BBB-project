@@ -8,7 +8,7 @@
 %           - be:       encoding block b-value [m^2/s]
 %           - tm:       mixing time [s]
 %           - smeas:    measured signal (normalised)
-%           - init:     initial values [adc, sigma, axr] [m2/s a.u. 1/s]
+%           - init:     initial values  [adc, sigma, axr] [m2/s a.u. 1/s]
 %           - lb:       lower bounds   [adc, sigma, axr] [m2/s a.u. 1/s]
 %           - ub:       upper bounds   [adc, sigma, axr] [m2/s a.u. 1/s]
 %
