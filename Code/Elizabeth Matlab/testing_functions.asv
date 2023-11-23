@@ -14,8 +14,8 @@ ub = lb + 5;
 %[adc, sigma, axr] = axr_fit(bf, be, tm, smeas, init, lb, ub);
 
 
-ix1=[1:20]';
-ix2=[21:40]';
+ix1=[1:20];
+ix2=[21];
 v=1;
 univols = unique([bf(:),tm(:)],'rows','stable'); 
 adc_tm_calc(v) = -1/(be(ix2)-be(ix1)) * log(smeas(ix2)/smeas(ix1));
