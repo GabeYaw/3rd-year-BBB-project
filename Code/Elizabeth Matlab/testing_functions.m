@@ -7,4 +7,4 @@ tm = rand(1, 20);
 
 
 output = axr_sim(adc,sigma,axr,bf,be,tm);
-[adc, sigma, axr] = axr_fit(bf, be, tm, smeas, init, lb, ub);
+%[adc, sigma, axr] = axr_fit(bf, be, tm, smeas, init, lb, ub);
