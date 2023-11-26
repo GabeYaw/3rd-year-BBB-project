@@ -19,6 +19,7 @@
 function s = axr_sim(adc, sigma, axr, bf, be, tm)
 
     % find equilibrium acquisition (bf==0, tm==min(tm)), and set tm=inf for this
+    % why?
     tm(bf==0 & tm==min(tm)) = inf;
     
     % calculate ADC as fnc of mixing time
