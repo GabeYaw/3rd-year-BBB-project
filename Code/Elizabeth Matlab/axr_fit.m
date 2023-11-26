@@ -63,6 +63,7 @@ function [adc, sigma, axr] = axr_fit(bf, be, tm, smeas, init, lb, ub)
     %create an anon function called fitting which calls fit_axr_sse with
     %all the other parameters, but only free_params used as a arguement
     %that will vary. other 6 will stay same between iterations. 
+    % the output of the function is the sum of squares error (sse)
     fitting = @(free_params) fit_axr_sse(free_params, all_params, idx_free, bf, tm, be, smeas);
 
 
@@ -72,11 +73,12 @@ function [adc, sigma, axr] = axr_fit(bf, be, tm, smeas, init, lb, ub)
             opt = optimset('Display','off');
 
             %fminsearchbnd finds min val of function, in this case fitting
-            %function. Free_params is the inital values to start search at.
+            %function, ie where sse is lowest.
+            % Free_params is the inital values to start search at.
             % x(i,:) is the location of the minimum
             % fval(i) is the value of function when evaluated at the 
             % minimum
-            % the output containts tha same number of rows as free_params
+            % the output containts the same number of rows as free_params
             % (which comes from init)
             [x(i,:), fval(i)] = fminsearchbnd(fitting, free_params(i,:), lb, ub, opt);
         end
