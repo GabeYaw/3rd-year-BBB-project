@@ -196,7 +196,7 @@ function sse = fit_axr_sse(free_params, all_params, idx_free, bf, tm, be, smeas)
     % eq 2 from https://doi.org/10.1016/j.neuroimage.2020.117039
     adc_tm_fit = adc * (1 - sigma*exp(-tm*axr));
     
-    % sum of squares difference
+    % sos difference
     sse = sum((adc_tm_calc(:) - adc_tm_fit(:)).^2);
 
 end
