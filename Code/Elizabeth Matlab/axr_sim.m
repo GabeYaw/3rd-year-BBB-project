@@ -1,4 +1,5 @@
 %==========================================================================
+% For given variable, what would the signal be
 % Generate signals using AXR FEXI model
 %  (Lasic 2011, MRM)
 %

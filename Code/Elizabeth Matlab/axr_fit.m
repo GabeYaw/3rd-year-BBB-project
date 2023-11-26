@@ -1,4 +1,5 @@
 %==========================================================================
+% for a given signal estimate the variables that produced it. 
 % Estimate adc, sigma and axr
 %  (Lasic 2011, MRM)
 %
