@@ -1,5 +1,5 @@
 %==========================================================================
-% Estimate AXR FEXI model parameters
+% Estimate adc, sigma and axr
 %  (Lasic 2011, MRM)
 %
 % Use: [adc, sigma, axr] = axr_fit(bf, be, tm, smeas, init, lb, ub)
@@ -63,7 +63,7 @@ function [adc, sigma, axr] = axr_fit(bf, be, tm, smeas, init, lb, ub)
     %create an anon function called fitting which calls fit_axr_sse with
     %all the other parameters, but only free_params used as a arguement
     %that will vary. other 6 will stay same between iterations. 
-    % the output of the function is the sum of squares error (sse)
+    % the output of the function is the sum of squares error (sse) of the mixing time. 
     fitting = @(free_params) fit_axr_sse(free_params, all_params, idx_free, bf, tm, be, smeas);
 
 
@@ -123,7 +123,9 @@ function [adc, sigma, axr] = axr_fit(bf, be, tm, smeas, init, lb, ub)
 end
 
 %==========================================================================
-% Estimate S(tm) given D1, D2, f1_eq, f1_0, k, 2 compartments
+% Calculate sum of square error between mixing time estimate and true value. 
+
+% I think this is old: Estimate S(tm) given D1, D2, f1_eq, f1_0, k, 2 compartments
 % Inputs    - free_params:  parameter values being fitted
 %                           [adc sigma axr] 
 %           - scheme:       acquisition parameters [nx3]
