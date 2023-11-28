@@ -124,8 +124,6 @@ end
 
 %==========================================================================
 % Calculate sum of square error between mixing time estimate and true value. 
-
-% I think this is old: Estimate S(tm) given D1, D2, f1_eq, f1_0, k, 2 compartments
 % Inputs    - free_params:  parameter values being fitted
 %                           [adc sigma axr] 
 %           - scheme:       acquisition parameters [nx3]
