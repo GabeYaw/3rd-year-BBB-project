@@ -21,7 +21,6 @@
 %
 %==========================================================================
 function [adc, sigma, axr] = axr_fit(bf, be, tm, smeas, init, lb, ub)
-    
     % only use parpool if multiple inits
     % size(init,1) is num of rows in init
     if size(init,1) >= 25
