@@ -12,15 +12,15 @@ sim_sig = .2;                               % sigma, simulated [a.u.]
 sim_axr = 3;                                % AXR, simulated [s-1]
 
 % simulate signals
-s = axr_sim(sim_adc, sim_sig, sim_axr, bf, be, tm); 
+smeas = axr_sim(sim_adc, sim_sig, sim_axr, bf, be, tm); 
 
 % fit model to simulated signals and estimate parameters
 init = [1.1e-9 .15 3.5];
 lb = [.1e-9 0 .1];
 ub = [3.5e-9 1 20];
 
-[fit_adc, fit_sig, fit_axr] = axr_fit(bf, be, tm, s, init, lb, ub); 
+[fit_adc, fit_sig, fit_axr] = axr_fit(bf, be, tm, smeas, init, lb, ub); 
 
 % print and compare simulated vs fitted
-[sim_adc, sim_sig, sim_axr].*[1e9 1 1]
-[fit_adc, fit_sig, fit_axr].*[1e9 1 1]
+[sim_adc, sim_sig, sim_axr].*[1e9 1 1];
+[fit_adc, fit_sig, fit_axr].*[1e9 1 1];
