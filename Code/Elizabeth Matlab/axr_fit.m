@@ -189,10 +189,10 @@ function sse = fit_axr_sse(free_params, all_params, idx_free, bf, tm, be, smeas)
     
     % create an index of when bf is 0, and tm is minimum
     idx_eq = find(univols(:,1)==0 & univols(:,2)==min(univols(:,2)));       % equilibrium scans without filter
-    tm = univols(:,2);
+    tm = univols(:,2); % 3 unique values
     %set the tm to infinity where condition was met
     %why?
-    tm(idx_eq) = inf;
+    tm(idx_eq) = inf; %4 unique values now
     
     % estimate ADC'(tm) by fitting model
     % eq 2 from https://doi.org/10.1016/j.neuroimage.2020.117039
