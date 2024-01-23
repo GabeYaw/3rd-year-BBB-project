@@ -16,6 +16,7 @@ smeas = axr_sim(sim_adc, sim_sig, sim_axr, bf, be, tm);
 
 % fit model to simulated signals and estimate parameters
 init = [1.1e-9 .15 3.5];
+
 lb = [.1e-9 0 .1];
 ub = [3.5e-9 1 20];
 
