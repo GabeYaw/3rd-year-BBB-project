@@ -33,9 +33,26 @@ def sim_sig_np(bf,be,tm,adc,sigma,axr):
 
     return normalised_signal, adc_prime
 
+def sim_sig_np_1_vox(bf,be,tm,adc,sigma,axr):
+
+    be = np.expand_dims(be, axis=0)
+    bf = np.expand_dims(bf, axis=0)
+    tm = np.expand_dims(tm, axis=0)
+
+    adc = np.expand_dims(adc, axis=1)
+    sigma = np.expand_dims(sigma, axis=1)
+    axr = np.expand_dims(axr, axis=1)
+
+    tm[(tm == np.min(tm)) & (bf == 0)] = np.inf
+
+    adc_prime = adc * (1 - sigma* np.exp(-tm*axr))
+    normalised_signal = np.exp(-adc_prime * be)
+
+    return normalised_signal, adc_prime
+
 # %% Initial variables.
 
-nvox = 100 # number of voxels to simulate
+nvox = 10000 # number of voxels to simulate
 
 bf = np.array([0, 0, 250, 250, 250, 250, 250, 250]) * 1e-3   # filter b-values [ms/um2]
 be = np.array([0, 250, 0, 250, 0, 250, 0, 250]) * 1e-3       # encoding b-values [ms/um2]
@@ -93,7 +110,6 @@ axs[1].set_xlabel('Sigma Values [arbitrary units]')
 axs[2].set_title('AXR Histogram')
 axs[2].set_xlabel('AXR Values [ms-1]');
 
-
 fig, axs = plt.subplots(1, 3,figsize=(15, 5))
 axs[0].hist(sim_E_vox.flatten(), bins=n_bins)
 axs[0].set_title('Signal Histogram ')
@@ -107,7 +123,7 @@ axs[2].set_xlabel('ADC prime Values [units?]');
 
 
 # %% Plotting b-value against normalised signal
-
+plt.figure()
 plt.plot([be[0], be[1]], [sim_E_vox[0,0], sim_E_vox[0,1]], 'bo-')
 plt.annotate(tm[0], (be[1], sim_E_vox[0, 1]), textcoords="offset points", xytext=(20,5), ha='center')
 
@@ -134,7 +150,7 @@ plt.show()
 def sse_adc_prime_1_vox(variables_to_optimize, tm, bf, be, smeas):
     # For the signal from 1 voxel.
     adc_est, sigma_est, axr_est = variables_to_optimize
-    _ , adc_tm_fit = sim_sig_np(bf,be,tm,adc_est,sigma_est,axr_est)
+    _ , adc_tm_fit = sim_sig_np_1_vox(bf,be,tm,adc_est,sigma_est,axr_est)
 
     bf_tm = np.column_stack((bf.flatten(), tm.flatten()))
 
@@ -153,6 +169,7 @@ def sse_adc_prime_1_vox(variables_to_optimize, tm, bf, be, smeas):
 
     #this line is hardcoded
     adc_tm_fit = adc_tm_fit[:, ::2]
+
 
     sse = np.sum((adc_tm_calc - adc_tm_fit) ** 2)
     return sse
@@ -189,7 +206,7 @@ for current_vox in range(nvox):
 
     for combination in range(all_inits.shape[0]):
         inits = all_inits[combination,:]
-        
+        print("test")
         result_1_vox = scipy.optimize.minimize(sse_adc_prime_1_vox, inits, args=additional_args_1_vox, bounds=bounds)
 
         if result_1_vox.fun < best_sse:
@@ -447,7 +464,7 @@ plt.show()
 
 final_pred_E_vox_detached = final_pred_E_vox.detach().numpy()
 """Was having numpy pytorch issues, so this line helps fix it a bit."""
-
+plt.figure()
 plt.scatter(be, sim_E_vox[0,:], label='simulated')
 plt.scatter(be, final_pred_E_vox_detached[0,:], label='predicted')
 plt.legend()
