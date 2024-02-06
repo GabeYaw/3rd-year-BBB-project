@@ -17,7 +17,7 @@ from scipy.special import erf
 from tqdm import tqdm
 
 # %% Simulate Signal
-def sim_sig_np(bf,be,tm,adc,sigma,axr,nvox):
+def sim_sig_np(bf,be,tm,adc,sigma,axr):
     be = np.expand_dims(be, axis=0)
     bf = np.expand_dims(bf, axis=0)
     tm = np.expand_dims(tm, axis=0)
@@ -28,53 +28,14 @@ def sim_sig_np(bf,be,tm,adc,sigma,axr,nvox):
 
     tm[(tm == np.min(tm)) & (bf == 0)] = np.inf
 
-    adc_prime_tiled = adc * (1 - sigma* np.exp(-tm*axr))
-    normalised_signal_tiled = np.exp(-adc_prime_tiled * be)
-
-    return normalised_signal_tiled, adc_prime_tiled
-
-def sim_sig_np_1_vox(bf,be,tm,adc,sigma,axr):
-    adc_tiled = np.transpose(np.tile(adc,(np.size(tm),1)))
-    sigma_tiled = np.transpose(np.tile(sigma,(np.size(tm),1)))
-    axr_tiled = np.transpose(np.tile(axr,(np.size(tm),1)))
-
-    tm[(tm == np.min(tm)) & (bf == 0)] = np.inf
-
-    adc_prime = adc_tiled * (1 - sigma_tiled* np.exp(-tm*axr_tiled))
+    adc_prime = adc * (1 - sigma* np.exp(-tm*axr))
     normalised_signal = np.exp(-adc_prime * be)
-    
+
     return normalised_signal, adc_prime
-
-def sim_sig_pytorch_new(bf,be,tm,adc,sigma,axr,nvox):
-    be_tiled = torch.tile(be,(nvox,1))
-    bf_tiled = torch.tile(bf,(nvox,1))
-    tm_tiled = torch.tile(tm,(nvox,1))
-    
-    """adc_tiled = torch.tile(adc,(tm.shape[0],1)).t()
-    sigma_tiled = torch.tile(sigma,(tm.shape[0],1)).t()
-    axr_tiled = torch.tile(axr,(tm.shape[0],1)).t()"""
-
-    adc_tiled = torch.tile(adc,(1,tm.shape[0]))
-    sigma_tiled = torch.tile(sigma,(1,tm.shape[0]))
-    axr_tiled = torch.tile(axr,(1,tm.shape[0]))
-
-    tm_tiled[(tm_tiled == torch.min(tm_tiled)) & (bf_tiled == 0)] = torch.inf
-
-    """print("be: ", be_tiled.shape)
-    print("bf: ", bf_tiled.shape)
-    print("tm: ", tm_tiled.shape)
-    print("adc: ", adc_tiled.shape)
-    print("sigma: ", sigma_tiled.shape)
-    print("axr: ", axr_tiled.shape)"""
-
-    adc_prime_tiled = adc_tiled * (1 - sigma_tiled*torch.exp(-tm_tiled*axr_tiled))
-    normalised_signal_tiled = torch.exp(-adc_prime_tiled * be_tiled)
-    
-    return normalised_signal_tiled, adc_prime_tiled
 
 # %% Initial variables.
 
-nvox = 1000 # number of voxels to simulate
+nvox = 100 # number of voxels to simulate
 
 bf = np.array([0, 0, 250, 250, 250, 250, 250, 250]) * 1e-3   # filter b-values [ms/um2]
 be = np.array([0, 250, 0, 250, 0, 250, 0, 250]) * 1e-3       # encoding b-values [ms/um2]
@@ -115,10 +76,7 @@ sim_adc = np.random.uniform(adc_lb,adc_ub,nvox)                 # ADC, simulated
 sim_sigma = np.random.uniform(sig_lb,sig_ub,nvox)               # sigma, simulated [a.u.]
 sim_axr = np.random.uniform(axr_lb,axr_ub,nvox)                 # AXR, simulated [s-1]
 
-sim_E_vox, sim_adc_prime = sim_sig_np(bf,be,tm,sim_adc,sim_sigma,sim_axr,nvox)
-
-
-#a_test1,a_test2 = sim_sig_pytorch(bf,be,tm,sim_adc,sim_sigma,sim_axr,len(sim_axr))
+sim_E_vox, sim_adc_prime = sim_sig_np(bf,be,tm,sim_adc,sim_sigma,sim_axr)
 
 
 # %% Histogram plots
@@ -176,7 +134,7 @@ plt.show()
 def sse_adc_prime_1_vox(variables_to_optimize, tm, bf, be, smeas):
     # For the signal from 1 voxel.
     adc_est, sigma_est, axr_est = variables_to_optimize
-    _ , adc_tm_fit = sim_sig_np_1_vox(bf,be,tm,adc_est,sigma_est,axr_est)
+    _ , adc_tm_fit = sim_sig_np(bf,be,tm,adc_est,sigma_est,axr_est)
 
     bf_tm = np.column_stack((bf.flatten(), tm.flatten()))
 
@@ -240,7 +198,7 @@ for current_vox in range(nvox):
     
     sses = np.append(sses,best_sse)
     # note the 1 instead of nvox, because it is for 1 voxel 
-    NLLS_cur_E_vox, NLLS_cur_adc_prime = sim_sig_np_1_vox(bf,be,tm,NLLS_cur_adc, NLLS_cur_sigma, NLLS_cur_axr)
+    NLLS_cur_E_vox, NLLS_cur_adc_prime = sim_sig_np(bf,be,tm,NLLS_cur_adc, NLLS_cur_sigma, NLLS_cur_axr)
 
     NLLS_adc_all = np.append(NLLS_adc_all, NLLS_cur_adc)
     NLLS_sigma_all = np.append(NLLS_sigma_all, NLLS_cur_sigma)
