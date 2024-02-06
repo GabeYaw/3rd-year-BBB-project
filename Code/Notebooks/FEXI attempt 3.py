@@ -22,9 +22,10 @@ def sim_sig_np(bf,be,tm,adc,sigma,axr):
     bf = np.expand_dims(bf, axis=0)
     tm = np.expand_dims(tm, axis=0)
 
-    adc = np.expand_dims(adc, axis=1)
-    sigma = np.expand_dims(sigma, axis=1)
-    axr = np.expand_dims(axr, axis=1)
+    if adc.size != 1:
+        adc = np.expand_dims(adc, axis=1)
+        sigma = np.expand_dims(sigma, axis=1)
+        axr = np.expand_dims(axr, axis=1)                                   
 
     tm[(tm == np.min(tm)) & (bf == 0)] = np.inf
 
@@ -39,10 +40,6 @@ def sim_sig_np_1_vox(bf,be,tm,adc,sigma,axr):
     bf = np.expand_dims(bf, axis=0)
     tm = np.expand_dims(tm, axis=0)
 
-    adc = np.expand_dims(adc, axis=1)
-    sigma = np.expand_dims(sigma, axis=1)
-    axr = np.expand_dims(axr, axis=1)
-
     tm[(tm == np.min(tm)) & (bf == 0)] = np.inf
 
     adc_prime = adc * (1 - sigma* np.exp(-tm*axr))
@@ -50,9 +47,22 @@ def sim_sig_np_1_vox(bf,be,tm,adc,sigma,axr):
 
     return normalised_signal, adc_prime
 
+def sim_sig_np_1_vox(bf,be,tm,adc,sigma,axr):
+
+    adc_tiled = np.transpose(np.tile(adc,(np.size(tm),1)))
+    sigma_tiled = np.transpose(np.tile(sigma,(np.size(tm),1)))
+    axr_tiled = np.transpose(np.tile(axr,(np.size(tm),1)))
+
+    tm[(tm == np.min(tm)) & (bf == 0)] = np.inf
+
+    adc_prime = adc_tiled * (1 - sigma_tiled* np.exp(-tm*axr_tiled))
+    normalised_signal = np.exp(-adc_prime * be)
+    
+    return normalised_signal, adc_prime
+
 # %% Initial variables.
 
-nvox = 10000 # number of voxels to simulate
+nvox = 100 # number of voxels to simulate
 
 bf = np.array([0, 0, 250, 250, 250, 250, 250, 250]) * 1e-3   # filter b-values [ms/um2]
 be = np.array([0, 250, 0, 250, 0, 250, 0, 250]) * 1e-3       # encoding b-values [ms/um2]
@@ -170,7 +180,6 @@ def sse_adc_prime_1_vox(variables_to_optimize, tm, bf, be, smeas):
     #this line is hardcoded
     adc_tm_fit = adc_tm_fit[:, ::2]
 
-
     sse = np.sum((adc_tm_calc - adc_tm_fit) ** 2)
     return sse
 
@@ -206,15 +215,18 @@ for current_vox in range(nvox):
 
     for combination in range(all_inits.shape[0]):
         inits = all_inits[combination,:]
-        print("test")
         result_1_vox = scipy.optimize.minimize(sse_adc_prime_1_vox, inits, args=additional_args_1_vox, bounds=bounds)
 
         if result_1_vox.fun < best_sse:
             best_sse = result_1_vox.fun
             NLLS_cur_adc, NLLS_cur_sigma, NLLS_cur_axr = result_1_vox.x
+            print("pass")
+        else:
+            print('fail')
+            
     
     sses = np.append(sses,best_sse)
-    # note the 1 instead of nvox, because it is for 1 voxel 
+    
     NLLS_cur_E_vox, NLLS_cur_adc_prime = sim_sig_np(bf,be,tm,NLLS_cur_adc, NLLS_cur_sigma, NLLS_cur_axr)
 
     NLLS_adc_all = np.append(NLLS_adc_all, NLLS_cur_adc)
@@ -275,7 +287,7 @@ print(rvals)
 
 
 # %% Creating the neural network
-
+print("nn begining")
 class Net(nn.Module): # this is the neural network
     #defining the init and foward pass functions. 
 
