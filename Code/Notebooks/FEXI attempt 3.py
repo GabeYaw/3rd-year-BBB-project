@@ -18,18 +18,18 @@ from tqdm import tqdm
 
 # %% Simulate Signal
 def sim_sig_np(bf,be,tm,adc,sigma,axr,nvox):
-    be_tiled = np.tile(be,(nvox,1))
-    bf_tiled = np.tile(bf,(nvox,1))
-    tm_tiled = np.tile(tm,(nvox,1))
+    be = np.expand_dims(be, axis=0)
+    bf = np.expand_dims(bf, axis=0)
+    tm = np.expand_dims(tm, axis=0)
 
-    adc_tiled = np.transpose(np.tile(adc,(np.size(tm),1)))
-    sigma_tiled = np.transpose(np.tile(sigma,(np.size(tm),1)))
-    axr_tiled = np.transpose(np.tile(axr,(np.size(tm),1)))
+    adc = np.expand_dims(adc, axis=1)
+    sigma = np.expand_dims(sigma, axis=1)
+    axr = np.expand_dims(axr, axis=1)
 
-    tm_tiled[(tm_tiled == np.min(tm_tiled)) & (bf_tiled == 0)] = np.inf
+    tm[(tm == np.min(tm)) & (bf == 0)] = np.inf
 
-    adc_prime_tiled = adc_tiled * (1 - sigma_tiled* np.exp(-tm_tiled*axr_tiled))
-    normalised_signal_tiled = np.exp(-adc_prime_tiled * be_tiled)
+    adc_prime_tiled = adc * (1 - sigma* np.exp(-tm*axr))
+    normalised_signal_tiled = np.exp(-adc_prime_tiled * be)
 
     return normalised_signal_tiled, adc_prime_tiled
 
@@ -67,7 +67,6 @@ def sim_sig_pytorch_new(bf,be,tm,adc,sigma,axr,nvox):
     print("sigma: ", sigma_tiled.shape)
     print("axr: ", axr_tiled.shape)"""
 
-
     adc_prime_tiled = adc_tiled * (1 - sigma_tiled*torch.exp(-tm_tiled*axr_tiled))
     normalised_signal_tiled = torch.exp(-adc_prime_tiled * be_tiled)
     
@@ -87,8 +86,7 @@ sig_lb = 0          #[a.u.]
 sig_ub = 1          #[a.u.]
 axr_lb = 0.1        #[s-1]
 
-axr_lb = 1        #[s-1]
-
+axr_lb = 1          #[s-1]
 axr_ub = 20         #[s-1]
 
 #consider doing in si units
