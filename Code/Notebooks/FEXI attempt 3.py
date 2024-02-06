@@ -62,7 +62,7 @@ def sim_sig_np_1_vox(bf,be,tm,adc,sigma,axr):
 
 # %% Initial variables.
 
-nvox = 1000 # number of voxels to simulate
+nvox = 100 # number of voxels to simulate
 
 bf = np.array([0, 0, 250, 250, 250, 250, 250, 250]) * 1e-3   # filter b-values [ms/um2]
 be = np.array([0, 250, 0, 250, 0, 250, 0, 250]) * 1e-3       # encoding b-values [ms/um2]
@@ -74,7 +74,7 @@ sig_lb = 0          #[a.u.]
 sig_ub = 1          #[a.u.]
 axr_lb = 0.1        #[s-1]
 
-axr_lb = 1          #[s-1]
+#axr_lb = 1          #[s-1]
 axr_ub = 20         #[s-1]
 
 #consider doing in si units
@@ -283,7 +283,6 @@ print(rvals)
 
 
 # %% Creating the neural network
-print("nn begining")
 class Net(nn.Module): # this is the neural network
     #defining the init and foward pass functions. 
 
@@ -329,14 +328,14 @@ class Net(nn.Module): # this is the neural network
         print("adc:", adc.shape)
         print("sigma:", sigma.shape)
         print("axr:", axr.shape)
-        print("evox:", E_vox.shape)"""
+        print("evox:", E_vox.shape)
 
         print("self.encoder(E_vox)", self.encoder(E_vox)[0,:])
         print("params:", params[0,:])
         print("adc:", adc)
         print("sigma:", sigma)
         print("axr:", axr)
-        print("evox:", E_vox)
+        print("evox:", E_vox)"""
 
         return E_vox, adc_prime, adc, sigma, axr
 
