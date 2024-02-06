@@ -220,10 +220,6 @@ for current_vox in range(nvox):
         if result_1_vox.fun < best_sse:
             best_sse = result_1_vox.fun
             NLLS_cur_adc, NLLS_cur_sigma, NLLS_cur_axr = result_1_vox.x
-            print("pass")
-        else:
-            print('fail')
-            
     
     sses = np.append(sses,best_sse)
     
