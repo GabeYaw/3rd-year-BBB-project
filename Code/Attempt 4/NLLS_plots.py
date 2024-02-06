@@ -15,13 +15,14 @@ from NLLS import *
 #plotting the sse
 plt.figure()
 plt.hist(sses.flatten(), bins=200)
+plt.xlabel("SSE histogram")
 
 plt.figure()
 # for first voxel
 plt.scatter(be, sim_E_vox[0,:], label='simulated')
 plt.scatter(be, NLLS_E_vox_all[0,:], label='predicted')
 plt.xlabel("be")
-plt.ylabel("tm")
+plt.ylabel("Normalised signal")
 plt.legend()
 
 # plot scatter plots to analyse correlation of predicted free params against ground truth

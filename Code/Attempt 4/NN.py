@@ -26,6 +26,7 @@ class Net(nn.Module): # this is the neural network
         self.bf = bf
         self.tm = tm
         self.limits = limits
+        self.tm[(self.tm == torch.min(self.tm)) & (self.bf == 0)] = float('inf')
 
         #defining the layers that we want. 
         # 3 layers with no. of be nodes. 
@@ -50,7 +51,6 @@ class Net(nn.Module): # this is the neural network
         sigma = torch.clamp(params[:, 1].unsqueeze(1), min=limits[1,0], max=limits[1,1])
         axr = torch.clamp(params[:, 2].unsqueeze(1), min=limits[2,0], max=limits[2,1])
         
-        self.tm[(self.tm == torch.min(self.tm)) & (self.bf == 0)] = float('inf')
 
         adc_prime = adc * (1 - sigma * torch.exp(-tm * axr))
         E_vox = torch.exp(-adc_prime * be)
