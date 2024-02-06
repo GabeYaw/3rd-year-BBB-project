@@ -1,4 +1,6 @@
-# %% NN Plots
+# NN Plots
+
+from NN import *
 
 plt.figure()
 plt.plot(range(1, len(loss_progress) + 1), loss_progress, marker='o', linestyle='-')

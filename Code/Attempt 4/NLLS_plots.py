@@ -1,8 +1,4 @@
 # NLLS Plots
-#Debugging sse and seeing how large it is for the worst values. 
-sses.sort()
-sses_descending = sses[::-1]
-
 
 """MAYBE ADD LOSS PER 'EPOCH' FOR NLLS
 plt.figure()
@@ -12,6 +8,8 @@ plt.ylabel('Loss')
 plt.title('Loss per Epoch')
 plt.grid(True)
 plt.show()"""
+
+from NLLS import *
 
 
 #plotting the sse

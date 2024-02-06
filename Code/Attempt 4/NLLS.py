@@ -14,6 +14,8 @@ from scipy.io import savemat
 from scipy.special import erf
 from tqdm import tqdm
 
+from Simulations import *
+
 """Most likely need to use second version of this function, but try to use expandims if possible"""
 def sim_sig_np_1_vox(bf,be,tm,adc,sigma,axr):
 
@@ -41,7 +43,7 @@ def sim_sig_np_1_vox(bf,be,tm,adc,sigma,axr):
     
     return normalised_signal, adc_prime
 
-# %% Least squares fit
+# Least squares fit
 def sse_adc_prime_1_vox(variables_to_optimize, tm, bf, be, smeas):
     # For the signal from 1 voxel.
     adc_est, sigma_est, axr_est = variables_to_optimize

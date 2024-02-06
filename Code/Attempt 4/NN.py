@@ -14,6 +14,7 @@ from scipy.io import savemat
 from scipy.special import erf
 from tqdm import tqdm
 
+from Simulations import *
 # Creating the neural network
 class Net(nn.Module): # this is the neural network
     #defining the init and foward pass functions. 

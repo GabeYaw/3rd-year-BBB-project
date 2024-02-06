@@ -14,6 +14,8 @@ from scipy.io import savemat
 from scipy.special import erf
 from tqdm import tqdm
 
+from Simulations import *
+
 # Histogram plots
 n_bins=20
 #make 200 and voxels 100,000 to see adc prime dropoff
