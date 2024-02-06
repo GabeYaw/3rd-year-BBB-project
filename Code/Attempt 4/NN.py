@@ -61,9 +61,9 @@ class Net(nn.Module): # this is the neural network
         print("adc:", adc.shape)
         print("sigma:", sigma.shape)
         print("axr:", axr.shape)
-        print("evox:", E_vox.shape)
-
-        print("self.encoder(E_vox)", self.encoder(E_vox)[0,:])
+        print("evox:", E_vox.shape)"""
+        
+        """print("self.encoder(E_vox)", self.encoder(E_vox)[0,:])
         print("params:", params[0,:])
         print("adc:", adc)
         print("sigma:", sigma)
@@ -120,7 +120,7 @@ patience = 10
 # Training
 # train
 loss_progress = np.empty(shape=(0,)) 
-num_bad_epochs = 0
+#num_bad_epochs = 0
 
 for epoch in range(10000): 
     print("-----------------------------------------------------------------")
@@ -144,25 +144,22 @@ for epoch in range(10000):
         print("pred_axr:", pred_axr)"""
 
         if torch.isnan(pred_E_vox).any():
-            print("evox nan found")
+            print("evox nan found in batch",i,"epoch",epoch)
         if torch.isnan(pred_adc).any():
-            print("pred_adc nan found")
+            print("pred_adc nan found in batch",i,"epoch",epoch)
         if torch.isnan(pred_axr).any():
-            print("pred_axr nan found")
+            print("pred_axr nan found in batch",i,"epoch",epoch)
         if torch.isnan(pred_sigma).any():
-            print("sigpred_sigma nan found")
-            
-        #sim_E_vox_batch32 = sim_E_vox_batch.to(torch.float32)
-        #needed so that loss comparison works
+            print("sigpred_sigma nan found in batch",i,"epoch",epoch)
         
-        #print(pred_E_vox)
-        loss_sig = criterion(pred_E_vox, sim_E_vox_batch)
+        loss = criterion(pred_E_vox, sim_E_vox_batch)
+
         #loss_prime = criterion(pred_adc_prime,sim_adc_prime)
         #loss prime needs sim_adc_prime to be batched. 
-
-        loss_sig.backward()
+        loss.backward()
         optimizer.step()
-        running_loss += loss_sig.item()
+        running_loss += loss.item()
+       
         
     print("loss: {}".format(running_loss))
     # early stopping
@@ -173,6 +170,7 @@ for epoch in range(10000):
         num_bad_epochs = 0
         loss_progress = np.append(loss_progress, best)
     else:
+
         num_bad_epochs = num_bad_epochs + 1
         loss_progress = np.append(loss_progress, best)
         if num_bad_epochs == patience:
