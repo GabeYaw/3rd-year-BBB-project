@@ -62,7 +62,7 @@ def sim_sig_np_1_vox(bf,be,tm,adc,sigma,axr):
 
 # %% Initial variables.
 
-nvox = 100 # number of voxels to simulate
+nvox = 1000 # number of voxels to simulate
 
 bf = np.array([0, 0, 250, 250, 250, 250, 250, 250]) * 1e-3   # filter b-values [ms/um2]
 be = np.array([0, 250, 0, 250, 0, 250, 0, 250]) * 1e-3       # encoding b-values [ms/um2]
