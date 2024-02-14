@@ -117,7 +117,7 @@ optimizer = optim.Adam(net.parameters(), lr = 0.0001)
 best = 1e16
 num_bad_epochs = 0
 #can increase patience a lot, speed not an issue.
-patience = 10
+patience = 100
 
 # Training
 # train
