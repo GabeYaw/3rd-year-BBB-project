@@ -36,9 +36,9 @@ class Net(nn.Module): # this is the neural network
             #https://pytorch.org/docs/stable/generated/torch.nn.PReLU.html
         self.encoder = nn.Sequential(*self.layers, nn.Linear(len(be), nparams))
 
-    def forward(self, E_vox):
+    def forward(self, adc_prime):
 
-        params = torch.nn.functional.softplus(self.encoder(E_vox))
+        params = torch.nn.functional.softplus(self.encoder(adc_prime))
         #running a forward pass through the network
 
         #SoftPlus is a smooth approximation to the ReLU function and can be used to constrain the output of a machine to always be positive
@@ -101,7 +101,7 @@ num_batches = len(sim_E_vox) // batch_size
 #drop_last ignores the last batch if it is the wrong size. 
 #num_workers is about performance. 
 
-trainloader = utils.DataLoader(torch.from_numpy(sim_E_vox.astype(np.float32)),
+trainloader = utils.DataLoader(torch.from_numpy(sim_adc_prime.astype(np.float32)),
                                 batch_size = batch_size, 
                                 shuffle = True,
                                 num_workers = 0, #was 2 previously
@@ -111,13 +111,13 @@ trainloader = utils.DataLoader(torch.from_numpy(sim_E_vox.astype(np.float32)),
 #choosing which loss function to use. 
 #not sure what the optmizer is
 criterion = nn.MSELoss()
-optimizer = optim.Adam(net.parameters(), lr = 0.01)
+optimizer = optim.Adam(net.parameters(), lr = 0.0001)
 
 # best loss
 best = 1e16
 num_bad_epochs = 0
 #can increase patience a lot, speed not an issue.
-patience = 10000
+patience = 100
 
 # Training
 # train
@@ -138,13 +138,13 @@ for epoch in range(10000):
     running_loss = 0.
 
     #tqdm shows a progress bar. 
-    for i, sim_E_vox_batch in enumerate(tqdm(trainloader), 0):
+    for i, sim_adc_prime_batch in enumerate(tqdm(trainloader), 0):
         
         # zero the parameter gradients
         optimizer.zero_grad()
 
         # forward + backward + optimize
-        pred_E_vox, pred_adc_prime, pred_adc, pred_sigma, pred_axr, axr_unclamped = net(sim_E_vox_batch)
+        pred_E_vox, pred_adc_prime, pred_adc, pred_sigma, pred_axr, axr_unclamped = net(sim_adc_prime_batch)
         
         """print(sim_E_vox_batch)
         print("pred_E_vox:", pred_E_vox)
@@ -161,7 +161,7 @@ for epoch in range(10000):
         if torch.isnan(pred_sigma).any():
             print("pred_sigma nan found in batch",i,"epoch",epoch)
         
-        loss = criterion(pred_E_vox, sim_E_vox_batch)
+        loss = criterion(pred_adc_prime, sim_adc_prime_batch)
 
         loss.backward()
         optimizer.step()

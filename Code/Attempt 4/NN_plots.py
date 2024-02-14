@@ -1,6 +1,8 @@
 # NN Plots
 
 from NN import *
+#from NN_adc_prime import *
+
 
 plt.figure()
 plt.plot(range(1, len(loss_progress) + 1), loss_progress, linestyle='-')
