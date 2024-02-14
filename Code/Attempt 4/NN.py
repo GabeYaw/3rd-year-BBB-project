@@ -17,7 +17,7 @@ from tqdm import tqdm
 from Simulations import *
 # Creating the neural network
 class Net(nn.Module): # this is the neural network
-    #defining the init and foward pass functions. 
+    #defining the init and foward pass functions.
 
     def __init__(self,be,bf,tm,nparams,limits):
         super(Net, self).__init__()
@@ -28,8 +28,8 @@ class Net(nn.Module): # this is the neural network
         self.limits = limits
         self.tm[(self.tm == torch.min(self.tm)) & (self.bf == 0)] = float('inf')
 
-        #defining the layers that we want. 
-        # 3 layers with no. of be nodes. 
+        #defining the layers that we want.
+        # 3 layers with no. of be nodes.
         self.layers = nn.ModuleList()
         for i in range(3): # 3 fully connected hidden layers
             self.layers.extend([nn.Linear(len(be), len(be)), nn.PReLU()])
@@ -44,15 +44,15 @@ class Net(nn.Module): # this is the neural network
         #SoftPlus is a smooth approximation to the ReLU function and can be used to constrain the output of a machine to always be positive
         #params contains batch_size x nparams outputs, so each row is adc, sigma and axr.
 
-        #unsqueeze adds an additional dimension. 
-        #parameter constraints from Elizabeth matlab 
+        #unsqueeze adds an additional dimension.
+        #parameter constraints from Elizabeth matlab
 
         adc = torch.clamp(params[:, 0].unsqueeze(1), min=limits[0,0], max=limits[0,1])
         sigma = torch.clamp(params[:, 1].unsqueeze(1), min=limits[1,0], max=limits[1,1])
         axr = torch.clamp(params[:, 2].unsqueeze(1), min=limits[2,0], max=limits[2,1])
         axr_unclamped = params[:, 2].unsqueeze(1)
 
-        
+
 
         adc_prime = adc * (1 - sigma * torch.exp(-tm * axr))
         E_vox = torch.exp(-adc_prime * be)
@@ -64,7 +64,7 @@ class Net(nn.Module): # this is the neural network
         print("sigma:", sigma.shape)
         print("axr:", axr.shape)
         print("evox:", E_vox.shape)"""
-        
+
         """print("self.encoder(E_vox)", self.encoder(E_vox)[0,:])
         print("params:", params[0,:])
         print("adc:", adc)
@@ -80,7 +80,7 @@ class Net(nn.Module): # this is the neural network
 nparams = 3
 #because of adc, sigma and axr
 
-#converting numpy arrays to pytorch tensors. 
+#converting numpy arrays to pytorch tensors.
 #be = torch.tensor(be)
 #bf = torch.tensor(bf)
 #tm = torch.tensor(tm)
@@ -94,58 +94,58 @@ batch_size = 128
 net = Net(be, bf, tm, nparams,limits)
 
 #create batch queues for data
-#// means divide and round down. 
+#// means divide and round down.
 num_batches = len(sim_E_vox) // batch_size
 
 #import the sim_E_vox array into the dataloader
-#drop_last ignores the last batch if it is the wrong size. 
-#num_workers is about performance. 
+#drop_last ignores the last batch if it is the wrong size.
+#num_workers is about performance.
 
 trainloader = utils.DataLoader(torch.from_numpy(sim_E_vox.astype(np.float32)),
-                                batch_size = batch_size, 
+                                batch_size = batch_size,
                                 shuffle = True,
                                 num_workers = 0, #was 2 previously
                                 drop_last = True)
 
 # loss function and optimizer
-#choosing which loss function to use. 
+#choosing which loss function to use.
 #not sure what the optmizer is
 criterion = nn.MSELoss()
-optimizer = optim.Adam(net.parameters(), lr = 0.01)
+optimizer = optim.Adam(net.parameters(), lr = 0.001)
 
 # best loss
 best = 1e16
 num_bad_epochs = 0
 #can increase patience a lot, speed not an issue.
-patience = 10000
+patience = 100
 
 # Training
 # train
 loss_progress = np.empty(shape=(0,))
 
-adc_progress = np.empty(shape=(0,)) 
-sigma_progress = np.empty(shape=(0,)) 
+adc_progress = np.empty(shape=(0,))
+sigma_progress = np.empty(shape=(0,))
 axr_progress = np.empty(shape=(0,))
 signal_progress = np.empty(shape=(0,))
 adc_prime_progress = np.empty(shape=(0,))
 
 axr_unclamped_progress = np.empty(shape=(0,))
 
-for epoch in range(10000): 
+for epoch in range(10000):
     print("-----------------------------------------------------------------")
     print("epoch: {}; bad epochs: {}".format(epoch, num_bad_epochs))
     net.train()
     running_loss = 0.
 
-    #tqdm shows a progress bar. 
+    #tqdm shows a progress bar.
     for i, sim_E_vox_batch in enumerate(tqdm(trainloader), 0):
-        
+
         # zero the parameter gradients
         optimizer.zero_grad()
 
         # forward + backward + optimize
         pred_E_vox, pred_adc_prime, pred_adc, pred_sigma, pred_axr, axr_unclamped = net(sim_E_vox_batch)
-        
+
         """print(sim_E_vox_batch)
         print("pred_E_vox:", pred_E_vox)
         print("pred_adc:", pred_adc)
@@ -160,7 +160,10 @@ for epoch in range(10000):
             print("pred_axr nan found in batch",i,"epoch",epoch)
         if torch.isnan(pred_sigma).any():
             print("pred_sigma nan found in batch",i,"epoch",epoch)
-        
+
+        if torch.isnan(pred_E_vox).any() and torch.isnan(pred_adc).any() and torch.isnan(pred_axr).any() and torch.isnan(pred_sigma).any():
+            break
+
         loss = criterion(pred_E_vox, sim_E_vox_batch)
 
         loss.backward()
@@ -178,8 +181,10 @@ for epoch in range(10000):
             signal_progress = np.append(signal_progress, pred_E_vox[:,0].detach().numpy())
             adc_prime_progress = np.append(adc_prime_progress, pred_adc_prime[:,0].detach().numpy())
 
-        
+
     print("loss: {}".format(running_loss))
+    print("best loss: {}".format(best))
+
     # early stopping
     if running_loss < best:
         print("####################### saving good model #######################")

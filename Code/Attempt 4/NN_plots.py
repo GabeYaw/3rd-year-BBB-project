@@ -44,9 +44,9 @@ plt.title('axr unclamped per Epoch')
 plt.grid(True)
 plt.show(block=False)
 
-""" these 2 plots make less sense
-plt.figure()
-plt.plot(range(1, len(signal_progress) + 1), signal_progress, marker='o', linestyle='-')
+# these 2 plots make less sense
+'''plt.figure()
+plt.plot(range(1, len(signal_progress) + 1), signal_progress, linestyle='-')
 plt.xlabel('Epoch')
 plt.ylabel('signal first voxel')
 plt.title('signal per Epoch')
@@ -54,12 +54,12 @@ plt.grid(True)
 plt.show()
 
 plt.figure()
-plt.plot(range(1, len(adc_prime_progress) + 1), adc_prime_progress, marker='o', linestyle='-')
+plt.plot(range(1, len(adc_prime_progress) + 1), adc_prime_progress, linestyle='-')
 plt.xlabel('Epoch')
 plt.ylabel('adc_prime first voxel')
 plt.title('adc_prime per Epoch')
 plt.grid(True)
-plt.show()"""
+plt.show()'''
 
 final_pred_E_vox_detached = final_pred_E_vox.detach().numpy()
 """Was having numpy pytorch issues, so this line helps fix it a bit."""
