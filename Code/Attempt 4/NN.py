@@ -50,7 +50,7 @@ class Net(nn.Module): # this is the neural network
         adc = torch.clamp(params[:, 0].unsqueeze(1), min=limits[0,0], max=limits[0,1])
         sigma = torch.clamp(params[:, 1].unsqueeze(1), min=limits[1,0], max=limits[1,1])
         axr = torch.clamp(params[:, 2].unsqueeze(1), min=limits[2,0], max=limits[2,1])
-        
+
         adc_unclamped = params[:, 0].unsqueeze(1)
         sigma_unclamped = params[:, 1].unsqueeze(1)
         axr_unclamped = params[:, 2].unsqueeze(1)
@@ -114,7 +114,7 @@ trainloader = utils.DataLoader(torch.from_numpy(sim_E_vox.astype(np.float32)),
 #choosing which loss function to use.
 #not sure what the optmizer is
 criterion = nn.MSELoss()
-optimizer = optim.Adam(net.parameters(), lr = 0.1)
+optimizer = optim.Adam(net.parameters(), lr = 0.001)
 #was lr=0.001 previously
 
 # best loss
@@ -173,9 +173,9 @@ for epoch in range(10000):
             break
 
         # similar break to above, with ors not ands
-        '''if torch.isnan(pred_E_vox).any() or torch.isnan(pred_adc).any() or torch.isnan(pred_axr).any() or torch.isnan(pred_sigma).any():
+        if torch.isnan(pred_E_vox).any() or torch.isnan(pred_adc).any() or torch.isnan(pred_axr).any() or torch.isnan(pred_sigma).any():
             flag = True
-            break'''
+            break
 
         loss = criterion(pred_E_vox, sim_E_vox_batch)
 
@@ -190,7 +190,7 @@ for epoch in range(10000):
             axr_progress = np.append(axr_progress, pred_axr.detach().numpy(),axis=1)
 
             #adc_unclamped_progress = np.append(adc_unclamped_progress, adc_unclamped[0].detach().numpy())
-            
+
             adc_unclamped_progress = np.append(adc_unclamped_progress, adc_unclamped.detach().numpy(), axis=1)
             sigma_unclamped_progress = np.append(sigma_unclamped_progress, sigma_unclamped.detach().numpy(), axis=1)
             axr_unclamped_progress = np.append(axr_unclamped_progress, axr_unclamped.detach().numpy(), axis=1)
@@ -201,6 +201,10 @@ for epoch in range(10000):
 
     print("loss: {}".format(running_loss))
     print("best loss: {}".format(best))
+
+    if flag:
+        print("nan found in batch,",i,"epoch",epoch)
+        break
 
     # early stopping
     if running_loss < best:
@@ -217,7 +221,7 @@ for epoch in range(10000):
             print("done, best loss: {}".format(best))
             break
 
-    
+
 print("done")
 
 net.load_state_dict(final_model)

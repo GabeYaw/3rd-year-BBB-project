@@ -13,6 +13,7 @@ plt.grid(True)
 plt.show(block=False)
 
 plt.figure()
+#plots a line for each voxel in the batch, but only the first batch of each epoch
 for i in range(adc_progress.shape[0]):
 #for i in range(1):
     plt.plot(range(1, adc_progress.shape[1] + 1), adc_progress[i], linestyle='-')
@@ -42,7 +43,6 @@ plt.ylabel('axr first voxel')
 plt.title('axr per Epoch')
 plt.grid(True)
 plt.show(block=False)
-
 
 plt.figure()
 for i in range(axr_unclamped_progress.shape[0]):
