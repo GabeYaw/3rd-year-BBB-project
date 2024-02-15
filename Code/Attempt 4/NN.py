@@ -56,6 +56,11 @@ class Net(nn.Module): # this is the neural network
         sigma_unclamped = params[:, 1].unsqueeze(1)
         axr_unclamped = params[:, 2].unsqueeze(1)
 
+        #axr.zero_()
+        #this might be the source of the error
+        
+        if torch.any(axr == 0):
+            print("AXR contains zero.")
 
 
         adc_prime = adc * (1 - sigma * torch.exp(-tm * axr))
