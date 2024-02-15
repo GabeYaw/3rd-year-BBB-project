@@ -26,7 +26,7 @@ class Net(nn.Module): # this is the neural network
         self.bf = bf
         self.tm = tm
         self.limits = limits
-        self.tm[(self.tm == torch.min(self.tm)) & (self.bf == 0)] = float('inf')
+        #self.tm[(self.tm == torch.min(self.tm)) & (self.bf == 0)] = float('inf')
 
         #defining the layers that we want.
         # 3 layers with no. of be nodes.
@@ -132,9 +132,9 @@ axr_progress = np.empty(shape=(0,))
 signal_progress = np.empty(shape=(0,))
 adc_prime_progress = np.empty(shape=(0,))
 
-adc_unclamped_progress = np.empty(shape=(0,))
-sigma_unclamped_progress = np.empty(shape=(0,))
-axr_unclamped_progress = np.empty(shape=(0,))
+adc_unclamped_progress = np.empty((batch_size, 0))
+sigma_unclamped_progress = np.empty((batch_size, 0))
+axr_unclamped_progress = np.empty((batch_size, 0))
 
 for epoch in range(10000):
     print("-----------------------------------------------------------------")
@@ -181,9 +181,11 @@ for epoch in range(10000):
             sigma_progress = np.append(sigma_progress, pred_sigma[0].detach().numpy())
             axr_progress = np.append(axr_progress, pred_axr[0].detach().numpy())
 
-            adc_unclamped_progress = np.append(adc_unclamped_progress, adc_unclamped[0].detach().numpy())
-            sigma_unclamped_progress = np.append(sigma_unclamped_progress, sigma_unclamped[0].detach().numpy())
-            axr_unclamped_progress = np.append(axr_unclamped_progress, axr_unclamped[0].detach().numpy())
+            #adc_unclamped_progress = np.append(adc_unclamped_progress, adc_unclamped[0].detach().numpy())
+            
+            adc_unclamped_progress = np.append(adc_unclamped_progress, adc_unclamped.detach().numpy(), axis=1)
+            sigma_unclamped_progress = np.append(sigma_unclamped_progress, sigma_unclamped.detach().numpy(), axis=1)
+            axr_unclamped_progress = np.append(axr_unclamped_progress, axr_unclamped.detach().numpy(), axis=1)
 
             signal_progress = np.append(signal_progress, pred_E_vox[:,0].detach().numpy())
             adc_prime_progress = np.append(adc_prime_progress, pred_adc_prime[:,0].detach().numpy())
