@@ -26,7 +26,7 @@ class Net(nn.Module): # this is the neural network
         self.bf = bf
         self.tm = tm
         self.limits = limits
-        #self.tm[(self.tm == torch.min(self.tm)) & (self.bf == 0)] = float('inf')
+        self.tm[(self.tm == torch.min(self.tm)) & (self.bf == 0)] = float('inf')
 
         #defining the layers that we want.
         # 3 layers with no. of be nodes.
@@ -137,6 +137,7 @@ adc_prime_progress = np.empty(shape=(0,))
 adc_unclamped_progress = np.empty((batch_size, 0))
 sigma_unclamped_progress = np.empty((batch_size, 0))
 axr_unclamped_progress = np.empty((batch_size, 0))
+flag = False
 
 for epoch in range(10000):
     print("-----------------------------------------------------------------")
@@ -168,12 +169,13 @@ for epoch in range(10000):
         if torch.isnan(pred_sigma).any():
             print("pred_sigma nan found in batch",i,"epoch",epoch)
 
-        if torch.isnan(pred_E_vox).any() and torch.isnan(pred_adc).any() and torch.isnan(pred_axr).any() and torch.isnan(pred_sigma).any():
+        #if torch.isnan(pred_E_vox).any() and torch.isnan(pred_adc).any() and torch.isnan(pred_axr).any() and torch.isnan(pred_sigma).any():
             break
 
         # similar break to above, with ors not ands
-        if torch.isnan(pred_E_vox).any() or torch.isnan(pred_adc).any() or torch.isnan(pred_axr).any() or torch.isnan(pred_sigma).any():
-            break
+        '''if torch.isnan(pred_E_vox).any() or torch.isnan(pred_adc).any() or torch.isnan(pred_axr).any() or torch.isnan(pred_sigma).any():
+            flag = True
+            break'''
 
         loss = criterion(pred_E_vox, sim_E_vox_batch)
 
@@ -214,6 +216,8 @@ for epoch in range(10000):
         if num_bad_epochs == patience:
             print("done, best loss: {}".format(best))
             break
+
+    
 print("done")
 
 net.load_state_dict(final_model)
