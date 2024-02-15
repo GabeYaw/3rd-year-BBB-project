@@ -44,6 +44,23 @@ plt.title('axr unclamped per Epoch')
 plt.grid(True)
 plt.show(block=False)
 
+plt.figure()
+plt.plot(range(1, len(adc_unclamped_progress) + 1), adc_unclamped_progress, linestyle='-')
+plt.xlabel('Epoch')
+plt.ylabel('adc unclamped first voxel')
+plt.title('adc unclamped per Epoch')
+plt.grid(True)
+plt.show(block=False)
+
+plt.figure()
+plt.plot(range(1, len(sigma_unclamped_progress) + 1), sigma_unclamped_progress, linestyle='-')
+plt.xlabel('Epoch')
+plt.ylabel('sigma unclamped first voxel')
+plt.title('sigma unclamped per Epoch')
+plt.grid(True)
+plt.show(block=False)
+
+
 # these 2 plots make less sense
 '''plt.figure()
 plt.plot(range(1, len(signal_progress) + 1), signal_progress, linestyle='-')
