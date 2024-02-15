@@ -50,9 +50,11 @@ class Net(nn.Module): # this is the neural network
         adc = torch.clamp(params[:, 0].unsqueeze(1), min=limits[0,0], max=limits[0,1])
         sigma = torch.clamp(params[:, 1].unsqueeze(1), min=limits[1,0], max=limits[1,1])
         axr = torch.clamp(params[:, 2].unsqueeze(1), min=limits[2,0], max=limits[2,1])
-        axr_unclamped = params[:, 2].unsqueeze(1)
-
         
+        adc_unclamped = params[:, 0].unsqueeze(1)
+        sigma_unclamped = params[:, 1].unsqueeze(1)
+        axr_unclamped = params[:, 2].unsqueeze(1)
+    
 
         adc_prime = adc * (1 - sigma * torch.exp(-tm * axr))
         E_vox = torch.exp(-adc_prime * be)
@@ -72,7 +74,7 @@ class Net(nn.Module): # this is the neural network
         print("axr:", axr)
         print("evox:", E_vox)"""
 
-        return E_vox, adc_prime, adc, sigma, axr, axr_unclamped
+        return E_vox, adc_prime, adc, sigma, axr, axr_unclamped, adc_unclamped, sigma_unclamped
 
 
 # NN continued
@@ -123,13 +125,18 @@ patience = 100
 # train
 loss_progress = np.empty(shape=(0,))
 
-adc_progress = np.empty(shape=(0,)) 
-sigma_progress = np.empty(shape=(0,)) 
-axr_progress = np.empty(shape=(0,))
+adc_progress = np.empty((batch_size, 0))
+sigma_progress = np.empty((batch_size, 0))
+axr_progress = np.empty((batch_size, 0))
+
 signal_progress = np.empty(shape=(0,))
 adc_prime_progress = np.empty(shape=(0,))
 
-axr_unclamped_progress = np.empty(shape=(0,))
+adc_unclamped_progress = np.empty((batch_size, 0))
+sigma_unclamped_progress = np.empty((batch_size, 0))
+axr_unclamped_progress = np.empty((batch_size, 0))
+flag = False
+final_model = net.state_dict()
 
 for epoch in range(10000): 
     print("-----------------------------------------------------------------")
@@ -144,7 +151,7 @@ for epoch in range(10000):
         optimizer.zero_grad()
 
         # forward + backward + optimize
-        pred_E_vox, pred_adc_prime, pred_adc, pred_sigma, pred_axr, axr_unclamped = net(sim_adc_prime_batch)
+        pred_E_vox, pred_adc_prime, pred_adc, pred_sigma, pred_axr, axr_unclamped, adc_unclamped, sigma_unclamped = net(sim_adc_prime_batch)
         
         """print(sim_E_vox_batch)
         print("pred_E_vox:", pred_E_vox)
@@ -152,14 +159,27 @@ for epoch in range(10000):
         print("pred_sigma:", pred_sigma)
         print("pred_axr:", pred_axr)"""
 
-        if torch.isnan(pred_E_vox).any():
+        if torch.isnan(pred_adc_prime).any():
             print("evox nan found in batch",i,"epoch",epoch)
+            print("pred_E_vox:", pred_adc_prime)
         if torch.isnan(pred_adc).any():
             print("pred_adc nan found in batch",i,"epoch",epoch)
+            print("pred_adc:", pred_adc)
         if torch.isnan(pred_axr).any():
             print("pred_axr nan found in batch",i,"epoch",epoch)
+            print("pred_axr:", pred_axr)
         if torch.isnan(pred_sigma).any():
             print("pred_sigma nan found in batch",i,"epoch",epoch)
+            print("pred_sigma:", pred_sigma)
+        
+        #if torch.isnan(pred_E_vox).any() and torch.isnan(pred_adc).any() and torch.isnan(pred_axr).any() and torch.isnan(pred_sigma).any():
+            #break
+
+        # similar break to above, with ors not ands
+        if torch.isnan(pred_E_vox).any() or torch.isnan(pred_adc).any() or torch.isnan(pred_axr).any() or torch.isnan(pred_sigma).any():
+            flag = True
+            break
+        
         
         loss = criterion(pred_adc_prime, sim_adc_prime_batch)
 
@@ -169,17 +189,27 @@ for epoch in range(10000):
 
 
         if i == 0:
-            adc_progress = np.append(adc_progress, pred_adc[0].detach().numpy())
-            sigma_progress = np.append(sigma_progress, pred_sigma[0].detach().numpy())
-            axr_progress = np.append(axr_progress, pred_axr[0].detach().numpy())
+            adc_progress = np.append(adc_progress, pred_adc.detach().numpy(),axis=1)
+            sigma_progress = np.append(sigma_progress, pred_sigma.detach().numpy(),axis=1)
+            axr_progress = np.append(axr_progress, pred_axr.detach().numpy(),axis=1)
 
-            axr_unclamped_progress = np.append(axr_unclamped_progress, axr_unclamped[0].detach().numpy())
+            #adc_unclamped_progress = np.append(adc_unclamped_progress, adc_unclamped[0].detach().numpy())
+
+            adc_unclamped_progress = np.append(adc_unclamped_progress, adc_unclamped.detach().numpy(), axis=1)
+            sigma_unclamped_progress = np.append(sigma_unclamped_progress, sigma_unclamped.detach().numpy(), axis=1)
+            axr_unclamped_progress = np.append(axr_unclamped_progress, axr_unclamped.detach().numpy(), axis=1)
 
             signal_progress = np.append(signal_progress, pred_E_vox[:,0].detach().numpy())
             adc_prime_progress = np.append(adc_prime_progress, pred_adc_prime[:,0].detach().numpy())
 
         
     print("loss: {}".format(running_loss))
+    print("best loss: {}".format(best))
+
+    if flag:
+        print("nan found in batch,",i,"epoch",epoch)
+        break
+
     # early stopping
     if running_loss < best:
         print("####################### saving good model #######################")
@@ -200,7 +230,7 @@ net.load_state_dict(final_model)
 
 net.eval()
 with torch.no_grad():
-    final_pred_E_vox, final_pred_adc_prime, final_pred_adc_repeated, final_pred_sigma_repeated, final_pred_axr_repeated, _ = net(torch.from_numpy(sim_E_vox.astype(np.float32)))
+    final_pred_E_vox, final_pred_adc_prime, final_pred_adc_repeated, final_pred_sigma_repeated, final_pred_axr_repeated, _,_,_ = net(torch.from_numpy(sim_E_vox.astype(np.float32)))
     # adc sigma and axr will have 8 columns which are all the same
 
 final_pred_adc = final_pred_adc_repeated[:, 0]

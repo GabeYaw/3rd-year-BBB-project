@@ -114,7 +114,7 @@ trainloader = utils.DataLoader(torch.from_numpy(sim_E_vox.astype(np.float32)),
 #choosing which loss function to use.
 #not sure what the optmizer is
 criterion = nn.MSELoss()
-optimizer = optim.Adam(net.parameters(), lr = 0.001)
+optimizer = optim.Adam(net.parameters(), lr = 0.0001)
 #was lr=0.001 previously
 
 # best loss
@@ -138,6 +138,7 @@ adc_unclamped_progress = np.empty((batch_size, 0))
 sigma_unclamped_progress = np.empty((batch_size, 0))
 axr_unclamped_progress = np.empty((batch_size, 0))
 flag = False
+final_model = net.state_dict()
 
 for epoch in range(10000):
     print("-----------------------------------------------------------------")
@@ -162,19 +163,24 @@ for epoch in range(10000):
 
         if torch.isnan(pred_E_vox).any():
             print("evox nan found in batch",i,"epoch",epoch)
+            print("pred_E_vox:", pred_E_vox)
         if torch.isnan(pred_adc).any():
             print("pred_adc nan found in batch",i,"epoch",epoch)
+            print("pred_adc:", pred_adc)
         if torch.isnan(pred_axr).any():
             print("pred_axr nan found in batch",i,"epoch",epoch)
+            print("pred_axr:", pred_axr)
         if torch.isnan(pred_sigma).any():
             print("pred_sigma nan found in batch",i,"epoch",epoch)
+            print("pred_sigma:", pred_sigma)
 
         #if torch.isnan(pred_E_vox).any() and torch.isnan(pred_adc).any() and torch.isnan(pred_axr).any() and torch.isnan(pred_sigma).any():
-            break
+            #break
 
         # similar break to above, with ors not ands
         if torch.isnan(pred_E_vox).any() or torch.isnan(pred_adc).any() or torch.isnan(pred_axr).any() or torch.isnan(pred_sigma).any():
             flag = True
+            
             break
 
         loss = criterion(pred_E_vox, sim_E_vox_batch)
