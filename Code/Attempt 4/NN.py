@@ -39,6 +39,7 @@ class Net(nn.Module): # this is the neural network
     def forward(self, E_vox):
 
         params = torch.nn.functional.softplus(self.encoder(E_vox))
+
         #running a forward pass through the network
 
         #SoftPlus is a smooth approximation to the ReLU function and can be used to constrain the output of a machine to always be positive

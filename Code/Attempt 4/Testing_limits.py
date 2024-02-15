@@ -55,6 +55,10 @@ sorted_sim_adc_prime = np.sort(sim_adc_prime, axis=1)
 
 """adc_prime = adc * (1 - sigma* np.exp(-tm*axr))
 normalised_signal = np.exp(-adc_prime * be)"""
+test4 = np.exp(-np.inf*0)
+# if multiplier is 0, then output is nan
+
+print("test4:",test4)
 test = 1*(1 - np.exp(-tm*1e-7))
 #when the multiplier is 1e-7, the result rounds to 1.
 print(test)
