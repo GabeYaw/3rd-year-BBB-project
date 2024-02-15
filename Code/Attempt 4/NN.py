@@ -114,7 +114,8 @@ trainloader = utils.DataLoader(torch.from_numpy(sim_E_vox.astype(np.float32)),
 #choosing which loss function to use.
 #not sure what the optmizer is
 criterion = nn.MSELoss()
-optimizer = optim.Adam(net.parameters(), lr = 0.001)
+optimizer = optim.Adam(net.parameters(), lr = 0.1)
+#was lr=0.001 previously
 
 # best loss
 best = 1e16
@@ -126,9 +127,10 @@ patience = 100
 # train
 loss_progress = np.empty(shape=(0,))
 
-adc_progress = np.empty(shape=(0,))
-sigma_progress = np.empty(shape=(0,))
-axr_progress = np.empty(shape=(0,))
+adc_progress = np.empty((batch_size, 0))
+sigma_progress = np.empty((batch_size, 0))
+axr_progress = np.empty((batch_size, 0))
+
 signal_progress = np.empty(shape=(0,))
 adc_prime_progress = np.empty(shape=(0,))
 
@@ -169,6 +171,10 @@ for epoch in range(10000):
         if torch.isnan(pred_E_vox).any() and torch.isnan(pred_adc).any() and torch.isnan(pred_axr).any() and torch.isnan(pred_sigma).any():
             break
 
+        # similar break to above, with ors not ands
+        if torch.isnan(pred_E_vox).any() or torch.isnan(pred_adc).any() or torch.isnan(pred_axr).any() or torch.isnan(pred_sigma).any():
+            break
+
         loss = criterion(pred_E_vox, sim_E_vox_batch)
 
         loss.backward()
@@ -177,9 +183,9 @@ for epoch in range(10000):
 
 
         if i == 0:
-            adc_progress = np.append(adc_progress, pred_adc[0].detach().numpy())
-            sigma_progress = np.append(sigma_progress, pred_sigma[0].detach().numpy())
-            axr_progress = np.append(axr_progress, pred_axr[0].detach().numpy())
+            adc_progress = np.append(adc_progress, pred_adc.detach().numpy(),axis=1)
+            sigma_progress = np.append(sigma_progress, pred_sigma.detach().numpy(),axis=1)
+            axr_progress = np.append(axr_progress, pred_axr.detach().numpy(),axis=1)
 
             #adc_unclamped_progress = np.append(adc_unclamped_progress, adc_unclamped[0].detach().numpy())
             

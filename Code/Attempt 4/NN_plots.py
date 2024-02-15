@@ -13,7 +13,9 @@ plt.grid(True)
 plt.show(block=False)
 
 plt.figure()
-plt.plot(range(1, len(adc_progress) + 1), adc_progress, linestyle='-')
+for i in range(adc_progress.shape[0]):
+#for i in range(1):
+    plt.plot(range(1, adc_progress.shape[1] + 1), adc_progress[i], linestyle='-')
 plt.xlabel('Epoch')
 plt.ylabel('ADC first voxel')
 plt.title('ADC per Epoch')
@@ -21,7 +23,9 @@ plt.grid(True)
 plt.show(block=False)
 
 plt.figure()
-plt.plot(range(1, len(sigma_progress) + 1), sigma_progress, linestyle='-')
+for i in range(sigma_progress.shape[0]):
+#for i in range(1):
+    plt.plot(range(1, sigma_progress.shape[1] + 1), sigma_progress[i], linestyle='-')
 plt.xlabel('Epoch')
 plt.ylabel('sigma first voxel')
 plt.title('sigma per Epoch')
@@ -30,7 +34,9 @@ plt.show(block=False)
 
 
 plt.figure()
-plt.plot(range(1, len(axr_progress) + 1), axr_progress, linestyle='-')
+for i in range(axr_progress.shape[0]):
+#for i in range(1):
+    plt.plot(range(1, axr_progress.shape[1] + 1), axr_progress[i], linestyle='-')
 plt.xlabel('Epoch')
 plt.ylabel('axr first voxel')
 plt.title('axr per Epoch')
@@ -39,10 +45,9 @@ plt.show(block=False)
 
 
 plt.figure()
-#for i in range(axr_unclamped_progress.shape[0]):
-for i in range(1):
+for i in range(axr_unclamped_progress.shape[0]):
+#for i in range(1):
     plt.plot(range(1, axr_unclamped_progress.shape[1] + 1), axr_unclamped_progress[i], linestyle='-')
-#plt.plot(range(1, len(axr_unclamped_progress) + 1), axr_unclamped_progress, linestyle='-')
 plt.xlabel('Epoch')
 plt.ylabel('axr unclamped first voxel')
 plt.title('axr unclamped per Epoch')
@@ -50,8 +55,8 @@ plt.grid(True)
 plt.show(block=False)
 
 plt.figure()
-#for i in range(adc_unclamped_progress.shape[0]):
-for i in range(1):
+for i in range(adc_unclamped_progress.shape[0]):
+#for i in range(1):
     plt.plot(range(1, adc_unclamped_progress.shape[1] + 1), adc_unclamped_progress[i], linestyle='-')
 plt.xlabel('Epoch')
 plt.ylabel('adc unclamped first voxel')
@@ -60,8 +65,8 @@ plt.grid(True)
 plt.show(block=False)
 
 plt.figure()
-#for i in range(sigma_unclamped_progress.shape[0]):
-for i in range(1):
+for i in range(sigma_unclamped_progress.shape[0]):
+#for i in range(1):
     plt.plot(range(1, sigma_unclamped_progress.shape[1] + 1), sigma_unclamped_progress[i], linestyle='-')
 plt.xlabel('Epoch')
 plt.ylabel('sigma unclamped first voxel')
@@ -108,7 +113,7 @@ for i,_ in enumerate(param_sim):
     plt.scatter(param_sim[i], param_pred[i], s=2, c='navy')
     plt.xlabel(param_name[i] + ' Ground Truth')
     plt.ylabel(param_name[i] + ' Prediction')
-    rvals.append(scipy.stats.pearsonr(np.squeeze(param_sim[i]), np.squeeze(param_pred[i])))
+    #rvals.append(scipy.stats.pearsonr(np.squeeze(param_sim[i]), np.squeeze(param_pred[i])))
     plt.tight_layout
     plt.show()
 
