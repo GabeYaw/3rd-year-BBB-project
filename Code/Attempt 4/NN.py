@@ -153,29 +153,28 @@ for epoch in range(10000):
 
         # forward + backward + optimize
         pred_E_vox, pred_adc_prime, pred_adc, pred_sigma, pred_axr, axr_unclamped, adc_unclamped, sigma_unclamped = net(sim_E_vox_batch)
-        _,_, new_pred_adc, new_pred_sigma, new_pred_axr, _,_,_ = net(sim_E_vox_batch)
         """print(sim_E_vox_batch)
         print("pred_E_vox:", pred_E_vox)
         print("pred_adc:", pred_adc)
         print("pred_sigma:", pred_sigma)
         print("pred_axr:", pred_axr)"""
 
-        if torch.isnan(new_pred_adc).any():
+        if torch.isnan(pred_adc).any():
             print("pred_adc nan found in batch",i,"epoch",epoch)
             print("old_pred_adc:", old_pred_adc)
-            print("new_pred_adc:", new_pred_adc)
-        if torch.isnan(new_pred_axr).any():
+            print("new_pred_adc:", pred_adc)
+        if torch.isnan(pred_axr).any():
             print("pred_axr nan found in batch",i,"epoch",epoch)
             print("pred_axr:", old_pred_axr)
-            print("new_pred_axr:", new_pred_axr)
-        if torch.isnan(new_pred_sigma).any():
+            print("new_pred_axr:", pred_axr)
+        if torch.isnan(pred_sigma).any():
             print("pred_sigma nan found in batch",i,"epoch",epoch)
             print("pred_sigma:", old_pred_sigma)
-            print("new_pred_sigma:", new_pred_sigma)
+            print("new_pred_sigma:", pred_sigma)
 
-        old_pred_adc = new_pred_adc
-        old_pred_sigma = new_pred_sigma
-        old_pred_axr = new_pred_axr
+        old_pred_adc = pred_adc
+        old_pred_sigma = pred_sigma
+        old_pred_axr = pred_axr
         
 
         # similar break to above, with ors not ands
