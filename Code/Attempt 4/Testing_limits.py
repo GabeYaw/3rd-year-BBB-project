@@ -69,3 +69,12 @@ tm = torch.tensor(tm, dtype=torch.float64)
 test2 = 1*(1 - torch.exp(-tm*1e-8))
 #when the multiplier is 1e-8, the result rounds to 1.
 print(test2)
+
+
+'''generate values:
+
+Check if new value is nan
+
+    print old value
+
+update old value to new value'''

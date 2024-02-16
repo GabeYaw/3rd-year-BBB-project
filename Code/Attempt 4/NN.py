@@ -56,13 +56,6 @@ class Net(nn.Module): # this is the neural network
         sigma_unclamped = params[:, 1].unsqueeze(1)
         axr_unclamped = params[:, 2].unsqueeze(1)
 
-        #axr.zero_()
-        #this might be the source of the error
-        
-        if torch.any(axr == 0):
-            print("AXR contains zero.")
-
-
         adc_prime = adc * (1 - sigma * torch.exp(-tm * axr))
         E_vox = torch.exp(-adc_prime * be)
 
@@ -160,7 +153,7 @@ for epoch in range(10000):
 
         # forward + backward + optimize
         pred_E_vox, pred_adc_prime, pred_adc, pred_sigma, pred_axr, axr_unclamped, adc_unclamped, sigma_unclamped = net(sim_E_vox_batch)
-
+        
         """print(sim_E_vox_batch)
         print("pred_E_vox:", pred_E_vox)
         print("pred_adc:", pred_adc)
@@ -180,8 +173,7 @@ for epoch in range(10000):
             print("pred_sigma nan found in batch",i,"epoch",epoch)
             print("pred_sigma:", pred_sigma)
 
-        #if torch.isnan(pred_E_vox).any() and torch.isnan(pred_adc).any() and torch.isnan(pred_axr).any() and torch.isnan(pred_sigma).any():
-            #break
+        
 
         # similar break to above, with ors not ands
         if torch.isnan(pred_E_vox).any() or torch.isnan(pred_adc).any() or torch.isnan(pred_axr).any() or torch.isnan(pred_sigma).any():
@@ -200,8 +192,6 @@ for epoch in range(10000):
             adc_progress = np.append(adc_progress, pred_adc.detach().numpy(),axis=1)
             sigma_progress = np.append(sigma_progress, pred_sigma.detach().numpy(),axis=1)
             axr_progress = np.append(axr_progress, pred_axr.detach().numpy(),axis=1)
-
-            #adc_unclamped_progress = np.append(adc_unclamped_progress, adc_unclamped[0].detach().numpy())
 
             adc_unclamped_progress = np.append(adc_unclamped_progress, adc_unclamped.detach().numpy(), axis=1)
             sigma_unclamped_progress = np.append(sigma_unclamped_progress, sigma_unclamped.detach().numpy(), axis=1)
