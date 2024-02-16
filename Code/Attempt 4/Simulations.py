@@ -31,7 +31,7 @@ def sim_sig_np(bf,be,tm,adc,sigma,axr):
 
     return normalised_signal, adc_prime
 
-nvox = 1000 # number of voxels to simulate
+nvox = 128 # number of voxels to simulate
 
 bf = np.array([0, 0, 250, 250, 250, 250, 250, 250]) * 1e-3   # filter b-values [ms/um2]
 be = np.array([0, 250, 0, 250, 0, 250, 0, 250]) * 1e-3       # encoding b-values [ms/um2]
@@ -43,7 +43,7 @@ adc_ub = 3.5        #[um2/ms]
 sig_lb = 0          #[a.u.]
 sig_ub = 1          #[a.u.]
 axr_lb = 0.1        #[s-1]
-axr_lb = 1          #[s-1]
+#axr_lb = 1          #[s-1]
 axr_ub = 20         #[s-1]
 
 #consider doing in si units
