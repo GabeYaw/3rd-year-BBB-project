@@ -39,7 +39,6 @@ class Net(nn.Module): # this is the neural network
     def forward(self, E_vox):
 
         params = torch.nn.functional.softplus(self.encoder(E_vox))
-
         #running a forward pass through the network
 
         #SoftPlus is a smooth approximation to the ReLU function and can be used to constrain the output of a machine to always be positive
@@ -153,12 +152,6 @@ for epoch in range(10000):
 
         # forward + backward + optimize
         pred_E_vox, pred_adc_prime, pred_adc, pred_sigma, pred_axr, axr_unclamped, adc_unclamped, sigma_unclamped = net(sim_E_vox_batch)
-        
-        """print(sim_E_vox_batch)
-        print("pred_E_vox:", pred_E_vox)
-        print("pred_adc:", pred_adc)
-        print("pred_sigma:", pred_sigma)
-        print("pred_axr:", pred_axr)"""
 
         if torch.isnan(pred_E_vox).any():
             print("evox nan found in batch",i,"epoch",epoch)
@@ -173,12 +166,8 @@ for epoch in range(10000):
             print("pred_sigma nan found in batch",i,"epoch",epoch)
             print("pred_sigma:", pred_sigma)
 
-        
-
-        # similar break to above, with ors not ands
         if torch.isnan(pred_E_vox).any() or torch.isnan(pred_adc).any() or torch.isnan(pred_axr).any() or torch.isnan(pred_sigma).any():
             flag = True
-            
             break
 
         loss = criterion(pred_E_vox, sim_E_vox_batch)
@@ -186,7 +175,6 @@ for epoch in range(10000):
         loss.backward()
         optimizer.step()
         running_loss += loss.item()
-
 
         if i == 0:
             adc_progress = np.append(adc_progress, pred_adc.detach().numpy(),axis=1)
@@ -230,9 +218,4 @@ net.load_state_dict(final_model)
 
 net.eval()
 with torch.no_grad():
-    final_pred_E_vox, final_pred_adc_prime, final_pred_adc_repeated, final_pred_sigma_repeated, final_pred_axr_repeated, _,_,_ = net(torch.from_numpy(sim_E_vox.astype(np.float32)))
-    # adc sigma and axr will have 8 columns which are all the same
-
-final_pred_adc = final_pred_adc_repeated[:, 0]
-final_pred_sigma = final_pred_sigma_repeated [:, 0]
-final_pred_axr = final_pred_axr_repeated[:, 0]
+    final_pred_E_vox, final_pred_adc_prime, final_pred_adc, final_pred_sigma, final_pred_axr, _,_,_ = net(torch.from_numpy(sim_E_vox.astype(np.float32)))
