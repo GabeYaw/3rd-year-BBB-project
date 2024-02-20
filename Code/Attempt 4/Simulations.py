@@ -73,7 +73,3 @@ sim_sigma = np.random.uniform(sig_lb,sig_ub,nvox)               # sigma, simulat
 sim_axr = np.random.uniform(axr_lb,axr_ub,nvox)                 # AXR, simulated [s-1]
 
 sim_E_vox, sim_adc_prime = sim_sig_np(bf,be,tm,sim_adc,sim_sigma,sim_axr)
-
-'''# does sim_E_vox contain Nans?
-print(np.isnan(sim_E_vox).any())
-print(np.isnan(sim_adc_prime).any())'''
