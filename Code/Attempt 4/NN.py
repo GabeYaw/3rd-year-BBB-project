@@ -55,8 +55,8 @@ class Net(nn.Module): # this is the neural network
         sigma_unclamped = params[:, 1].unsqueeze(1)
         axr_unclamped = params[:, 2].unsqueeze(1)
 
-        adc_prime = adc * (1 - sigma * torch.exp(-tm * axr))
-        E_vox = torch.exp(-adc_prime * be)
+        adc_prime = adc * (1 - sigma * torch.exp(- tm * axr))
+        E_vox = torch.exp(- adc_prime * be)
 
         """print("tm:", self.tm.shape)
         print("be:", self.be.shape)
