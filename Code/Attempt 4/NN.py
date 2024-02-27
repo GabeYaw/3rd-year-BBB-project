@@ -73,7 +73,7 @@ class Net(nn.Module): # this is the neural network
         print("axr:", axr)
         print("evox:", E_vox)"""
 
-        return E_vox, adc_prime, adc, sigma, axr, axr_unclamped, adc_unclamped, sigma_unclamped
+        return E_vox, adc_prime, adc, sigma, axr_unclamped, axr_unclamped, adc_unclamped, sigma_unclamped
 
 
 # NN continued
@@ -185,7 +185,7 @@ for epoch in range(10000):
             sigma_unclamped_progress = np.append(sigma_unclamped_progress, sigma_unclamped.detach().numpy(), axis=1)
             axr_unclamped_progress = np.append(axr_unclamped_progress, axr_unclamped.detach().numpy(), axis=1)
 
-            signal_progress = np.append(signal_progress, pred_E_vox[:,0].detach().numpy())
+            signal_progress = np.append(signal_progress, pred_E_vox.detach().numpy())
             adc_prime_progress = np.append(adc_prime_progress, pred_adc_prime[:,0].detach().numpy())
 
 

@@ -18,7 +18,7 @@ for i in range(adc_progress.shape[0]):
 #for i in range(1):
     plt.plot(range(1, adc_progress.shape[1] + 1), adc_progress[i], linestyle='-')
 plt.xlabel('Epoch')
-plt.ylabel('ADC first voxel')
+plt.ylabel('ADC')
 plt.title('ADC per Epoch')
 plt.grid(True)
 plt.show(block=False)
@@ -28,7 +28,7 @@ for i in range(sigma_progress.shape[0]):
 #for i in range(1):
     plt.plot(range(1, sigma_progress.shape[1] + 1), sigma_progress[i], linestyle='-')
 plt.xlabel('Epoch')
-plt.ylabel('sigma first voxel')
+plt.ylabel('sigma')
 plt.title('sigma per Epoch')
 plt.grid(True)
 plt.show(block=False)
@@ -39,7 +39,7 @@ for i in range(axr_progress.shape[0]):
 #for i in range(1):
     plt.plot(range(1, axr_progress.shape[1] + 1), axr_progress[i], linestyle='-')
 plt.xlabel('Epoch')
-plt.ylabel('axr first voxel')
+plt.ylabel('axr')
 plt.title('axr per Epoch')
 plt.grid(True)
 plt.show(block=False)
@@ -49,7 +49,7 @@ for i in range(axr_unclamped_progress.shape[0]):
 #for i in range(1):
     plt.plot(range(1, axr_unclamped_progress.shape[1] + 1), axr_unclamped_progress[i], linestyle='-')
 plt.xlabel('Epoch')
-plt.ylabel('axr unclamped first voxel')
+plt.ylabel('axr unclamped')
 plt.title('axr unclamped per Epoch')
 plt.grid(True)
 plt.show(block=False)
@@ -59,7 +59,7 @@ for i in range(adc_unclamped_progress.shape[0]):
 #for i in range(1):
     plt.plot(range(1, adc_unclamped_progress.shape[1] + 1), adc_unclamped_progress[i], linestyle='-')
 plt.xlabel('Epoch')
-plt.ylabel('adc unclamped first voxel')
+plt.ylabel('adc unclamped')
 plt.title('adc unclamped per Epoch')
 plt.grid(True)
 plt.show(block=False)
@@ -69,28 +69,29 @@ for i in range(sigma_unclamped_progress.shape[0]):
 #for i in range(1):
     plt.plot(range(1, sigma_unclamped_progress.shape[1] + 1), sigma_unclamped_progress[i], linestyle='-')
 plt.xlabel('Epoch')
-plt.ylabel('sigma unclamped first voxel')
+plt.ylabel('sigma unclamped')
 plt.title('sigma unclamped per Epoch')
 plt.grid(True)
 plt.show(block=False)
 
 
 # these 2 plots make less sense
-'''plt.figure()
+# signal plot is different from adc prime plot.
+"""plt.figure()
 plt.plot(range(1, len(signal_progress) + 1), signal_progress, linestyle='-')
 plt.xlabel('Epoch')
-plt.ylabel('signal first voxel')
+plt.ylabel('signal')
 plt.title('signal per Epoch')
 plt.grid(True)
-plt.show()'''
+plt.show()
 
 plt.figure()
 plt.plot(range(1, len(adc_prime_progress) + 1), adc_prime_progress, linestyle='-')
 plt.xlabel('not Epochs')
-plt.ylabel('adc_prime first voxel')
+plt.ylabel('adc_prime')
 plt.title('adc_prime per Epoch')
 plt.grid(True)
-plt.show()
+plt.show()"""
 
 final_pred_E_vox_detached = final_pred_E_vox.detach().numpy()
 """Was having numpy pytorch issues, so this line helps fix it a bit."""
