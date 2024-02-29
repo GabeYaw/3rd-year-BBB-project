@@ -68,8 +68,22 @@ all_inits = list(product(adc_inits, sig_inits, axr_inits))
 # Convert the list of tuples to a NumPy array
 all_inits = np.array(all_inits)
 
-sim_adc = np.random.uniform(adc_lb,adc_ub,nvox)                 # ADC, simulated [um2/ms]
+#old method:
+"""sim_adc = np.random.uniform(adc_lb,adc_ub,nvox)                 # ADC, simulated [um2/ms]
 sim_sigma = np.random.uniform(sig_lb,sig_ub,nvox)               # sigma, simulated [a.u.]
+sim_axr = np.random.uniform(axr_lb,axr_ub,nvox)                 # AXR, simulated [s-1]"""
+
+#new method:
+feeq = np.random.uniform(0,1,nvox)                              # feeq, simulated [a.u] should change later on
+fieq = 1 - feeq                                                 # fieq, simulated [a.u]
+
+# ranges for De & Di from lizzies paper 
+De = np.random.uniform(0.1,3.5,nvox)                            # De, simulated [um2/ms]
+Di = np.random.uniform(3,30,nvox)                               # Di, simulated [um2/ms]
+
+sim_adc = feeq * De + fieq * Di 
+fe0 = 
+sim_sigma = (De-Di)*(feeq - fe0)/sim_adc
 sim_axr = np.random.uniform(axr_lb,axr_ub,nvox)                 # AXR, simulated [s-1]
 
 sim_E_vox, sim_adc_prime = sim_sig_np(bf,be,tm,sim_adc,sim_sigma,sim_axr)
