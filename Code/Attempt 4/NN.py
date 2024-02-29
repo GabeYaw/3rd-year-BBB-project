@@ -49,11 +49,12 @@ class Net(nn.Module): # this is the neural network
 
         adc = torch.clamp(params[:, 0].unsqueeze(1), min=limits[0,0], max=limits[0,1])
         sigma = torch.clamp(params[:, 1].unsqueeze(1), min=limits[1,0], max=limits[1,1])
-        axr = torch.clamp(params[:, 2].unsqueeze(1), min=limits[2,0], max=limits[2,1])
+        #axr = torch.clamp(params[:, 2].unsqueeze(1), min=limits[2,0], max=limits[2,1])
+        axr = params[:, 2].unsqueeze(1)
 
-        adc_unclamped = params[:, 0].unsqueeze(1)
+        """adc_unclamped = params[:, 0].unsqueeze(1)
         sigma_unclamped = params[:, 1].unsqueeze(1)
-        axr_unclamped = params[:, 2].unsqueeze(1)
+        axr_unclamped = params[:, 2].unsqueeze(1)"""
 
         adc_prime = adc * (1 - sigma * torch.exp(- tm * axr))
         E_vox = torch.exp(- adc_prime * be)
@@ -73,7 +74,8 @@ class Net(nn.Module): # this is the neural network
         print("axr:", axr)
         print("evox:", E_vox)"""
 
-        return E_vox, adc_prime, adc, sigma, axr_unclamped, axr_unclamped, adc_unclamped, sigma_unclamped
+        return E_vox, adc_prime, adc, sigma, axr
+        #axr_unclamped, adc_unclamped, sigma_unclamped
 
 
 # NN continued
@@ -151,7 +153,8 @@ for epoch in range(10000):
         optimizer.zero_grad()
 
         # forward + backward + optimize
-        pred_E_vox, pred_adc_prime, pred_adc, pred_sigma, pred_axr, axr_unclamped, adc_unclamped, sigma_unclamped = net(sim_E_vox_batch)
+        pred_E_vox, pred_adc_prime, pred_adc, pred_sigma, pred_axr = net(sim_E_vox_batch)
+        #axr_unclamped, adc_unclamped, sigma_unclamped
 
         if torch.isnan(pred_E_vox).any():
             print("evox nan found in batch",i,"epoch",epoch)
@@ -181,9 +184,9 @@ for epoch in range(10000):
             sigma_progress = np.append(sigma_progress, pred_sigma.detach().numpy(),axis=1)
             axr_progress = np.append(axr_progress, pred_axr.detach().numpy(),axis=1)
 
-            adc_unclamped_progress = np.append(adc_unclamped_progress, adc_unclamped.detach().numpy(), axis=1)
+            """adc_unclamped_progress = np.append(adc_unclamped_progress, adc_unclamped.detach().numpy(), axis=1)
             sigma_unclamped_progress = np.append(sigma_unclamped_progress, sigma_unclamped.detach().numpy(), axis=1)
-            axr_unclamped_progress = np.append(axr_unclamped_progress, axr_unclamped.detach().numpy(), axis=1)
+            axr_unclamped_progress = np.append(axr_unclamped_progress, axr_unclamped.detach().numpy(), axis=1)"""
 
             signal_progress = np.append(signal_progress, pred_E_vox.detach().numpy())
             adc_prime_progress = np.append(adc_prime_progress, pred_adc_prime[:,0].detach().numpy())
@@ -218,4 +221,4 @@ net.load_state_dict(final_model)
 
 net.eval()
 with torch.no_grad():
-    final_pred_E_vox, final_pred_adc_prime, final_pred_adc, final_pred_sigma, final_pred_axr, _,_,_ = net(torch.from_numpy(sim_E_vox.astype(np.float32)))
+    final_pred_E_vox, final_pred_adc_prime, final_pred_adc, final_pred_sigma, final_pred_axr = net(torch.from_numpy(sim_E_vox.astype(np.float32)))
