@@ -69,7 +69,7 @@ all_inits = list(product(adc_inits, sig_inits, axr_inits))
 all_inits = np.array(all_inits)
 
 #old method:
-"""
+
 sim_adc = np.random.uniform(adc_lb,adc_ub,nvox)                 # ADC, simulated [um2/ms]
 sim_sigma = np.random.uniform(sig_lb,sig_ub,nvox)               # sigma, simulated [a.u.]
 sim_axr = np.random.uniform(axr_lb,axr_ub,nvox)                 # AXR, simulated [s-1]
