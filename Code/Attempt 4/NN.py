@@ -37,8 +37,24 @@ class Net(nn.Module): # this is the neural network
         self.encoder = nn.Sequential(*self.layers, nn.Linear(len(be), nparams))
 
     def forward(self, E_vox):
+        print(E_vox)
+        if torch.isnan(E_vox).any():
+            print("E_vox nan found")
+        if torch.isinf(E_vox).any():
+            print("E_vox inf found")
+
+        print("self.encoder(E_vox)", self.encoder(E_vox))
+        if torch.isnan(self.encoder(E_vox)).any():
+            print("self.encoder(E_vox) nan found")
+        if torch.isinf(self.encoder(E_vox)).any():
+            print("self.encoder(E_vox) inf found")
 
         params = torch.nn.functional.softplus(self.encoder(E_vox))
+        print("params:", params)
+        if torch.isnan(params).any():
+            print("params nan found")
+        if torch.isinf(params).any():
+            print("params inf found")
         #running a forward pass through the network
 
         #SoftPlus is a smooth approximation to the ReLU function and can be used to constrain the output of a machine to always be positive
@@ -48,31 +64,45 @@ class Net(nn.Module): # this is the neural network
         #parameter constraints from Elizabeth matlab
 
         adc = torch.clamp(params[:, 0].unsqueeze(1), min=limits[0,0], max=limits[0,1])
+        print("adc:", adc)
+        if torch.isnan(adc).any():
+            print("adc nan found")
+        if torch.isinf(adc).any():
+            print("adc inf found")
+            
         sigma = torch.clamp(params[:, 1].unsqueeze(1), min=limits[1,0], max=limits[1,1])
-        #axr = torch.clamp(params[:, 2].unsqueeze(1), min=limits[2,0], max=limits[2,1])
+        print("sigma:", sigma)
+        if torch.isnan(sigma).any():
+            print("sigma nan found")
+        if torch.isinf(sigma).any():
+            print("sigma inf found")
+
         axr = params[:, 2].unsqueeze(1)
+        #axr = torch.clamp(params[:, 2].unsqueeze(1), min=limits[2,0], max=limits[2,1])
+        
+        print("axr:", axr)
+        if torch.isnan(axr).any():
+            print("axr nan found")
+        if torch.isinf(axr).any():
+            print("axr inf found")
 
         """adc_unclamped = params[:, 0].unsqueeze(1)
         sigma_unclamped = params[:, 1].unsqueeze(1)
         axr_unclamped = params[:, 2].unsqueeze(1)"""
 
         adc_prime = adc * (1 - sigma * torch.exp(- tm * axr))
+        print("adc_prime:", adc_prime)
+        if torch.isnan(adc_prime).any():
+            print("adc_prime nan found")
+        if torch.isinf(adc_prime).any():
+            print("adc_prime inf found")
+
         E_vox = torch.exp(- adc_prime * be)
-
-        """print("tm:", self.tm.shape)
-        print("be:", self.be.shape)
-        print("bf:", self.bf.shape)
-        print("adc:", adc.shape)
-        print("sigma:", sigma.shape)
-        print("axr:", axr.shape)
-        print("evox:", E_vox.shape)"""
-
-        """print("self.encoder(E_vox)", self.encoder(E_vox)[0,:])
-        print("params:", params[0,:])
-        print("adc:", adc)
-        print("sigma:", sigma)
-        print("axr:", axr)
-        print("evox:", E_vox)"""
+        print("evox:", E_vox)
+        if torch.isnan(E_vox).any():
+            print("E_vox nan found")
+        if torch.isinf(E_vox).any():
+            print("E_vox inf found")
 
         return E_vox, adc_prime, adc, sigma, axr
         #axr_unclamped, adc_unclamped, sigma_unclamped
@@ -156,18 +186,21 @@ for epoch in range(10000):
         pred_E_vox, pred_adc_prime, pred_adc, pred_sigma, pred_axr = net(sim_E_vox_batch)
         #axr_unclamped, adc_unclamped, sigma_unclamped
 
-        if torch.isnan(pred_E_vox).any():
+        """if torch.isnan(pred_E_vox).any():
             print("evox nan found in batch",i,"epoch",epoch)
-            print("pred_E_vox:", pred_E_vox)
+        print("pred_E_vox:", pred_E_vox)
         if torch.isnan(pred_adc).any():
             print("pred_adc nan found in batch",i,"epoch",epoch)
-            print("pred_adc:", pred_adc)
+        print("pred_adc:", pred_adc)
         if torch.isnan(pred_axr).any():
             print("pred_axr nan found in batch",i,"epoch",epoch)
-            print("pred_axr:", pred_axr)
+        print("pred_axr:", pred_axr)
         if torch.isnan(pred_sigma).any():
             print("pred_sigma nan found in batch",i,"epoch",epoch)
-            print("pred_sigma:", pred_sigma)
+        print("pred_sigma:", pred_sigma)
+        if torch.isnan(pred_adc_prime).any():
+            print("pred_adc_prime nan found in batch",i,"epoch",epoch)
+        print("pred_adc_prime:", pred_adc_prime)"""
 
         if torch.isnan(pred_E_vox).any() or torch.isnan(pred_adc).any() or torch.isnan(pred_axr).any() or torch.isnan(pred_sigma).any():
             flag = True

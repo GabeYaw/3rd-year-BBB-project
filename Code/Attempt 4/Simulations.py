@@ -43,7 +43,7 @@ adc_ub = 3.5        #[um2/ms]
 sig_lb = 0          #[a.u.]
 sig_ub = 1          #[a.u.]
 axr_lb = 0.1        #[s-1]
-axr_lb = 1          #[s-1]
+#axr_lb = 1          #[s-1]
 axr_ub = 20         #[s-1]
 
 #consider doing in si units
@@ -83,7 +83,7 @@ De = np.random.uniform(0.1,3.5,nvox)                            # De, simulated 
 Di = np.random.uniform(3,30,nvox)                               # Di, simulated [um2/ms]
 
 sim_adc = feeq * De + fieq * Di                                 # ADC, simulated [um2/ms] (I think units are the same because it is a weighted sum)
-fe0 = np.random.uniform(0,feeq,nvox) 
+fe0 =  #========== Insert equation or bounds for np.random.uniform(ub,lb,nvox) 
 sim_sigma = (De-Di)*(feeq - fe0)/sim_adc                            
 sim_axr = np.random.uniform(axr_lb,axr_ub,nvox)                 # AXR, simulated [s-1]"""
 
