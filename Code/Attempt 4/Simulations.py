@@ -69,6 +69,7 @@ all_inits = list(product(adc_inits, sig_inits, axr_inits))
 all_inits = np.array(all_inits)
 
 #old method:
+"""
 sim_adc = np.random.uniform(adc_lb,adc_ub,nvox)                 # ADC, simulated [um2/ms]
 sim_sigma = np.random.uniform(sig_lb,sig_ub,nvox)               # sigma, simulated [a.u.]
 sim_axr = np.random.uniform(axr_lb,axr_ub,nvox)                 # AXR, simulated [s-1]
@@ -83,7 +84,15 @@ De = np.random.uniform(0.1,3.5,nvox)                            # De, simulated 
 Di = np.random.uniform(3,30,nvox)                               # Di, simulated [um2/ms]
 
 sim_adc = feeq * De + fieq * Di                                 # ADC, simulated [um2/ms] (I think units are the same because it is a weighted sum)
-fe0 =  #========== Insert equation or bounds for np.random.uniform(ub,lb,nvox) 
+
+De_2d = np.expand_dims(De,axis=1)
+Di_2d = np.expand_dims(Di,axis=1)
+fieq_2d = np.expand_dims(fieq,axis=1)
+
+sbf_s0 = ((1-fieq_2d)*np.exp(-bf*De_2d)+fieq_2d*np.exp(-bf*Di_2d))          # s(bf), simulated [a.u] (s0(1-fieq)*np.exp(-bf*De)+(fieq*np.exp(-bf*Di)
+print(sbf_s0)
+
+fe0 = 0.5  #========== Insert equation or bounds for np.random.uniform(ub,lb,nvox) 
 sim_sigma = (De-Di)*(feeq - fe0)/sim_adc                            
 sim_axr = np.random.uniform(axr_lb,axr_ub,nvox)                 # AXR, simulated [s-1]"""
 
