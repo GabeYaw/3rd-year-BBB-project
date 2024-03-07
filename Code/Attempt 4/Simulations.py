@@ -19,10 +19,9 @@ def sim_sig_np(bf,be,tm,adc,sigma,axr):
     bf = np.expand_dims(bf, axis=0)
     tm = np.expand_dims(tm, axis=0)
 
-    if adc.size != 1:
-        adc = np.expand_dims(adc, axis=1)
-        sigma = np.expand_dims(sigma, axis=1)
-        axr = np.expand_dims(axr, axis=1)                                   
+    adc = np.expand_dims(adc, axis=1)
+    sigma = np.expand_dims(sigma, axis=1)
+    axr = np.expand_dims(axr, axis=1)                                   
 
     tm[(tm == np.min(tm)) & (bf == 0)] = np.inf
 
@@ -69,7 +68,7 @@ all_inits = list(product(adc_inits, sig_inits, axr_inits))
 all_inits = np.array(all_inits)
 
 #old method:
-
+"""
 sim_adc = np.random.uniform(adc_lb,adc_ub,nvox)                 # ADC, simulated [um2/ms]
 sim_sigma = np.random.uniform(sig_lb,sig_ub,nvox)               # sigma, simulated [a.u.]
 sim_axr = np.random.uniform(axr_lb,axr_ub,nvox)                 # AXR, simulated [s-1]
@@ -83,17 +82,26 @@ fieq = 1 - feeq                                                 # fieq, simulate
 De = np.random.uniform(0.1,3.5,nvox)                            # De, simulated [um2/ms]
 Di = np.random.uniform(3,30,nvox)                               # Di, simulated [um2/ms]
 
+De = np.expand_dims(De,axis=1)
+Di = np.expand_dims(Di,axis=1)
+fieq = np.expand_dims(fieq,axis=1)
+feeq = np.expand_dims(feeq,axis=1)
+
 sim_adc = feeq * De + fieq * Di                                 # ADC, simulated [um2/ms] (I think units are the same because it is a weighted sum)
 
-De_2d = np.expand_dims(De,axis=1)
-Di_2d = np.expand_dims(Di,axis=1)
-fieq_2d = np.expand_dims(fieq,axis=1)
+#s0 = 1 at this point, so don't need to divide by anything
+sbf_s0 = ((1-fieq)*np.exp(-bf*De)+fieq*np.exp(-bf*Di))          # s(bf), simulated [a.u]
+fe0 = (fieq*np.exp(-bf*Di))/sbf_s0
 
-sbf_s0 = ((1-fieq_2d)*np.exp(-bf*De_2d)+fieq_2d*np.exp(-bf*Di_2d))          # s(bf), simulated [a.u] (s0(1-fieq)*np.exp(-bf*De)+(fieq*np.exp(-bf*Di)
-print(sbf_s0)
+"""print((De-Di).min(),(De-Di).max())
+print((feeq-fe0).min(),(feeq-fe0).max())
+print(((De-Di)*(feeq-fe0)).min(),((De-Di)*(feeq-fe0)).max())"""
 
-fe0 = 0.5  #========== Insert equation or bounds for np.random.uniform(ub,lb,nvox) 
-sim_sigma = (De-Di)*(feeq - fe0)/sim_adc                            
+sim_sigma = ((De-Di)*(feeq - fe0))/sim_adc      
+#all the rows contain the same value, except for first 2 columns so we take 3rd column
+sim_sigma = sim_sigma[:,2]                                      # sigma, simulated [a.u.]
+sim_adc = np.squeeze(sim_adc)
+
 sim_axr = np.random.uniform(axr_lb,axr_ub,nvox)                 # AXR, simulated [s-1]"""
 
 sim_E_vox, sim_adc_prime = sim_sig_np(bf,be,tm,sim_adc,sim_sigma,sim_axr)
