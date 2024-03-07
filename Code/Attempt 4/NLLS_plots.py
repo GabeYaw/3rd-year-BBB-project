@@ -40,8 +40,28 @@ for i,_ in enumerate(param_sim):
     plt.xlabel(param_name[i] + ' Ground Truth')
     plt.ylabel(param_name[i] + ' Prediction')
     #check what line below does. Commented out because it gave an error when using 1 voxel
-    #rvals.append(scipy.stats.pearsonr(np.squeeze(param_sim[i]), np.squeeze(param_pred[i])))
+    r_value,p_value = scipy.stats.pearsonr(np.squeeze(param_sim[i]), np.squeeze(param_pred[i]))
+    plt.text(0.95, 0.05, f"r = {r_value:.2f}", ha='right', va='bottom', transform=plt.gca().transAxes)
+    rvals.append([r_value, p_value])
     plt.tight_layout
     plt.show()
 
-print(rvals)
+print("Pearson correlation coefficient",rvals)
+
+bias_adc = np.mean(NLLS_adc_all - sim_adc)
+bias_sigma = np.mean(NLLS_sigma_all - sim_sigma)
+bias_axr = np.mean(NLLS_axr_all - sim_axr)
+
+var_adc = np.mean((NLLS_adc_all - np.mean(sim_adc))**2)
+var_sigma = np.mean((NLLS_sigma_all - np.mean(sim_sigma))**2)
+var_axr = np.mean((NLLS_axr_all - np.mean(sim_axr))**2)
+
+mse_adc = np.mean((NLLS_adc_all - sim_adc)**2)
+mse_sigma = np.mean((NLLS_sigma_all - sim_sigma)**2)
+mse_axr = np.mean((NLLS_axr_all - sim_axr)**2)
+
+print("Bias ADC: ", bias_adc, "Bias Sigma: ", bias_sigma, "Bias AXR: ", bias_axr)
+print("Variance ADC: ", var_adc, "Variance Sigma: ", var_sigma, "Variance AXR: ", var_axr)
+print("MSE ADC: ", mse_adc, "MSE Sigma: ", mse_sigma, "MSE AXR: ", mse_axr)
+
+
