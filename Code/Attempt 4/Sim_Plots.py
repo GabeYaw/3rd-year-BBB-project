@@ -17,7 +17,7 @@ from tqdm import tqdm
 from Simulations import *
 
 # Histogram plots
-n_bins=20
+n_bins=50
 #make 200 and voxels 100,000 to see adc prime dropoff
 fig, axs = plt.subplots(1, 3, sharey=True,figsize=(15, 5))
 axs[0].hist(sim_adc, bins=n_bins)

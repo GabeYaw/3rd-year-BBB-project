@@ -15,6 +15,9 @@ from scipy.special import erf
 from tqdm import tqdm
 
 from Simulations import *
+
+#torch.autograd.set_detect_anomaly(True)
+torch.autograd.detect_anomaly
 # Creating the neural network
 class Net(nn.Module): # this is the neural network
     #defining the init and foward pass functions.
@@ -77,8 +80,8 @@ class Net(nn.Module): # this is the neural network
         if torch.isinf(sigma).any():
             print("sigma inf found")
 
-        axr = params[:, 2].unsqueeze(1)
-        #axr = torch.clamp(params[:, 2].unsqueeze(1), min=limits[2,0], max=limits[2,1])
+        #axr = params[:, 2].unsqueeze(1)
+        axr = torch.clamp(params[:, 2].unsqueeze(1), min=limits[2,0], max=limits[2,1])
         
         print("axr:", axr)
         if torch.isnan(axr).any():
@@ -207,8 +210,17 @@ for epoch in range(10000):
             break
 
         loss = criterion(pred_E_vox, sim_E_vox_batch)
-
         loss.backward()
+
+        for name, param in net.named_parameters():
+            if param.grad is not None:
+                print(f'Parameter: {name}, Gradient Norm: {torch.norm(param.grad)}')
+            else:
+                print(f'Parameter: {name}, Gradient: None')
+        
+        #clipping gradients
+        #torch.nn.utils.clip_grad_norm_(net.parameters(), max_norm=1.0)
+
         optimizer.step()
         running_loss += loss.item()
 

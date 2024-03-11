@@ -76,11 +76,18 @@ sim_axr = np.random.uniform(axr_lb,axr_ub,nvox)                 # AXR, simulated
 """
 
 #new method:
-fieq = np.random.uniform(0.01,0.1,nvox)                         # fieq, simulated [a.u]
+fieq = np.random.uniform(0,0.5,nvox)                         # fieq, simulated [a.u] #change
 feeq = 1 - fieq                                                 # feeq, simulated [a.u]
 # ranges for De & Di from lizzies paper 
-De = np.random.uniform(0.1,3.5,nvox)                            # De, simulated [um2/ms]
-Di = np.random.uniform(3,30,nvox)                               # Di, simulated [um2/ms]
+De = np.random.uniform(0.1, 3.5, nvox)                          # De, simulated [um2/ms]
+Di = np.random.uniform(3, 30, nvox)                             # Di, simulated [um2/ms]
+
+# Check if De is smaller than Di and regenerate values if necessary
+while np.any(De < Di):
+    indices = np.where(De < Di)
+    De[indices] = np.random.uniform(0.1, 3.5, len(indices[0]))
+    Di[indices] = np.random.uniform(3, 30, len(indices[0]))                              
+
 
 De = np.expand_dims(De,axis=1)
 Di = np.expand_dims(Di,axis=1)
@@ -92,13 +99,13 @@ sim_adc = feeq * De + fieq * Di                                 # ADC, simulated
 #s0 = 1 at this point, so don't need to divide by anything
 sbf_s0 = ((1-fieq)*np.exp(-bf*De)+fieq*np.exp(-bf*Di))          # s(bf), simulated [a.u]
 fe0 = (fieq*np.exp(-bf*Di))/sbf_s0
-#fe0 = fe0[:,2]                                      
 
 print((De-Di).min(),(De-Di).max())
 print((feeq-fe0).min(),(feeq-fe0).max())
 print(((De-Di)*(feeq-fe0)).min(),((De-Di)*(feeq-fe0)).max())
+
 sim_sigma = ((De-Di)*(feeq - fe0))/sim_adc      
-#all the rows contain the same value, except for first 2 columns so we take 3rd column
+# we take 3rd column because it is one of the columns where bf=250
 sim_sigma = sim_sigma[:,2]                                      # sigma, simulated [a.u.]
 sim_adc = np.squeeze(sim_adc)
 

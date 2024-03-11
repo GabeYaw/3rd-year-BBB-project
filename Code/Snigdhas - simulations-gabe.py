@@ -296,6 +296,11 @@ for epoch in range(10000):
         X_pred, f_ic_pred, f_ees_pred, r_pred, d_ees_pred = net(X_batch)
         loss = criterion(X_pred, X_batch)
         loss.backward()
+        for name, param in net.named_parameters():
+            if param.grad is not None:
+                print(f'Parameter: {name}, Gradient Norm: {torch.norm(param.grad)}')
+            else:
+                print(f'Parameter: {name}, Gradient: None')
         optimizer.step()
         running_loss += loss.item()
       
