@@ -20,16 +20,17 @@ rvals = []
 
 for i,_ in enumerate(param_sim):
     plt.rcParams['font.size'] = '16'
+    plt.figure()  # Create a new figure for each loop
     plt.scatter(param_sim[i], param_pred[i], s=2, c='navy')
     plt.xlabel(param_name[i] + ' Ground Truth')
     plt.ylabel(param_name[i] + ' Prediction')
     r_value,p_value = scipy.stats.pearsonr(np.squeeze(param_sim[i]), np.squeeze(param_pred[i]))
     plt.text(0.95, 0.05, f"r = {r_value:.2f}", ha='right', va='bottom', transform=plt.gca().transAxes)
     rvals.append([r_value, p_value])
-    plt.tight_layout
+    plt.tight_layout()
     plt.show(block=False)
 
-plt.show()
+plt.show()  # Display all the plots at the same time on their respective figures
 
 print("Pearson correlation coefficient",rvals)
 
