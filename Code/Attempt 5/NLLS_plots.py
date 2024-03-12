@@ -39,7 +39,6 @@ for i,_ in enumerate(param_sim):
     plt.scatter(param_sim[i], param_pred[i], s=2, c='navy')
     plt.xlabel(param_name[i] + ' Ground Truth')
     plt.ylabel(param_name[i] + ' Prediction')
-    #check what line below does. Commented out because it gave an error when using 1 voxel
     r_value,p_value = scipy.stats.pearsonr(np.squeeze(param_sim[i]), np.squeeze(param_pred[i]))
     plt.text(0.95, 0.05, f"r = {r_value:.2f}", ha='right', va='bottom', transform=plt.gca().transAxes)
     rvals.append([r_value, p_value])

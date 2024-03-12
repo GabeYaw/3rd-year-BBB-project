@@ -33,7 +33,7 @@ class Net(nn.Module): # this is the neural network
         self.be = be
         self.bf = bf
         self.tm = tm
-        self.tm[(self.tm == torch.min(self.tm)) & (self.bf == 0)] = 1e16
+        self.tm[(self.tm == torch.min(self.tm)) & (self.bf == 0)] = 1000
         self.limits = limits
 
         self.layers = nn.ModuleList()
