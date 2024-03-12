@@ -33,7 +33,7 @@ class Net(nn.Module): # this is the neural network
         self.be = be
         self.bf = bf
         self.tm = tm
-        self.tm[(self.tm == torch.min(self.tm)) & (self.bf == 0)] = 10000
+        self.tm[(self.tm == torch.min(self.tm)) & (self.bf == 0)] = 1e16
         self.limits = limits
 
         self.layers = nn.ModuleList()
@@ -97,14 +97,6 @@ for epoch in range(10000):
         loss = criterion(X_pred, X_batch)
         loss.backward()
 
-        for name, param in net.named_parameters():
-            if param.grad is not None:
-                #print(f'Parameter: {name}, Gradient: {param.grad}')
-                pass
-            else:
-                #print(f'Parameter: {name}, Gradient: None')
-                pass
-            
         optimizer.step()
         running_loss += loss.item()
       

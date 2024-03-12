@@ -24,7 +24,7 @@ def sim_sig_np(bf,be,tm,adc,sigma,axr):
         sigma = np.expand_dims(sigma, axis=1)
         axr = np.expand_dims(axr, axis=1)                                   
 
-    tm[(tm == np.min(tm)) & (bf == 0)] = 10000
+    tm[(tm == np.min(tm)) & (bf == 0)] = 1e16
 
     adc_prime = adc * (1 - sigma* np.exp(-tm*axr))
     normalised_signal = np.exp(-adc_prime * be)
@@ -40,10 +40,11 @@ tm = np.array([20, 20, 20, 20, 200, 200, 400, 400], dtype=np.float32) * 1e-3 # m
 
 adc_lb = 0.1        #[um2/ms]
 adc_ub = 3.5        #[um2/ms]
+adc_ub = 6          #[um2/ms] based off intuition, look at max possible value
 sig_lb = 0          #[a.u.]
 sig_ub = 1.0          #[a.u.]
-axr_lb = 0.1        #[s-1]
-#axr_lb = 1          #[s-1]
+#axr_lb = 0.1        #[s-1]
+axr_lb = 1          #[s-1]
 axr_ub = 20         #[s-1]
 
 #consider doing in si units
