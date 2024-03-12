@@ -42,50 +42,15 @@ class Net(nn.Module): # this is the neural network
         self.encoder = nn.Sequential(*self.layers, nn.Linear(len(be), nparams))
 
     def forward(self, X):
-        
-        if torch.isinf(X).any():
-            print("X contains inf")
-            print(X)
-        if torch.isnan(X).any():
-            print("X contains nan")
-            print(X)
 
         params = torch.nn.functional.softplus(self.encoder(X))
 
-        if torch.isinf(self.encoder(X)).any():
-            print("encoder(X) contains inf")
-            print(self.encoder(X))
-        if torch.isnan(self.encoder(X)).any():
-            print("encoder(X) contains nan")
-            print(self.encoder(X))
-
-        if torch.isinf(params).any():
-            print("params contains inf")
-            print(params)
-        if torch.isnan(params).any():
-            print("params contains nan")
-            print(params)
         adc = torch.clamp(params[:,0].unsqueeze(1), min=self.limits[0,0], max=self.limits[0,1]) # parameter constraints
         sigma = torch.clamp(params[:,1].unsqueeze(1), min=self.limits[1,0], max=self.limits[1,1])
         axr = torch.clamp(params[:,2].unsqueeze(1), min=self.limits[2,0], max=self.limits[2,1])
 
-
         adc_prime =  adc * (1 - sigma * torch.exp(-self.tm * axr))
-            
-        if torch.isinf(adc_prime).any():
-            print("adc_prime contains inf")
-            print(adc_prime)
-        if torch.isnan(adc_prime).any():
-            print("adc_prime contains nan")
-            print(adc_prime)
-
         X = torch.exp(-adc_prime * self.be)        
-        if torch.isinf(X).any():
-            print("X contains inf")
-            print(X)
-        if torch.isnan(X).any():
-            print("X contains nan")
-            print(X)
 
         return X, adc, sigma, axr, adc_prime
 
@@ -114,7 +79,7 @@ optimizer = optim.Adam(net.parameters(), lr = 0.00001)
 # best loss
 best = 1e16
 num_bad_epochs = 0
-patience = 100
+patience = 10
 
 # train
 for epoch in range(10000): 
@@ -130,24 +95,8 @@ for epoch in range(10000):
         # forward + backward + optimize
         X_pred, adc_pred, sigma_pred, axr_pred, adc_prime_pred  = net(X_batch)
         loss = criterion(X_pred, X_batch)
-        if torch.isnan(X_pred).any():
-            print("X_pred contains nan")
-            print(X_pred)
-        if torch.isinf(X_pred).any():
-            print("X_pred contains inf")
-            print(X_pred)
-        if torch.isnan(X_batch).any():
-            print("X_batch contains nan")
-            print(X_batch)
-        if torch.isinf(X_batch).any():
-            print("X_batch contains inf")
-            print(X_batch)
-
-        if torch.isnan(loss).any():
-            print("loss contains nan")
-            print(loss)
-
         loss.backward()
+
         for name, param in net.named_parameters():
             if param.grad is not None:
                 #print(f'Parameter: {name}, Gradient: {param.grad}')
@@ -155,6 +104,7 @@ for epoch in range(10000):
             else:
                 #print(f'Parameter: {name}, Gradient: None')
                 pass
+            
         optimizer.step()
         running_loss += loss.item()
       

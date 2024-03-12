@@ -68,15 +68,8 @@ all_inits = list(product(adc_inits, sig_inits, axr_inits))
 # Convert the list of tuples to a NumPy array
 all_inits = np.array(all_inits)
 
-#old method:
-"""
-sim_adc = np.random.uniform(adc_lb,adc_ub,nvox)                 # ADC, simulated [um2/ms]
-sim_sigma = np.random.uniform(sig_lb,sig_ub,nvox)               # sigma, simulated [a.u.]
-sim_axr = np.random.uniform(axr_lb,axr_ub,nvox)                 # AXR, simulated [s-1]"""
-
-
 #new method:
-fieq = np.random.uniform(0,0.1,nvox)                         # fieq, simulated [a.u] #change
+fieq = np.random.uniform(0,0.1,nvox)                            # fieq, simulated [a.u] #change
 feeq = 1 - fieq                                                 # feeq, simulated [a.u]
 # ranges for De & Di from lizzies paper 
 De = np.random.uniform(0.1, 3.5, nvox)                          # De, simulated [um2/ms]
@@ -99,11 +92,6 @@ sim_adc = feeq * De + fieq * Di                                 # ADC, simulated
 #s0 = 1 at this point, so don't need to divide by anything
 sbf_s0 = ((1-fieq)*np.exp(-bf*De)+fieq*np.exp(-bf*Di))          # s(bf), simulated [a.u]
 fe0 = (feeq*np.exp(-bf*De))/sbf_s0
-
-""" flip
-print((De-Di).min(),(De-Di).max())
-print((feeq-fe0).min(),(feeq-fe0).max())
-print(((De-Di)*(feeq-fe0)).min(),((De-Di)*(feeq-fe0)).max())"""
 
 sim_sigma = ((De-Di)*(feeq - fe0))/sim_adc      
 # we take 3rd column because it is one of the columns where bf=250
