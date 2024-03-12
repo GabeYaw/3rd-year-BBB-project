@@ -15,9 +15,11 @@ from dmipy.core.modeling_framework import MultiCompartmentSphericalMeanModel
 from dmipy.signal_models import sphere_models, cylinder_models, gaussian_models
 
 from scipy.io import savemat
-
+np.random.seed(4231314)
 from Simulations import *
+
 torch.autograd.set_detect_anomaly(True)
+#torch.autograd.detect_anomaly
 
 
 E_vox = sim_E_vox
@@ -32,7 +34,7 @@ class Net(nn.Module): # this is the neural network
         self.be = be
         self.bf = bf
         self.tm = tm
-        self.tm[(self.tm == torch.min(self.tm)) & (self.bf == 0)] = float('inf')
+        #self.tm[(self.tm == torch.min(self.tm)) & (self.bf == 0)] = float('inf')
         self.limits = limits
 
         self.layers = nn.ModuleList()
@@ -48,8 +50,7 @@ class Net(nn.Module): # this is the neural network
         if torch.isnan(X).any():
             print("X contains nan")
             print(X)
-        print("min:",X.min())
-        print("max:",X.max())
+
         params = torch.nn.functional.softplus(self.encoder(X))
 
         if torch.isinf(self.encoder(X)).any():
@@ -69,7 +70,13 @@ class Net(nn.Module): # this is the neural network
         sigma = torch.clamp(params[:,1].unsqueeze(1), min=self.limits[1,0], max=self.limits[1,1])
         axr = torch.clamp(params[:,2].unsqueeze(1), min=self.limits[2,0], max=self.limits[2,1])
 
+
+        """if tm == np.inf:
+            adc_prime = adc * (1 - sigma * torch.exp(-self.tm * axr))
+        else:
+            adc_prime = adc * (1 - sigma * torch.exp(-self.tm * axr))"""
         adc_prime = adc * (1 - sigma * torch.exp(-self.tm * axr))
+            
         if torch.isinf(adc_prime).any():
             print("adc_prime contains inf")
             print(adc_prime)
@@ -112,7 +119,7 @@ optimizer = optim.Adam(net.parameters(), lr = 0.00001)
 # best loss
 best = 1e16
 num_bad_epochs = 0
-patience = 100
+patience = 500
 
 # train
 for epoch in range(10000): 
@@ -128,10 +135,31 @@ for epoch in range(10000):
         # forward + backward + optimize
         X_pred, adc_pred, sigma_pred, axr_pred, adc_prime_pred,  = net(X_batch)
         loss = criterion(X_pred, X_batch)
+        if torch.isnan(X_pred).any():
+            print("X_pred contains nan")
+            print(X_pred)
+        if torch.isinf(X_pred).any():
+            print("X_pred contains inf")
+            print(X_pred)
+        if torch.isnan(X_batch).any():
+            print("X_batch contains nan")
+            print(X_batch)
+        if torch.isinf(X_batch).any():
+            print("X_batch contains inf")
+            print(X_batch)
+
         if torch.isnan(loss).any():
             print("loss contains nan")
             print(loss)
+
         loss.backward()
+        for name, param in net.named_parameters():
+            if param.grad is not None:
+                #print(f'Parameter: {name}, Gradient: {param.grad}')
+                pass
+            else:
+                #print(f'Parameter: {name}, Gradient: None')
+                pass
         optimizer.step()
         running_loss += loss.item()
       

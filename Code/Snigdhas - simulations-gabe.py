@@ -107,7 +107,7 @@ def astrosticks(l):
     return E_mean
 
 
-nvox = 50000 # number of voxels to simulate Try with 1000
+nvox = 5000 # number of voxels to simulate Try with 1000
 radii = np.random.uniform(0.001,15,nvox) # free parameter - cell radius
 dees = np.random.uniform(0.5,3,nvox) # free parameter - EES diffusivity
 lambdapar = np.repeat(2,nvox) # fixed parameter
