@@ -13,8 +13,7 @@ plt.legend()
 plt.figure()
 
 param_sim = [sim_adc, sim_sigma, sim_axr]
-param_pred = [adc_final_pred, sigma_final_pred, ax
-final_pred]
+param_pred = [adc_final_pred, sigma_final_pred, axr_final_pred]
 param_name = ['ADC', 'Sigma', 'AXR']
 
 rvals = []
