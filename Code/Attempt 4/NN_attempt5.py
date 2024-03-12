@@ -72,8 +72,8 @@ class Net(nn.Module): # this is the neural network
         sigma = torch.clamp(params[:,1].unsqueeze(1), min=self.limits[1,0], max=self.limits[1,1])
         axr = torch.clamp(params[:,2].unsqueeze(1), min=self.limits[2,0], max=self.limits[2,1])
 
-        adc_prime = adc * (1 - sigma * torch.exp(-self.tm * axr))
-        adc_prime = torch.where(torch.isinf(self.tm), adc, adc_prime)
+        adc_prime = torch.zeros_like(X)
+        adc_prime = torch.where(torch.isinf(self.tm), adc * (1 - sigma * torch.exp(-self.tm * axr)), adc_prime)
             
         if torch.isinf(adc_prime).any():
             print("adc_prime contains inf")
