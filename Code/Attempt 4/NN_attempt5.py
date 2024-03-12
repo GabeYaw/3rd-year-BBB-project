@@ -27,17 +27,14 @@ start_time = time.time()
 
 class Net(nn.Module): # this is the neural network
 
-    def __init__(self, be, bf ,tm, nparams,limits,batch_size):
+    def __init__(self, be, bf ,tm, nparams,limits):
         super(Net, self).__init__()
 
         self.be = be
         self.bf = bf
         self.tm = tm
-        self.tm[(self.tm == torch.min(self.tm)) & (self.bf == 0)] = float('inf')
+        self.tm[(self.tm == torch.min(self.tm)) & (self.bf == 0)] = 10000
         self.limits = limits
-
-        # broadcast tm to batch size
-        self.tm_broadcast = torch.tile(self.tm.unsqueeze(0), (batch_size, 1))
 
         self.layers = nn.ModuleList()
         for i in range(3): # 3 fully connected hidden layers
@@ -72,8 +69,8 @@ class Net(nn.Module): # this is the neural network
         sigma = torch.clamp(params[:,1].unsqueeze(1), min=self.limits[1,0], max=self.limits[1,1])
         axr = torch.clamp(params[:,2].unsqueeze(1), min=self.limits[2,0], max=self.limits[2,1])
 
-        adc_prime = torch.zeros_like(X)
-        adc_prime = torch.where(torch.isinf(self.tm), adc * (1 - sigma * torch.exp(-self.tm * axr)), adc_prime)
+
+        adc_prime =  adc * (1 - sigma * torch.exp(-self.tm * axr))
             
         if torch.isinf(adc_prime).any():
             print("adc_prime contains inf")
@@ -100,7 +97,7 @@ tm = torch.FloatTensor(tm)
 limits = torch.FloatTensor(limits)
 
 batch_size = 128
-net = Net(be,bf, tm, nparams,limits,batch_size)
+net = Net(be,bf, tm, nparams,limits)
 
 #create batch queues for data
 num_batches = len(E_vox) // batch_size
@@ -117,7 +114,7 @@ optimizer = optim.Adam(net.parameters(), lr = 0.00001)
 # best loss
 best = 1e16
 num_bad_epochs = 0
-patience = 1000
+patience = 100
 
 # train
 for epoch in range(10000): 
@@ -131,7 +128,7 @@ for epoch in range(10000):
         optimizer.zero_grad()
 
         # forward + backward + optimize
-        X_pred, adc_pred, sigma_pred, axr_pred, adc_prime_pred,  = net(X_batch)
+        X_pred, adc_pred, sigma_pred, axr_pred, adc_prime_pred  = net(X_batch)
         loss = criterion(X_pred, X_batch)
         if torch.isnan(X_pred).any():
             print("X_pred contains nan")
@@ -153,10 +150,10 @@ for epoch in range(10000):
         loss.backward()
         for name, param in net.named_parameters():
             if param.grad is not None:
-                print(f'Parameter: {name}, Gradient: {param.grad}')
+                #print(f'Parameter: {name}, Gradient: {param.grad}')
                 pass
             else:
-                print(f'Parameter: {name}, Gradient: None')
+                #print(f'Parameter: {name}, Gradient: None')
                 pass
         optimizer.step()
         running_loss += loss.item()

@@ -1,6 +1,6 @@
 # NN Plots
 
-from NN import *
+from NN_attempt4 import *
 #from NN_adc_prime import *
 
 

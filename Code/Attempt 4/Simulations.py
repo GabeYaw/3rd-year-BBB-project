@@ -24,7 +24,7 @@ def sim_sig_np(bf,be,tm,adc,sigma,axr):
         sigma = np.expand_dims(sigma, axis=1)
         axr = np.expand_dims(axr, axis=1)                                   
 
-    tm[(tm == np.min(tm)) & (bf == 0)] = np.inf
+    tm[(tm == np.min(tm)) & (bf == 0)] = 10000
 
     adc_prime = adc * (1 - sigma* np.exp(-tm*axr))
     normalised_signal = np.exp(-adc_prime * be)
