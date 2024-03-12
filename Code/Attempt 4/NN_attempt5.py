@@ -15,10 +15,9 @@ from dmipy.core.modeling_framework import MultiCompartmentSphericalMeanModel
 from dmipy.signal_models import sphere_models, cylinder_models, gaussian_models
 
 from scipy.io import savemat
-np.random.seed(4231314)
 from Simulations import *
 
-torch.autograd.set_detect_anomaly(True)
+#torch.autograd.set_detect_anomaly(True)
 #torch.autograd.detect_anomaly
 
 
@@ -28,14 +27,17 @@ start_time = time.time()
 
 class Net(nn.Module): # this is the neural network
 
-    def __init__(self, be, bf ,tm, nparams,limits):
+    def __init__(self, be, bf ,tm, nparams,limits,batch_size):
         super(Net, self).__init__()
 
         self.be = be
         self.bf = bf
         self.tm = tm
-        #self.tm[(self.tm == torch.min(self.tm)) & (self.bf == 0)] = float('inf')
+        self.tm[(self.tm == torch.min(self.tm)) & (self.bf == 0)] = float('inf')
         self.limits = limits
+
+        # broadcast tm to batch size
+        self.tm_broadcast = torch.tile(self.tm.unsqueeze(0), (batch_size, 1))
 
         self.layers = nn.ModuleList()
         for i in range(3): # 3 fully connected hidden layers
@@ -70,12 +72,8 @@ class Net(nn.Module): # this is the neural network
         sigma = torch.clamp(params[:,1].unsqueeze(1), min=self.limits[1,0], max=self.limits[1,1])
         axr = torch.clamp(params[:,2].unsqueeze(1), min=self.limits[2,0], max=self.limits[2,1])
 
-
-        """if tm == np.inf:
-            adc_prime = adc * (1 - sigma * torch.exp(-self.tm * axr))
-        else:
-            adc_prime = adc * (1 - sigma * torch.exp(-self.tm * axr))"""
         adc_prime = adc * (1 - sigma * torch.exp(-self.tm * axr))
+        adc_prime = torch.where(torch.isinf(self.tm), adc, adc_prime)
             
         if torch.isinf(adc_prime).any():
             print("adc_prime contains inf")
@@ -101,10 +99,10 @@ bf = torch.FloatTensor(bf)
 tm = torch.FloatTensor(tm)
 limits = torch.FloatTensor(limits)
 
-net = Net(be,bf, tm, nparams,limits)
+batch_size = 128
+net = Net(be,bf, tm, nparams,limits,batch_size)
 
 #create batch queues for data
-batch_size = 128
 num_batches = len(E_vox) // batch_size
 trainloader = utils.DataLoader(torch.from_numpy(E_vox.astype(np.float32)),
                                 batch_size = batch_size, 
@@ -119,7 +117,7 @@ optimizer = optim.Adam(net.parameters(), lr = 0.00001)
 # best loss
 best = 1e16
 num_bad_epochs = 0
-patience = 500
+patience = 1000
 
 # train
 for epoch in range(10000): 
@@ -155,15 +153,16 @@ for epoch in range(10000):
         loss.backward()
         for name, param in net.named_parameters():
             if param.grad is not None:
-                #print(f'Parameter: {name}, Gradient: {param.grad}')
+                print(f'Parameter: {name}, Gradient: {param.grad}')
                 pass
             else:
-                #print(f'Parameter: {name}, Gradient: None')
+                print(f'Parameter: {name}, Gradient: None')
                 pass
         optimizer.step()
         running_loss += loss.item()
       
     print("loss: {}".format(running_loss))
+    print("best loss: {}".format(best))
     # early stopping
     if running_loss < best:
         print("####################### saving good model #######################")
