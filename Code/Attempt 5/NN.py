@@ -20,7 +20,6 @@ from Simulations import *
 torch.autograd.set_detect_anomaly(True)
 #torch.autograd.detect_anomaly
 
-
 E_vox = sim_E_vox
 
 start_time = time.time()
@@ -33,7 +32,9 @@ class Net(nn.Module): # this is the neural network
         self.be = be
         self.bf = bf
         self.tm = tm
-        self.tm[(self.tm == torch.min(self.tm)) & (self.bf == 0)] = 4000
+        #the following line has no impact on the output. Whatever the RHS is, the output is the same.
+        #I left it out so that there are no infs, although it doesn't matter now
+        #self.tm[(self.tm == torch.min(self.tm)) & (self.bf == 0)] = float('inf')
         self.limits = limits
 
         self.layers = nn.ModuleList()
@@ -79,9 +80,9 @@ trainloader = utils.DataLoader(torch.from_numpy(E_vox.astype(np.float32)),
                                 drop_last = True)
 
 # loss function and optimizer
+learning_rate = 1e-2
 criterion = nn.MSELoss()
-optimizer = optim.Adam(net.parameters())
-#lr = 0.0001
+optimizer = optim.Adam(net.parameters(),lr=learning_rate)
 
 # best loss
 best = 1e16
