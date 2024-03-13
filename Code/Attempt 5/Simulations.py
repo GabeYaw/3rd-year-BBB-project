@@ -44,7 +44,7 @@ adc_ub = 6          #[um2/ms] based off intuition, look at max possible value
 sig_lb = 0          #[a.u.]
 sig_ub = 1.0          #[a.u.]
 axr_lb = 0.1        #[s-1]
-axr_lb = 1          #[s-1]
+#axr_lb = 1          #[s-1]
 axr_ub = 20         #[s-1]
 
 #consider doing in si units
