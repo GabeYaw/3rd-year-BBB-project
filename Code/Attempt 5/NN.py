@@ -33,7 +33,7 @@ class Net(nn.Module): # this is the neural network
         self.be = be
         self.bf = bf
         self.tm = tm
-        #self.tm[(self.tm == torch.min(self.tm)) & (self.bf == 0)] = 1000
+        self.tm[(self.tm == torch.min(self.tm)) & (self.bf == 0)] = 1000
         self.limits = limits
 
         self.layers = nn.ModuleList()
@@ -103,8 +103,6 @@ for epoch in range(10000):
         X_pred, adc_pred, sigma_pred, axr_pred, adc_prime_pred  = net(X_batch)
         loss = criterion(X_pred, X_batch)
         loss.backward()
-        nn.utils.clip_grad_norm_(net.parameters(), max_norm=1)
-
 
         optimizer.step()
         running_loss += loss.item()
