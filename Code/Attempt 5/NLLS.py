@@ -20,11 +20,6 @@ np.random.seed(0)
 
 from Simulations import *
 
-# Adding rician noise to the simulated signal
-Sim_E_vox_real = sim_E_vox + np.random.normal(scale=0.02, size=np.shape(sim_E_vox)) # adding rician noise, snr = 50
-Sim_E_vox_imag = np.random.normal(scale=0.02, size=np.shape(sim_E_vox))
-E_vox = np.sqrt(Sim_E_vox_real**2 + Sim_E_vox_imag**2)
-
 """Most likely need to use second version of this function, but try to use expandims if possible"""
 def sim_sig_np_1_vox(bf,be,tm,adc,sigma,axr):
 

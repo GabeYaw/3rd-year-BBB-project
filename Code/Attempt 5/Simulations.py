@@ -102,3 +102,8 @@ sim_adc = np.squeeze(sim_adc)
 sim_axr = np.random.uniform(axr_lb,axr_ub,nvox)                 # AXR, simulated [s-1]"""
 
 sim_E_vox, sim_adc_prime = sim_sig_np(bf,be,tm,sim_adc,sim_sigma,sim_axr)
+
+# Adding rician noise to the simulated signal
+Sim_E_vox_real = sim_E_vox + np.random.normal(scale=0.02, size=np.shape(sim_E_vox)) # adding rician noise, snr = 50
+Sim_E_vox_imag = np.random.normal(scale=0.02, size=np.shape(sim_E_vox))
+E_vox = np.sqrt(Sim_E_vox_real**2 + Sim_E_vox_imag**2)
