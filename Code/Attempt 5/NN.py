@@ -86,7 +86,7 @@ optimizer = optim.Adam(net.parameters())
 # best loss
 best = 1e16
 num_bad_epochs = 0
-patience = 10
+patience = 1000
 
 # train
 for epoch in range(10000): 
