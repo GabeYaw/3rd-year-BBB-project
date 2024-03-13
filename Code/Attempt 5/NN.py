@@ -33,7 +33,7 @@ class Net(nn.Module): # this is the neural network
         self.be = be
         self.bf = bf
         self.tm = tm
-        self.tm[(self.tm == torch.min(self.tm)) & (self.bf == 0)] = 1000
+        self.tm[(self.tm == torch.min(self.tm)) & (self.bf == 0)] = torch.inf
         self.limits = limits
 
         self.layers = nn.ModuleList()
@@ -86,7 +86,7 @@ optimizer = optim.Adam(net.parameters())
 # best loss
 best = 1e16
 num_bad_epochs = 0
-patience = 100
+patience = 10
 
 # train
 for epoch in range(10000): 
