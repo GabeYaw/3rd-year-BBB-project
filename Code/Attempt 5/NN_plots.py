@@ -33,7 +33,7 @@ for i,_ in enumerate(param_sim):
 plt.show()  # Display all the plots at the same time on their respective figures
 
 print("Pearson correlation coefficient",rvals)
-
+"""
 bias_adc = np.mean(adc_final_pred - sim_adc)
 bias_sigma = np.mean(sigma_final_pred - sim_sigma)
 bias_axr = np.mean(axr_final_pred - sim_axr)
@@ -48,4 +48,4 @@ mse_axr = np.mean((axr_final_pred - sim_axr)**2)
 
 print("Bias ADC: ", bias_adc, "Bias Sigma: ", bias_sigma, "Bias AXR: ", bias_axr)
 print("Variance ADC: ", var_adc, "Variance Sigma: ", var_sigma, "Variance AXR: ", var_axr)
-print("MSE ADC: ", mse_adc, "MSE Sigma: ", mse_sigma, "MSE AXR: ", mse_axr)
+print("MSE ADC: ", mse_adc, "MSE Sigma: ", mse_sigma, "MSE AXR: ", mse_axr)"""

@@ -17,7 +17,7 @@ from dmipy.signal_models import sphere_models, cylinder_models, gaussian_models
 from scipy.io import savemat
 from Simulations import *
 
-#torch.autograd.set_detect_anomaly(True)
+torch.autograd.set_detect_anomaly(True)
 #torch.autograd.detect_anomaly
 
 
@@ -104,6 +104,7 @@ for epoch in range(10000):
         loss = criterion(X_pred, X_batch)
         loss.backward()
         nn.utils.clip_grad_norm_(net.parameters(), max_norm=1)
+
 
         optimizer.step()
         running_loss += loss.item()
