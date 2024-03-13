@@ -33,7 +33,7 @@ class Net(nn.Module): # this is the neural network
         self.be = be
         self.bf = bf
         self.tm = tm
-        self.tm[(self.tm == torch.min(self.tm)) & (self.bf == 0)] = 1000
+        #self.tm[(self.tm == torch.min(self.tm)) & (self.bf == 0)] = 1000
         self.limits = limits
 
         self.layers = nn.ModuleList()
@@ -49,8 +49,14 @@ class Net(nn.Module): # this is the neural network
         sigma = torch.clamp(params[:,1].unsqueeze(1), min=self.limits[1,0], max=self.limits[1,1])
         axr = torch.clamp(params[:,2].unsqueeze(1), min=self.limits[2,0], max=self.limits[2,1])
 
-        adc_prime =  adc * (1 - sigma * torch.exp(-self.tm * axr))
-        X = torch.exp(-adc_prime * self.be)        
+        adc_prime_1 = adc.expand(X.shape[0], 2)
+        X1 = torch.exp(-adc_prime_1 * self.be[:2])
+
+        adc_prime_2 =  adc * (1 - sigma * torch.exp(-self.tm[-6:] * axr))
+        X2 = torch.exp(-adc_prime_2 * self.be[-6:])
+
+        X = torch.cat((X1, X2), 1)
+        adc_prime = torch.cat((adc_prime_1, adc_prime_2), 1)        
 
         return X, adc, sigma, axr, adc_prime
 
@@ -74,12 +80,13 @@ trainloader = utils.DataLoader(torch.from_numpy(E_vox.astype(np.float32)),
 
 # loss function and optimizer
 criterion = nn.MSELoss()
-optimizer = optim.Adam(net.parameters(), lr = 0.00001)
+optimizer = optim.Adam(net.parameters())
+#lr = 0.0001
 
 # best loss
 best = 1e16
 num_bad_epochs = 0
-patience = 10
+patience = 100
 
 # train
 for epoch in range(10000): 
@@ -96,6 +103,7 @@ for epoch in range(10000):
         X_pred, adc_pred, sigma_pred, axr_pred, adc_prime_pred  = net(X_batch)
         loss = criterion(X_pred, X_batch)
         loss.backward()
+        nn.utils.clip_grad_norm_(net.parameters(), max_norm=1)
 
         optimizer.step()
         running_loss += loss.item()
