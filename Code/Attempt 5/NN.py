@@ -51,7 +51,9 @@ class Net(nn.Module): # this is the neural network
         sigma = torch.clamp(params[:,1].unsqueeze(1), min=self.limits[1,0], max=self.limits[1,1])
         axr = torch.clamp(params[:,2].unsqueeze(1), min=self.limits[2,0], max=self.limits[2,1])
 
-        adc_prime_1 = adc.expand(X.shape[0], 2)
+        adc_prime_1 = adc.expand(adc_prime.shape[0], 2)
+
+        #adc_prime_1 = adc.expand(X.shape[0], 2)
         X1 = torch.exp(-adc_prime_1 * self.be[:2])
 
         adc_prime_2 =  adc * (1 - sigma * torch.exp(-self.tm[-6:] * axr))
