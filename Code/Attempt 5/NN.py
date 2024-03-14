@@ -42,9 +42,10 @@ class Net(nn.Module): # this is the neural network
             self.layers.extend([nn.Linear(len(be), len(be)), nn.PReLU()])
         self.encoder = nn.Sequential(*self.layers, nn.Linear(len(be), nparams))
 
-    def forward(self, X):
-
-        params = torch.nn.functional.softplus(self.encoder(X))
+    def forward(self, adc_prime):
+    #def forward(self, X):
+        #params = torch.nn.functional.softplus(self.encoder(X))
+        params = torch.nn.functional.softplus(self.encoder(adc_prime))
 
         adc = torch.clamp(params[:,0].unsqueeze(1), min=self.limits[0,0], max=self.limits[0,1]) # parameter constraints
         sigma = torch.clamp(params[:,1].unsqueeze(1), min=self.limits[1,0], max=self.limits[1,1])
@@ -73,21 +74,25 @@ net = Net(be,bf, tm, nparams,limits)
 
 #create batch queues for data
 num_batches = len(E_vox) // batch_size
-trainloader = utils.DataLoader(torch.from_numpy(E_vox.astype(np.float32)),
+#trainloader = utils.DataLoader(torch.from_numpy(E_vox.astype(np.float32)),
+trainloader = utils.DataLoader(torch.from_numpy(sim_adc_prime.astype(np.float32)),
                                 batch_size = batch_size, 
                                 shuffle = True,
                                 num_workers = 0, #was 2 previously
                                 drop_last = True)
 
 # loss function and optimizer
-learning_rate = 1e-2
+learning_rate = 1e-1
+#default lr: 1e-3
 criterion = nn.MSELoss()
-optimizer = optim.Adam(net.parameters(),lr=learning_rate)
+#optimizer = optim.Adam(net.parameters(),lr=learning_rate)
+optimizer = optim.Adam(net.parameters())
+
 
 # best loss
 best = 1e16
 num_bad_epochs = 0
-patience = 1000
+patience = 100
 
 # train
 for epoch in range(10000): 
@@ -96,13 +101,16 @@ for epoch in range(10000):
     net.train()
     running_loss = 0.
 
-    for i, X_batch in enumerate(tqdm(trainloader), 0):
+    #for i, X_batch in enumerate(tqdm(trainloader), 0):
+    for i, adc_prime_batch in enumerate(tqdm(trainloader), 0):
         # zero the parameter gradients
         optimizer.zero_grad()
 
         # forward + backward + optimize
-        X_pred, adc_pred, sigma_pred, axr_pred, adc_prime_pred  = net(X_batch)
-        loss = criterion(X_pred, X_batch)
+        #X_pred, adc_pred, sigma_pred, axr_pred, adc_prime_pred  = net(X_batch)
+        X_pred, adc_pred, sigma_pred, axr_pred, adc_prime_pred  = net(adc_prime_batch)
+        loss = criterion(adc_prime_pred, adc_prime_batch)
+        #loss = criterion(X_pred, X_batch)
         loss.backward()
 
         optimizer.step()
@@ -127,4 +135,6 @@ net.load_state_dict(final_model)
 
 net.eval()
 with torch.no_grad():
-    X_final_pred, adc_final_pred, sigma_final_pred, axr_final_pred, adc_prime_final_pred = net(torch.from_numpy(E_vox.astype(np.float32)))
+    #X_final_pred, adc_final_pred, sigma_final_pred, axr_final_pred, adc_prime_final_pred = net(torch.from_numpy(E_vox.astype(np.float32)))
+    X_final_pred, adc_final_pred, sigma_final_pred, axr_final_pred, adc_prime_final_pred = net(torch.from_numpy(sim_adc_prime.astype(np.float32)))
+
