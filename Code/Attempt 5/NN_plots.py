@@ -43,6 +43,8 @@ for i,_ in enumerate(param_sim):
 plt.show()  # Display all the plots at the same time on their respective figures
 
 print("Pearson correlation coefficient",rvals)
+end_time = time.time()
+print(f"Time taken: {end_time - start_time} seconds")
 
 adc_final_pred = adc_final_pred.detach().numpy()
 sigma_final_pred = sigma_final_pred.detach().numpy()
@@ -65,5 +67,3 @@ print(f"Bias ADC: {bias_adc}, Bias Sigma: {bias_sigma}, Bias AXR: {bias_axr}")
 print(f"Variance ADC: {var_adc}, Variance Sigma: {var_sigma}, Variance AXR: {var_axr}")
 print(f"MSE ADC: {mse_adc}, MSE Sigma: {mse_sigma}, MSE AXR: {mse_axr}")
 
-end_time = time.time()
-print(f"Time taken: {end_time - start_time} seconds")
