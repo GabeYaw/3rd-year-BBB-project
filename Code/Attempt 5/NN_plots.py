@@ -15,7 +15,7 @@ plt.legend()
 
 param_sim = [sim_adc, sim_sigma, sim_axr]
 param_pred = [adc_final_pred, sigma_final_pred, axr_final_pred]
-param_name = ['ADC', 'Sigma', 'AXR']
+param_name = ['ADC', 'Sigma', 'AXR'] 
 
 rvals = []
 

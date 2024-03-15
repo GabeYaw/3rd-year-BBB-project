@@ -74,8 +74,10 @@ limits = torch.FloatTensor(limits)
 batch_size = 128
 net = Net(be,bf, tm, nparams,limits)
 
-dataset = torch.utils.data.TensorDataset(torch.from_numpy(sim_adc_prime.astype(np.float32)), 
-                             torch.from_numpy(sim_axr.astype(np.float32)))
+dataset = torch.utils.data.TensorDataset(torch.from_numpy(sim_adc_prime.astype(np.float32)),
+                                         torch.from_numpy(sim_adc.astype(np.float32)),
+                                         torch.from_numpy(sim_sigma.astype(np.float32)),
+                                         torch.from_numpy(sim_axr.astype(np.float32)))
 #create batch queues for data
 num_batches = len(E_vox) // batch_size
 #trainloader = utils.DataLoader(torch.from_numpy(E_vox.astype(np.float32)),
@@ -90,6 +92,9 @@ learning_rate = 1e-2
 #default lr: 1e-3
 criterion1 = nn.MSELoss()
 criterion2 = nn.MSELoss()
+criterion3 = nn.MSELoss()
+criterion4 = nn.MSELoss()
+
 optimizer = optim.Adam(net.parameters(),lr=learning_rate)
 
 
@@ -108,29 +113,34 @@ for epoch in range(10000):
 
     #for i, X_batch in enumerate(tqdm(trainloader), 0):
     #for i, adc_prime_batch in enumerate(tqdm(trainloader), 0):
-    for i, (adc_prime_batch, axr_batch) in enumerate(tqdm(trainloader), 0):
+    for i, (adc_prime_batch, adc_batch, sigma_batch, axr_batch) in enumerate(tqdm(trainloader), 0):
         # zero the parameter gradients
         optimizer.zero_grad()
 
         # forward + backward + optimize
         #X_pred, adc_pred, sigma_pred, axr_pred, adc_prime_pred  = net(X_batch)
-        X_pred, adc_pred, sigma_pred, axr_pred, adc_prime_pred = net(adc_prime_batch)
-        loss1 = criterion1(adc_prime_pred, adc_prime_batch)
         
+        adc_batch = adc_batch.unsqueeze(1)
+        sigma_batch = sigma_batch.unsqueeze(1)
         axr_batch = axr_batch.unsqueeze(1)
-        loss2 = criterion2(axr_pred, axr_batch)
+
+        X_pred, adc_pred, sigma_pred, axr_pred, adc_prime_pred = net(adc_prime_batch)
+        #loss1 = criterion1(adc_prime_pred, adc_prime_batch)
+        loss2 = criterion2(adc_pred,adc_batch)
+        loss3 = criterion3(sigma_pred, sigma_batch)
+        loss4 = criterion2(axr_pred, axr_batch)
+
         #loss = criterion(X_pred, X_batch)
         
         #loss = torch.max(loss1, loss2)
-        loss = loss1 + loss2
-        loss = loss.squeeze(0)
+        loss =  loss2 + loss3 + loss4
         loss.backward()
 
         optimizer.step()
         running_loss += loss.item()
       
-    print(f"ADC Prime Loss: {loss1}\tAXR Loss: {loss2}")
-    #this is only from the final batch
+    print(f"ADC Loss: {loss2}\t Sigma Loss: {loss3}\t AXR Loss: {loss4}")
+    #this is only from the final batch I don't think the loss values make sense now
 
     print("loss: {}".format(running_loss))
     print("best loss: {}".format(best))
