@@ -64,3 +64,6 @@ mse_axr = np.mean((axr_final_pred - sim_axr)**2)
 print(f"Bias ADC: {bias_adc}, Bias Sigma: {bias_sigma}, Bias AXR: {bias_axr}")
 print(f"Variance ADC: {var_adc}, Variance Sigma: {var_sigma}, Variance AXR: {var_axr}")
 print(f"MSE ADC: {mse_adc}, MSE Sigma: {mse_sigma}, MSE AXR: {mse_axr}")
+
+end_time = time.time()
+print(f"Time taken: {end_time - start_time} seconds")
