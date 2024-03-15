@@ -84,7 +84,7 @@ trainloader = utils.DataLoader(torch.from_numpy(sim_adc_prime.astype(np.float32)
                                 drop_last = True)
 
 # loss function and optimizer
-learning_rate = 1e-1
+learning_rate = 1e-3
 #default lr: 1e-3
 criterion = nn.MSELoss()
 #optimizer = optim.Adam(net.parameters(),lr=learning_rate)
@@ -94,12 +94,13 @@ optimizer = optim.Adam(net.parameters())
 # best loss
 best = 1e16
 num_bad_epochs = 0
+biggest_bad_epoch = 0
 patience = 10000
 
 # train
 for epoch in range(100000): 
     print("-----------------------------------------------------------------")
-    print("epoch: {}; bad epochs: {}".format(epoch, num_bad_epochs))
+    print("epoch: {}; bad epochs: {}; largest bad epoch: {}".format(epoch, num_bad_epochs, biggest_bad_epoch))
     net.train()
     running_loss = 0.
 
@@ -128,6 +129,8 @@ for epoch in range(100000):
         num_bad_epochs = 0
     else:
         num_bad_epochs = num_bad_epochs + 1
+        if epoch > biggest_bad_epoch
+            biggest_bad_epoch = epoch
         if num_bad_epochs == patience:
             print("done, best loss: {}".format(best))
             break
