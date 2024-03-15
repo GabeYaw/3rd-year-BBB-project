@@ -95,10 +95,10 @@ optimizer = optim.Adam(net.parameters())
 best = 1e16
 num_bad_epochs = 0
 biggest_bad_epoch = 0
-patience = 100
+patience = 10000
 
 # train
-for epoch in range(10000): 
+for epoch in range(100000): 
     print("-----------------------------------------------------------------")
     print("epoch: {}; bad epochs: {}; largest bad epoch: {}".format(epoch, num_bad_epochs, biggest_bad_epoch))
     net.train()
