@@ -129,7 +129,7 @@ for epoch in range(10000):
         num_bad_epochs = 0
     else:
         num_bad_epochs = num_bad_epochs + 1
-        if epoch > biggest_bad_epoch:
+        if num_bad_epochs > biggest_bad_epoch:
             biggest_bad_epoch = epoch
         if num_bad_epochs == patience:
             print("done, best loss: {}".format(best))
