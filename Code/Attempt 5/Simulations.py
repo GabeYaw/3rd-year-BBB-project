@@ -42,7 +42,7 @@ tm = np.array([20, 20, 20, 20, 200, 200, 400, 400], dtype=np.float32) * 1e-3 # m
 
 adc_lb = 0.1        #[um2/ms]
 adc_ub = 3.5        #[um2/ms]
-adc_ub = 6          #[um2/ms] based off intuition, look at max possible value
+adc_ub = 6.15          #[um2/ms] based off intuition, look at max possible value
 sig_lb = 0          #[a.u.]
 sig_ub = 1.0          #[a.u.]
 axr_lb = 0.1        #[s-1]
