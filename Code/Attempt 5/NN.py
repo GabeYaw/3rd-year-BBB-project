@@ -71,7 +71,7 @@ bf = torch.FloatTensor(bf)
 tm = torch.FloatTensor(tm)
 limits = torch.FloatTensor(limits)
 
-batch_size = 128
+batch_size = 256
 net = Net(be,bf, tm, nparams,limits)
 
 #create batch queues for data
@@ -95,10 +95,10 @@ optimizer = optim.Adam(net.parameters())
 best = 1e16
 num_bad_epochs = 0
 biggest_bad_epoch = 0
-patience = 10000
+patience = 10
 
 # train
-for epoch in range(100000): 
+for epoch in range(10000): 
     print("-----------------------------------------------------------------")
     print("epoch: {}; bad epochs: {}; largest bad epoch: {}".format(epoch, num_bad_epochs, biggest_bad_epoch))
     net.train()

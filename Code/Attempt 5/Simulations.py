@@ -33,7 +33,7 @@ def sim_sig_np(bf,be,tm,adc,sigma,axr):
 
     return normalised_signal, adc_prime
 
-nvox = 100000 # number of voxels to simulate
+nvox = 10000 # number of voxels to simulate
 
 bf = np.array([0, 0, 250, 250, 250, 250, 250, 250]) * 1e-3   # filter b-values [ms/um2]
 be = np.array([0, 250, 0, 250, 0, 250, 0, 250]) * 1e-3       # encoding b-values [ms/um2]
@@ -101,7 +101,8 @@ sim_sigma = ((De-Di)*(feeq - fe0))/sim_adc
 sim_sigma = sim_sigma[:,2]                                      # sigma, simulated [a.u.]
 sim_adc = np.squeeze(sim_adc)
 
-sim_axr = np.random.uniform(axr_lb,axr_ub,nvox)                 # AXR, simulated [s-1]"""
+sim_axr = np.random.uniform(axr_lb,axr_ub,nvox)                 # AXR, simulated [s-1]
+
 
 sim_E_vox, sim_adc_prime = sim_sig_np(bf,be,tm,sim_adc,sim_sigma,sim_axr)
 
