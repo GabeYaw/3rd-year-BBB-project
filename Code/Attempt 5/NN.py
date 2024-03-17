@@ -88,14 +88,17 @@ learning_rate = 1e-3
 #default lr: 1e-3
 criterion = nn.MSELoss()
 #optimizer = optim.Adam(net.parameters(),lr=learning_rate)
+#optimizer = optim.Adam(net.parameters())
 optimizer = optim.Adam(net.parameters())
+optimizer = optim.SGD(net.parameters(), lr=learning_rate, momentum=0.9)
+
 
 
 # best loss
 best = 1e16
 num_bad_epochs = 0
 biggest_bad_epoch = 0
-patience = 100
+patience = 10
 
 # train
 for epoch in range(10000): 

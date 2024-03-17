@@ -37,7 +37,7 @@ nvox = 10000 # number of voxels to simulate
 
 bf = np.array([0, 0, 250, 250, 250, 250, 250, 250]) * 1e-3   # filter b-values [ms/um2]
 be = np.array([0, 250, 0, 250, 0, 250, 0, 250]) * 1e-3       # encoding b-values [ms/um2]
-tm = np.array([20, 20, 20, 20, 200, 200, 400, 400], dtype=np.float32) * 1e-6 # mixing time [s]
+tm = np.array([20, 20, 20, 20, 200, 200, 400, 400], dtype=np.float32) * 1e-3 # mixing time [s]
 
 
 adc_lb = 0.1        #[um2/ms]
@@ -45,8 +45,9 @@ adc_ub = 3.5        #[um2/ms]
 adc_ub = 6.15          #[um2/ms] based off intuition, look at max possible value
 sig_lb = 0          #[a.u.]
 sig_ub = 1.0          #[a.u.]
-axr_lb = 0.1 * 1e3       #[s-1]
-axr_ub = 20 * 1e3        #[s-1]
+axr_lb = 0.1        #[s-1]
+#axr_lb = 1          #[s-1]
+axr_ub = 20         #[s-1]
 
 #consider doing in si units
 
