@@ -84,7 +84,7 @@ trainloader = utils.DataLoader(torch.from_numpy(sim_adc_prime.astype(np.float32)
                                 drop_last = True)
 
 # loss function and optimizer
-learning_rate = 1e-3
+learning_rate = 1e-2
 #default lr: 1e-3
 criterion = nn.MSELoss()
 #optimizer = optim.Adam(net.parameters(),lr=learning_rate)
@@ -98,7 +98,7 @@ optimizer = optim.SGD(net.parameters(), lr=learning_rate, momentum=0.9)
 best = 1e16
 num_bad_epochs = 0
 biggest_bad_epoch = 0
-patience = 10
+patience = 100
 
 # train
 for epoch in range(10000): 
