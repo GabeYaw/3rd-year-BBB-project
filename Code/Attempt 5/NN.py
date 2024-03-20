@@ -53,6 +53,10 @@ class Net(nn.Module): # this is the neural network
 
         adc_prime_1 = adc.expand(adc_prime.shape[0], 2)
 
+        #come back to this idea
+        #axr1 = torch.log((1 - adc_prime[:, -6:]/adc)/sigma)/-self.tm[-6:]
+        
+
         #adc_prime_1 = adc.expand(X.shape[0], 2)
         X1 = torch.exp(-adc_prime_1 * self.be[:2])
 
