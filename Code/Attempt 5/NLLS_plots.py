@@ -23,6 +23,7 @@ plt.legend()
 param_sim = [sim_adc, sim_sigma, sim_axr]
 param_pred = [NLLS_adc_all, NLLS_sigma_all, NLLS_axr_all]
 param_name = ['ADC', 'Sigma', 'AXR']
+units = ['[um2/ms]', '[a.u.]', '[s-1]']
 
 rvals = []
 
@@ -36,8 +37,8 @@ for i,_ in enumerate(param_sim):
     plt.rcParams['font.size'] = '16'
     plt.figure()  # Create a new figure for each loop
     plt.scatter(param_sim[i], param_pred[i], s=2, c='navy')
-    plt.xlabel(param_name[i] + ' Ground Truth')
-    plt.ylabel(param_name[i] + ' Prediction')
+    plt.xlabel(param_name[i] + ' Ground Truth ' + units[i])
+    plt.ylabel(param_name[i] + ' Prediction ' + units[i])
     r_value,p_value = scipy.stats.pearsonr(np.squeeze(param_sim[i]), np.squeeze(param_pred[i]))
     plt.text(0.95, 0.05, f"r = {r_value:.2f}", ha='right', va='bottom', transform=plt.gca().transAxes)
     rvals.append([r_value, p_value])

@@ -15,8 +15,6 @@ from scipy.special import erf
 from tqdm import tqdm
 
 # Seed for random number generator
-np.random.seed(0)
-
 
 from Simulations import *
 

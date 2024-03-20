@@ -14,7 +14,7 @@ from scipy.io import savemat
 from scipy.special import erf
 from tqdm import tqdm
 
-np.random.seed(0)
+np.random.seed(10)
 
 def sim_sig_np(bf,be,tm,adc,sigma,axr):
     be = np.expand_dims(be, axis=0)
