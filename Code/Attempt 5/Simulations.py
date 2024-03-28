@@ -34,7 +34,7 @@ def sim_sig_np(bf,be,tm,adc,sigma,axr):
     return normalised_signal, adc_prime
 
 nvox = 10000 # number of voxels to simulate
-noise = 1 # 1 for noise, 0 for no noise
+noise = 0 # 1 for noise, 0 for no noise
 
 bf = np.array([0, 0, 250, 250, 250, 250, 250, 250]) * 1e-3   # filter b-values [ms/um2]
 be = np.array([0, 250, 0, 250, 0, 250, 0, 250]) * 1e-3       # encoding b-values [ms/um2]

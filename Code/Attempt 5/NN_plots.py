@@ -80,16 +80,33 @@ def format_scientific(num):
 
 # Formatting output for LaTeX table
 print("\\begin{tabular}{|c|c|c|c|} \\hline")
+
+print("\\multicolumn{4}{|c|}{\\textbf{Pearson correlation coefficient}}\\\\ \\hline")
+print("\\textbf{Method}&  $ADC$&  $\\sigma$& $AXR$\\\\ \\hline")
+if noise == 1:
+    print("NN Noisy& {}& {}& {}\\\\ \\hline".format(format_scientific(rvals[0][0]), format_scientific(rvals[1][0]), format_scientific(rvals[2][0])))
+else:
+    print("NN Noise Free& {}& {}& {}\\\\ \\hline".format(format_scientific(rvals[0][0]), format_scientific(rvals[1][0]), format_scientific(rvals[2][0])))
+
 print("\\multicolumn{4}{|c|}{\\textbf{MSE}}\\\\ \\hline")
 print("\\textbf{Method}&  $ADC$&  $\\sigma$& $AXR$\\\\ \\hline")
-#print("NLLS& {}& {}& {:.3f}\\\\ \\hline".format(format_scientific(mse_adc), format_scientific(mse_sigma), mse_axr))
-print("NN& & {}& {}& {:.3f}\\\\ \\hline".format(format_scientific(mse_adc), format_scientific(mse_sigma), mse_axr))
+if noise == 1:
+    print("NN Noisy& {}& {}& {}\\\\ \\hline".format(format_scientific(mse_adc), format_scientific(mse_sigma), format_scientific(mse_axr)))
+else:
+    print("NN Noise Free& {}& {}& {}\\\\ \\hline".format(format_scientific(mse_adc), format_scientific(mse_sigma), format_scientific(mse_axr)))
+
 print("\\multicolumn{4}{|c|}{\\textbf{Bias}}\\\\ \\hline")
 print("\\textbf{Method}&  $ADC$&  $\\sigma$& $AXR$\\\\ \\hline")
-#print("NLLS& {}&  {}& {}\\\\ \\hline".format(format_scientific(bias_adc), format_scientific(bias_sigma), format_scientific(bias_axr)))
-print("NN&{}&  {}& {}\\\\ \\hline".format(format_scientific(bias_adc), format_scientific(bias_sigma), format_scientific(bias_axr)))
+
+if noise == 1:
+    print("NN Noisy& {}& {}& {}\\\\ \\hline".format(format_scientific(bias_adc), format_scientific(bias_sigma), format_scientific(bias_axr)))
+else:
+    print("NN Noise Free&  {}& {}& {}\\\\ \\hline".format(format_scientific(bias_adc), format_scientific(bias_sigma), format_scientific(bias_axr)))
+
 print("\\multicolumn{4}{|c|}{\\textbf{Variance}}\\\\ \\hline")
 print("\\textbf{Method}&  $ADC$&  $\\sigma$& $AXR$\\\\ \\hline")
-#print("NLLS& {:.3f}& {}& {:.3f}\\\\ \\hline".format(var_adc, format_scientific(var_sigma), var_axr))
-print("NN& {:.3f}& {} & {:.3f}\\\\ \\hline".format(var_adc, format_scientific(var_sigma), var_axr))
+if noise == 1:
+    print("NN Noisy& {}& {}& {}\\\\ \\hline".format(format_scientific(var_adc), format_scientific(var_sigma), format_scientific(var_axr)))
+else:
+    print("NN Noise Free& {}& {}& {}\\\\ \\hline".format(format_scientific(var_adc), format_scientific(var_sigma), format_scientific(var_axr)))
 print("\\end{tabular}")
