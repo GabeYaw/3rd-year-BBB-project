@@ -14,7 +14,7 @@ from scipy.io import savemat
 from scipy.special import erf
 from tqdm import tqdm
 
-np.random.seed(10)
+np.random.seed(100)
 
 def sim_sig_np(bf,be,tm,adc,sigma,axr):
     be = np.expand_dims(be, axis=0)
@@ -34,6 +34,7 @@ def sim_sig_np(bf,be,tm,adc,sigma,axr):
     return normalised_signal, adc_prime
 
 nvox = 10000 # number of voxels to simulate
+noise = 1 # 1 for noise, 0 for no noise
 
 bf = np.array([0, 0, 250, 250, 250, 250, 250, 250]) * 1e-3   # filter b-values [ms/um2]
 be = np.array([0, 250, 0, 250, 0, 250, 0, 250]) * 1e-3       # encoding b-values [ms/um2]
@@ -106,7 +107,10 @@ sim_axr = np.random.uniform(axr_lb,axr_ub,nvox)                 # AXR, simulated
 
 sim_E_vox, sim_adc_prime = sim_sig_np(bf,be,tm,sim_adc,sim_sigma,sim_axr)
 
-# Adding rician noise to the simulated signal
-Sim_E_vox_real = sim_E_vox + np.random.normal(scale=1/50, size=np.shape(sim_E_vox)) # adding rician noise, snr = 50
-Sim_E_vox_imag = np.random.normal(scale=1/50, size=np.shape(sim_E_vox))
-E_vox = np.sqrt(Sim_E_vox_real**2 + Sim_E_vox_imag**2)
+if noise == 1:
+    # Adding rician noise to the simulated signal
+    Sim_E_vox_real = sim_E_vox + np.random.normal(scale=1/50, size=np.shape(sim_E_vox)) # adding rician noise, snr = 50
+    Sim_E_vox_imag = np.random.normal(scale=1/50, size=np.shape(sim_E_vox))
+    E_vox = np.sqrt(Sim_E_vox_real**2 + Sim_E_vox_imag**2)
+else: 
+    E_vox = sim_E_vox

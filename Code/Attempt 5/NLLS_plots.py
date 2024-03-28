@@ -28,7 +28,11 @@ units = ['[um2/ms]', '[a.u.]', '[s-1]']
 rvals = []
 
 now = datetime.datetime.now()
-folder_name = now.strftime("%Y-%m-%d_%H-%M-%S")+" nvox = "+str(nvox)
+if noise == 1:
+    folder_name = now.strftime("%Y-%m-%d_%H-%M-%S")+" nvox = "+str(nvox)+" noise"
+else:
+    folder_name = now.strftime("%Y-%m-%d_%H-%M-%S")+" nvox = "+str(nvox)+" noise free"
+    
 folder_path = os.path.join('/Users/admin/Downloads', str(folder_name))
 
 os.makedirs(folder_path)

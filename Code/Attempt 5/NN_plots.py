@@ -22,7 +22,11 @@ rvals = []
 
 # Create a new folder with the current datetime
 now = datetime.datetime.now()
-folder_name = now.strftime("%Y-%m-%d_%H-%M-%S")+" nvox = "+str(nvox)+" patience = "+str(patience)+" lr = "+str(learning_rate)
+if noise == 1:
+    folder_name = now.strftime("%Y-%m-%d_%H-%M-%S")+" nvox = "+str(nvox)+" patience = "+str(patience)+" lr = "+str(learning_rate)+" noise"
+else:
+    folder_name = now.strftime("%Y-%m-%d_%H-%M-%S")+" nvox = "+str(nvox)+" patience = "+str(patience)+" lr = "+str(learning_rate)+" noise free"
+
 folder_path = os.path.join('/Users/admin/Downloads', str(folder_name))
 
 os.makedirs(folder_path)
