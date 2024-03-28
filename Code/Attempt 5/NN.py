@@ -97,7 +97,7 @@ optimizer = optim.Adam(net.parameters(),lr=learning_rate)
 best = 1e16
 num_bad_epochs = 0
 biggest_bad_epoch = 0
-patience = 100
+patience = 10
 
 # train
 for epoch in range(10000): 
@@ -112,6 +112,8 @@ for epoch in range(10000):
         optimizer.zero_grad()
 
         # forward + backward + optimize
+
+        #loss 
         #X_pred, adc_pred, sigma_pred, axr_pred, adc_prime_pred  = net(X_batch)
         X_pred, adc_pred, sigma_pred, axr_pred, adc_prime_pred  = net(adc_prime_batch)
         loss = criterion(adc_prime_pred, adc_prime_batch)

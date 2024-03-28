@@ -53,9 +53,9 @@ bias_adc = np.mean(NLLS_adc_all - sim_adc)
 bias_sigma = np.mean(NLLS_sigma_all - sim_sigma)
 bias_axr = np.mean(NLLS_axr_all - sim_axr)
 
-var_adc = np.mean((NLLS_adc_all - np.mean(sim_adc))**2)
-var_sigma = np.mean((NLLS_sigma_all - np.mean(sim_sigma))**2)
-var_axr = np.mean((NLLS_axr_all - np.mean(sim_axr))**2)
+var_adc = np.mean((NLLS_adc_all - np.mean(NLLS_adc_all))**2)
+var_sigma = np.mean((NLLS_sigma_all - np.mean(NLLS_sigma_all))**2)
+var_axr = np.mean((NLLS_axr_all - np.mean(NLLS_axr_all))**2)
 
 mse_adc = np.mean((NLLS_adc_all - sim_adc)**2)
 mse_sigma = np.mean((NLLS_sigma_all - sim_sigma)**2)
@@ -66,3 +66,23 @@ print("Variance ADC: ", var_adc, "Variance Sigma: ", var_sigma, "Variance AXR: "
 print("MSE ADC: ", mse_adc, "MSE Sigma: ", mse_sigma, "MSE AXR: ", mse_axr)
 
 
+def format_scientific(num):
+    str_num = '{:.3e}'.format(num)
+    mantissa, exponent = str_num.split('e')
+    return '{} $\\times 10^{{{}}}$'.format(mantissa, int(exponent))
+
+# Formatting output for LaTeX table
+print("\\begin{tabular}{|c|c|c|c|} \\hline")
+print("\\multicolumn{4}{|c|}{\\textbf{MSE}}\\\\ \\hline")
+print("\\textbf{Method}&  $ADC$&  $\\sigma$& $AXR$\\\\ \\hline")
+print("NLLS& {}& {}& {:.3f}\\\\ \\hline".format(format_scientific(mse_adc), format_scientific(mse_sigma), mse_axr))
+#print("NN&  2.53&  0.104& 56.3\\\\ \\hline")
+print("\\multicolumn{4}{|c|}{\\textbf{Bias}}\\\\ \\hline")
+print("\\textbf{Method}&  $ADC$&  $\\sigma$& $AXR$\\\\ \\hline")
+print("NLLS& {}&  {}& {}\\\\ \\hline".format(format_scientific(bias_adc), format_scientific(bias_sigma), format_scientific(bias_axr)))
+#print("NN&  3.57 $\\times 10^{-3}$&  - 3.09 $\\times 10^{-3}$& -2.52\\\\ \\hline")
+print("\\multicolumn{4}{|c|}{\\textbf{Variance}}\\\\ \\hline")
+print("\\textbf{Method}&  $ADC$&  $\\sigma$& $AXR$\\\\ \\hline")
+print("NLLS& {:.3f}& {}& {:.3f}\\\\ \\hline".format(var_adc, format_scientific(var_sigma), var_axr))
+#print("NN& {:.3f}& {} & {:.3f}\\\\ \\hline".format(var_adc, format_scientific(var_sigma), var_axr))
+print("\\end{tabular}")

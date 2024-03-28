@@ -56,9 +56,10 @@ bias_adc = np.mean(adc_final_pred - sim_adc)
 bias_sigma = np.mean(sigma_final_pred - sim_sigma)
 bias_axr = np.mean(axr_final_pred - sim_axr)
 
-var_adc = np.mean((adc_final_pred - np.mean(sim_adc))**2)
-var_sigma = np.mean((sigma_final_pred - np.mean(sim_sigma))**2)
-var_axr = np.mean((axr_final_pred - np.mean(sim_axr))**2)
+#change to compare the simulated data.
+var_adc = np.mean((adc_final_pred - np.mean(adc_final_pred))**2)
+var_sigma = np.mean((sigma_final_pred - np.mean(sigma_final_pred))**2)
+var_axr = np.mean((axr_final_pred - np.mean(axr_final_pred))**2)
 
 mse_adc = np.mean((adc_final_pred - sim_adc)**2)
 mse_sigma = np.mean((sigma_final_pred - sim_sigma)**2)
@@ -68,3 +69,23 @@ print(f"Bias ADC: {bias_adc}, Bias Sigma: {bias_sigma}, Bias AXR: {bias_axr}")
 print(f"Variance ADC: {var_adc}, Variance Sigma: {var_sigma}, Variance AXR: {var_axr}")
 print(f"MSE ADC: {mse_adc}, MSE Sigma: {mse_sigma}, MSE AXR: {mse_axr}")
 
+def format_scientific(num):
+    str_num = '{:.3e}'.format(num)
+    mantissa, exponent = str_num.split('e')
+    return '{} $\\times 10^{{{}}}$'.format(mantissa, int(exponent))
+
+# Formatting output for LaTeX table
+print("\\begin{tabular}{|c|c|c|c|} \\hline")
+print("\\multicolumn{4}{|c|}{\\textbf{MSE}}\\\\ \\hline")
+print("\\textbf{Method}&  $ADC$&  $\\sigma$& $AXR$\\\\ \\hline")
+#print("NLLS& {}& {}& {:.3f}\\\\ \\hline".format(format_scientific(mse_adc), format_scientific(mse_sigma), mse_axr))
+print("NN& & {}& {}& {:.3f}\\\\ \\hline".format(format_scientific(mse_adc), format_scientific(mse_sigma), mse_axr))
+print("\\multicolumn{4}{|c|}{\\textbf{Bias}}\\\\ \\hline")
+print("\\textbf{Method}&  $ADC$&  $\\sigma$& $AXR$\\\\ \\hline")
+#print("NLLS& {}&  {}& {}\\\\ \\hline".format(format_scientific(bias_adc), format_scientific(bias_sigma), format_scientific(bias_axr)))
+print("NN&{}&  {}& {}\\\\ \\hline".format(format_scientific(bias_adc), format_scientific(bias_sigma), format_scientific(bias_axr)))
+print("\\multicolumn{4}{|c|}{\\textbf{Variance}}\\\\ \\hline")
+print("\\textbf{Method}&  $ADC$&  $\\sigma$& $AXR$\\\\ \\hline")
+#print("NLLS& {:.3f}& {}& {:.3f}\\\\ \\hline".format(var_adc, format_scientific(var_sigma), var_axr))
+print("NN& {:.3f}& {} & {:.3f}\\\\ \\hline".format(var_adc, format_scientific(var_sigma), var_axr))
+print("\\end{tabular}")
