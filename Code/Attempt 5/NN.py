@@ -91,7 +91,7 @@ trainloader = utils.DataLoader(torch.from_numpy(sim_adc_prime.astype(np.float32)
 learning_rate = 1e-4
 #default lr: 1e-3
 criterion = nn.MSELoss()
-optimizer = optim.Adam(net.parameters(),lr=learning_rate)
+optimizer = optim.Adam(net.parameters(),lr= learning_rate)
 
 # best loss
 best = 1e16
